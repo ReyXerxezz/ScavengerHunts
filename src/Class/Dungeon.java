@@ -14,6 +14,9 @@ import Dungeons.gui.Drawable;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import java.nio.charset.Charset;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  *
@@ -23,13 +26,18 @@ public class Dungeon extends Sprite implements Drawable, Boundable {
 
     private LivingBeing arthur;
     private Drawable drawable;
+    private LectorArchivo lector;
 
     public Dungeon(int x, int y, int width, int height, String type) {
         super(x, y, width, height, Color.BLACK);
-        
         arthur = createKnight(50, 50, type);
         arthur.setDrawable(this);
         arthur.setBoundable(this);
+    }
+    public void mapearDungeon(String nivel){
+        Path gameLevel = Paths.get(nivel);
+        Charset charset = Charset.forName("UTF-8");
+        lector = new LectorArchivo(gameLevel, charset);
     }
     public LivingBeing createKnight (int x, int y, String type){
         LivingBeing knight = null;
