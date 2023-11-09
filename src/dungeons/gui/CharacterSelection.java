@@ -4,6 +4,8 @@
  */
 package dungeons.gui;
 
+import Class.Dungeon;
+import Dungeons.gui.Game;
 import javax.swing.ImageIcon;
 
 /**
@@ -37,7 +39,7 @@ public class CharacterSelection extends javax.swing.JFrame {
         assasin = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
-        save = new javax.swing.JButton();
+        startjButton = new javax.swing.JButton();
         back = new javax.swing.JButton();
         archer = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -99,12 +101,12 @@ public class CharacterSelection extends javax.swing.JFrame {
         jTextArea1.setDisabledTextColor(new java.awt.Color(255, 255, 255));
         jScrollPane1.setViewportView(jTextArea1);
 
-        save.setBackground(new java.awt.Color(0, 0, 0));
-        save.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Save.png"))); // NOI18N
-        save.setBorder(null);
-        save.addActionListener(new java.awt.event.ActionListener() {
+        startjButton.setBackground(new java.awt.Color(0, 0, 0));
+        startjButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Start.png"))); // NOI18N
+        startjButton.setBorder(null);
+        startjButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                saveActionPerformed(evt);
+                startjButtonActionPerformed(evt);
             }
         });
 
@@ -140,7 +142,7 @@ public class CharacterSelection extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(back, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(save, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                                .addComponent(startjButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(137, 137, 137)
                         .addComponent(jknight, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -186,7 +188,7 @@ public class CharacterSelection extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jknight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(7, 7, 7)
-                        .addComponent(save)))
+                        .addComponent(startjButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(back)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -255,9 +257,17 @@ public class CharacterSelection extends javax.swing.JFrame {
         jknight.setText("Magician");
     }//GEN-LAST:event_magicianActionPerformed
 
-    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
+    private void startjButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startjButtonActionPerformed
         knight = jknight.getText();
-    }//GEN-LAST:event_saveActionPerformed
+        Levels levelselection = new Levels();
+        levelselection.setVisible(true);
+        /*Dungeon map = new Dungeon(0, 0, 800, 600, knight);
+        Game gameMap = new Game(map);
+        map.setDrawable(gameMap);
+        gameMap.setSize(800, 600);
+        gameMap.setVisible(true);
+        */
+    }//GEN-LAST:event_startjButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton archer;
@@ -270,7 +280,7 @@ public class CharacterSelection extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jknight;
     private javax.swing.JButton magician;
-    private javax.swing.JButton save;
+    private javax.swing.JButton startjButton;
     private javax.swing.JButton swordMan;
     private javax.swing.JButton tank;
     // End of variables declaration//GEN-END:variables
