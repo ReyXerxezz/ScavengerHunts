@@ -13,32 +13,48 @@ import Knight.Archer;
 import Dungeons.gui.Drawable;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.nio.charset.Charset;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
  * @author User
  */
-public class Dungeon extends Sprite implements Drawable, Boundable {
+public class Dungeon extends Sprite implements Drawable, Boundable{
 
     private LivingBeing arthur;
     private Drawable drawable;
     private LectorArchivo lector;
+    private final List<Point> coordenadasMuros;
 
-    public Dungeon(int x, int y, int width, int height, String type) {
+    public Dungeon(int x, int y, int width, int height, String type, String nivel) {
         super(x, y, width, height, Color.BLACK);
-        arthur = createKnight(50, 50, type);
+        arthur = createKnight(40, 50, type);
         arthur.setDrawable(this);
         arthur.setBoundable(this);
+        coordenadasMuros = new ArrayList<>();
+        mapearDungeon(nivel);
     }
-    public void mapearDungeon(String nivel){
+    
+    public void mapearDungeon(String nivel) {
         Path gameLevel = Paths.get(nivel);
         Charset charset = Charset.forName("UTF-8");
         lector = new LectorArchivo(gameLevel, charset);
+        this.coordenadasMuros.addAll(lector.leerMapa());
     }
+    public void drawWalls(Graphics g){
+        for (Point coordenada : coordenadasMuros) {
+            Wall muro = new Wall(coordenada.x * 35, coordenada.y * 40);
+            muro.draw(g);
+            System.out.println("Dibujando Muro en (" + coordenada.x + ", " + coordenada.y + ")");
+        }
+    }
+    
     public LivingBeing createKnight (int x, int y, String type){
         LivingBeing knight = null;
         if (type.equals("Assasin")){
@@ -62,11 +78,11 @@ public class Dungeon extends Sprite implements Drawable, Boundable {
         return knight;
     }
     @Override
-    public void draw(Graphics g)
-    {
+    public void draw(Graphics g) {
+        System.out.println("Dibujando Dungeon");
         g.setColor(color);
-        g.fillRect(x, y, width, height); 
-        
+        g.fillRect(x, y, width, height);
+
         arthur.draw(g);
     }
     public void setDrawable(Drawable drawable) {
