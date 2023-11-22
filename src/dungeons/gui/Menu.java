@@ -125,11 +125,13 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
-        Dungeon map = new Dungeon(0, 0, 1050, 800, type, "MapaPruebas.txt");
-        Game gameMap = new Game(map);
-        map.setDrawable(gameMap);
-        gameMap.setSize(1050, 800);
-        gameMap.setVisible(true);
+    Dungeon map = new Dungeon(0, 0, 1050, 800, type, "MapaPruebas.txt");
+    CharacterSelection selection = new CharacterSelection();
+    selection.setVisible(true);
+    Game gameMap = new Game(map);
+    map.setDrawable(gameMap);
+    gameMap.setSize(1050, 800);
+    gameMap.setVisible(true);
     }//GEN-LAST:event_startActionPerformed
 
     private void quitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitActionPerformed
@@ -172,4 +174,6 @@ public class Menu extends javax.swing.JFrame {
     public void setType(String type) {
         this.type = type;
     }
+
+   
 }
