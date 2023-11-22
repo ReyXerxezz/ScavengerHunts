@@ -12,7 +12,8 @@ import java.awt.Graphics;
  * @author User
  */
 public class Wall extends Sprite{
-    
+    public static final int WIDTH = 35;
+    public static final int HEIGHT = 40;
     public Wall(int x, int y) {
         super(x, y, 35, 40, Color.GRAY);
     }
@@ -22,5 +23,20 @@ public class Wall extends Sprite{
         g.setColor(color);
         g.fillRect(x, y, width, height);
     }
+
+    /**
+     * @return the WIDTH
+     */
+    public int getWIDTH() {
+        return WIDTH;
+    }
+
+    /**
+     * @return the HEIGHT
+     */
+    public int getHEIGHT() {
+        return HEIGHT;
+    }
+    
     
 }

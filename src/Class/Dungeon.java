@@ -18,6 +18,7 @@ import java.awt.event.KeyEvent;
 import java.nio.charset.Charset;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.InstantSource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,29 +31,27 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     private LivingBeing arthur;
     private Drawable drawable;
     private LectorArchivo lector;
-    private final List<Point> coordenadasMuros;
+    private List<Wall> Muros;
+    private String nivel;
 
     public Dungeon(int x, int y, int width, int height, String type, String nivel) {
         super(x, y, width, height, Color.BLACK);
         arthur = createKnight(40, 50, type);
         arthur.setDrawable(this);
         arthur.setBoundable(this);
-        coordenadasMuros = new ArrayList<>();
-        mapearDungeon(nivel);
+        lector = new LectorArchivo(nivel);
+        Muros = new ArrayList<>();
+        mapearDungeon();
+    }
+
+    public void setDrawable(Drawable drawable) {
+        this.drawable = drawable;
     }
     
-    public void mapearDungeon(String nivel) {
-        Path gameLevel = Paths.get(nivel);
-        Charset charset = Charset.forName("UTF-8");
-        lector = new LectorArchivo(gameLevel, charset);
-        this.coordenadasMuros.addAll(lector.leerMapa());
-    }
-    public void drawWalls(Graphics g){
-        for (Point coordenada : coordenadasMuros) {
-            Wall muro = new Wall(coordenada.x * 35, coordenada.y * 40);
-            muro.draw(g);
-            System.out.println("Dibujando Muro en (" + coordenada.x + ", " + coordenada.y + ")");
-        }
+    private void mapearDungeon() {
+        System.out.println("leyendo archivo");
+        this.Muros = lector.leerMapa();
+
     }
     
     public LivingBeing createKnight (int x, int y, String type){
@@ -79,14 +78,15 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     }
     @Override
     public void draw(Graphics g) {
-        System.out.println("Dibujando Dungeon");
         g.setColor(color);
         g.fillRect(x, y, width, height);
 
         arthur.draw(g);
-    }
-    public void setDrawable(Drawable drawable) {
-        this.drawable = drawable;
+        for (Wall muro : Muros){
+            g.setColor(color);
+            g.fillRect(x, y, width, height);
+            muro.draw(g);
+        }
     }
 
     public void actKnight(int key){

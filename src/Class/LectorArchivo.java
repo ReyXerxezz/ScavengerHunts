@@ -4,8 +4,8 @@
  */
 package Class;
 
-import java.awt.Point;
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
@@ -18,34 +18,41 @@ import java.util.List;
  * @author User
  */
 public class LectorArchivo {
-    private final Path output;
-    private final Charset charset;
+    private final String output;
 
-    public LectorArchivo(Path output, Charset charset) {
+    public LectorArchivo(String output) {
         this.output = output;
-        this.charset = charset;
     }
     
-    public List<Point> leerMapa() {
-        List<Point> coordenadasMuros = new ArrayList<>();
+    public List<Wall> leerMapa() {
+        List<Wall> objetos = new ArrayList<>();
 
-        try (BufferedReader reader = Files.newBufferedReader(output, charset)) {
-            String line;
+        // Leer el archivo de texto
+        try (BufferedReader br = new BufferedReader(new FileReader(output))) {
+            String linea;
             int fila = 0;
 
-            while ((line = reader.readLine()) != null) {
-                for (int columna = 0; columna < line.length(); columna++) {
-                    char c = line.charAt(columna);
-                    if (c == '*') {  // Cambiado a '*' para representar un muro
-                        coordenadasMuros.add(new Point(columna, fila));
+            while ((linea = br.readLine()) != null) {
+                char[] caracteres = linea.toCharArray();
+
+                for (int columna = 0; columna < caracteres.length; columna++) {
+                    if (caracteres[columna] == '*') {
+                        // Crear un objeto en la posición (fila, columna)
+                        Wall miObjeto = new Wall(fila*Wall.WIDTH, columna*Wall.HEIGHT);
+                        objetos.add(miObjeto);
                     }
                 }
+
                 fila++;
             }
-        } catch (IOException e) {
-            System.err.println("Error de E/S: " + e.getMessage());
-        }
 
-        return coordenadasMuros;
+            // Imprimir la lista de objetos o realizar otras operaciones según sea necesario
+            for (Wall objeto : objetos) {
+                System.out.println("Objeto en posición (" + objeto.getX() + ", " + objeto.getY() + ")");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return objetos;
     }
 }
