@@ -9,7 +9,7 @@ package dungeons.gui;
  * @author santi
  */
 public class Levels extends javax.swing.JPanel {
-
+    private String knight = null;
     /**
      * Creates new form Levels
      */
@@ -118,7 +118,11 @@ public class Levels extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        setVisible(false);
+        Menu menu = new Menu();
+        menu.setType(getKnight());
+        menu.setSize(587, 492);
+        menu.setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
 
@@ -131,4 +135,18 @@ public class Levels extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the knight
+     */
+    public String getKnight() {
+        return knight;
+    }
+
+    /**
+     * @param knight the knight to set
+     */
+    public void setKnight(String knight) {
+        this.knight = knight;
+    }
 }

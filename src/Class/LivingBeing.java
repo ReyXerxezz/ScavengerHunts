@@ -68,6 +68,9 @@ public abstract class LivingBeing extends Sprite{
         
         return true;
     }
+    public void attack(){
+        
+    }
     @Override
     public void draw(Graphics g) {
         g.setColor(color);
