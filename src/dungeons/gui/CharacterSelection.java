@@ -273,12 +273,10 @@ public class CharacterSelection extends javax.swing.JFrame {
     }//GEN-LAST:event_magicianActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
-        
-        Dungeon map = new Dungeon(0, 0, 1050, 800, getKnight(),"MapaPruebas.txt" );
+        Dungeon map = new Dungeon(0, 0, 700, 800, getKnight(),"MapaPruebas.txt" );
         Game gameMap = new Game(map);
         map.setDrawable(gameMap);
-        gameMap.setSize(1050, 800);
+        gameMap.setSize(700, 800);
         gameMap.setVisible(true);
 
     }//GEN-LAST:event_jButton1ActionPerformed
