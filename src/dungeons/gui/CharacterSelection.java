@@ -5,7 +5,6 @@
 package dungeons.gui;
 
 import Class.Dungeon;
-import Dungeons.gui.Game;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -53,7 +52,9 @@ public class CharacterSelection extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
         barbarian.setBackground(new java.awt.Color(0, 0, 0));
-        barbarian.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/BarbarianButton.png"))); // NOI18N
+        barbarian.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        barbarian.setForeground(new java.awt.Color(153, 153, 0));
+        barbarian.setText("Barbarian");
         barbarian.setBorder(null);
         barbarian.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -62,7 +63,9 @@ public class CharacterSelection extends javax.swing.JFrame {
         });
 
         magician.setBackground(new java.awt.Color(0, 0, 0));
-        magician.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/MagicianButton.png"))); // NOI18N
+        magician.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        magician.setForeground(new java.awt.Color(153, 153, 0));
+        magician.setText("Magician");
         magician.setBorder(null);
         magician.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -71,7 +74,9 @@ public class CharacterSelection extends javax.swing.JFrame {
         });
 
         swordMan.setBackground(new java.awt.Color(0, 0, 0));
-        swordMan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/SwordmanButton.png"))); // NOI18N
+        swordMan.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        swordMan.setForeground(new java.awt.Color(153, 153, 0));
+        swordMan.setText("Swordman");
         swordMan.setBorder(null);
         swordMan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +85,9 @@ public class CharacterSelection extends javax.swing.JFrame {
         });
 
         tank.setBackground(new java.awt.Color(0, 0, 0));
-        tank.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/TankButton.png"))); // NOI18N
+        tank.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        tank.setForeground(new java.awt.Color(153, 153, 0));
+        tank.setText("Tank");
         tank.setBorder(null);
         tank.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,7 +96,9 @@ public class CharacterSelection extends javax.swing.JFrame {
         });
 
         assasin.setBackground(new java.awt.Color(0, 0, 0));
-        assasin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/AssasinButton.png"))); // NOI18N
+        assasin.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        assasin.setForeground(new java.awt.Color(153, 153, 0));
+        assasin.setText("Assasin");
         assasin.setBorder(null);
         assasin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -116,7 +125,9 @@ public class CharacterSelection extends javax.swing.JFrame {
         });
 
         archer.setBackground(new java.awt.Color(0, 0, 0));
-        archer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/ArcherButton.png"))); // NOI18N
+        archer.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        archer.setForeground(new java.awt.Color(153, 153, 0));
+        archer.setText("Archer");
         archer.setBorder(null);
         archer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,61 +160,64 @@ public class CharacterSelection extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(109, 109, 109)
+                        .addComponent(jknight, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(15, 15, 15)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jButton1)
+                            .addComponent(back)
+                            .addComponent(jButton1))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(109, 109, 109)
-                                .addComponent(jknight, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(barbarian, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(archer, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(swordMan)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                                .addComponent(magician))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(assasin, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(barbarian))
+                                .addGap(45, 45, 45)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(swordMan, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(magician, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addComponent(assasin, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(tank, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(back))
-                .addContainerGap(46, Short.MAX_VALUE))
+                                    .addComponent(tank, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(archer, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                .addGap(39, 39, 39))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(barbarian)
-                            .addComponent(archer))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(tank)
-                            .addComponent(assasin))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(swordMan)
-                            .addComponent(magician))
-                        .addGap(49, 49, 49)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jknight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(barbarian, javax.swing.GroupLayout.DEFAULT_SIZE, 30, Short.MAX_VALUE)
+                            .addComponent(archer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(assasin, javax.swing.GroupLayout.DEFAULT_SIZE, 22, Short.MAX_VALUE)
+                            .addComponent(tank, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(swordMan, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(magician, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(84, 84, 84)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(back)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -258,7 +272,7 @@ public class CharacterSelection extends javax.swing.JFrame {
     }//GEN-LAST:event_tankActionPerformed
 
     private void swordManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_swordManActionPerformed
-        ImageIcon nuevaImagen = new ImageIcon("SwordMan.png");
+        ImageIcon nuevaImagen = new ImageIcon("Swordman.png");
         jLabel1.setIcon(nuevaImagen);
         jknight.setText("SwordMan");
         setKnight(jknight.getText());

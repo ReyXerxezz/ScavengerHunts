@@ -4,13 +4,13 @@
  */
 package Class;
 
+import dungeons.gui.Drawable;
 import Knight.Assasin;
 import Knight.Barbarian;
 import Knight.Magician;
 import Knight.Tank;
 import Knight.SwordMan;
 import Knight.Archer;
-import Dungeons.gui.Drawable;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;

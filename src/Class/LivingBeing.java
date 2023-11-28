@@ -4,7 +4,7 @@
  */
 package Class;
 
-import Dungeons.gui.Drawable;
+import dungeons.gui.Drawable;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
