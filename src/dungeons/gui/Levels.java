@@ -4,6 +4,8 @@
  */
 package dungeons.gui;
 
+import Class.Dungeon;
+
 /**
  *
  * @author santi
@@ -37,6 +39,9 @@ public class Levels extends javax.swing.JPanel {
         setBackground(new java.awt.Color(0, 0, 0));
         setBorder(javax.swing.BorderFactory.createMatteBorder(5, 5, 5, 5, new java.awt.Color(102, 102, 0)));
 
+        Level1jButton.setBackground(new java.awt.Color(102, 102, 0));
+        Level1jButton.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        Level1jButton.setForeground(new java.awt.Color(255, 255, 255));
         Level1jButton.setText("Lvl 1");
         Level1jButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -44,19 +49,54 @@ public class Levels extends javax.swing.JPanel {
             }
         });
 
+        Level2jButton.setBackground(new java.awt.Color(102, 102, 0));
+        Level2jButton.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        Level2jButton.setForeground(new java.awt.Color(255, 255, 255));
         Level2jButton.setText("Lvl 2");
+        Level2jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Level2jButtonActionPerformed(evt);
+            }
+        });
 
+        Level3jButton.setBackground(new java.awt.Color(102, 102, 0));
+        Level3jButton.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        Level3jButton.setForeground(new java.awt.Color(255, 255, 255));
         Level3jButton.setText("Lvl 3");
+        Level3jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Level3jButtonActionPerformed(evt);
+            }
+        });
 
+        Level4jButton.setBackground(new java.awt.Color(102, 102, 0));
+        Level4jButton.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        Level4jButton.setForeground(new java.awt.Color(255, 255, 255));
         Level4jButton.setText("Lvl 4");
+        Level4jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Level4jButtonActionPerformed(evt);
+            }
+        });
 
+        LevelfinaljButton.setBackground(new java.awt.Color(102, 102, 0));
+        LevelfinaljButton.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        LevelfinaljButton.setForeground(new java.awt.Color(255, 255, 255));
         LevelfinaljButton.setText("Final Lvl");
+        LevelfinaljButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LevelfinaljButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(153, 153, 0));
         jLabel1.setText("Level Selection");
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Back.png"))); // NOI18N
+        jButton1.setBackground(new java.awt.Color(51, 51, 51));
+        jButton1.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(153, 153, 0));
+        jButton1.setText("Back");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -89,7 +129,7 @@ public class Levels extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(110, 110, 110)
                 .addComponent(jLabel1)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,16 +154,43 @@ public class Levels extends javax.swing.JPanel {
 
     private void Level1jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Level1jButtonActionPerformed
         // TODO add your handling code here:
+        CharacterSelection selection = new CharacterSelection();
+        selection.setVisible(true);
+        setKnight(selection.getKnight());
     }//GEN-LAST:event_Level1jButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Menu menu = new Menu();
+        MenuPrincipal menu = new MenuPrincipal();
         menu.setType(getKnight());
         menu.setSize(587, 492);
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void Level2jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Level2jButtonActionPerformed
+        // TODO add your handling code here:
+        CharacterSelection selection = new CharacterSelection();
+        selection.setVisible(true);
+    }//GEN-LAST:event_Level2jButtonActionPerformed
+
+    private void Level3jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Level3jButtonActionPerformed
+        // TODO add your handling code here:
+        CharacterSelection selection = new CharacterSelection();
+        selection.setVisible(true);
+    }//GEN-LAST:event_Level3jButtonActionPerformed
+
+    private void Level4jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Level4jButtonActionPerformed
+        // TODO add your handling code here:
+        CharacterSelection selection = new CharacterSelection();
+        selection.setVisible(true);
+    }//GEN-LAST:event_Level4jButtonActionPerformed
+
+    private void LevelfinaljButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LevelfinaljButtonActionPerformed
+        // TODO add your handling code here:
+        CharacterSelection selection = new CharacterSelection();
+        selection.setVisible(true);
+    }//GEN-LAST:event_LevelfinaljButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

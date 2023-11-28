@@ -8,6 +8,7 @@ import Class.Dungeon;
 import Dungeons.gui.Game;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -104,7 +105,9 @@ public class CharacterSelection extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         back.setBackground(new java.awt.Color(0, 0, 0));
-        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Back.png"))); // NOI18N
+        back.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 24)); // NOI18N
+        back.setForeground(new java.awt.Color(153, 153, 0));
+        back.setText("Back");
         back.setBorder(null);
         back.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -123,8 +126,15 @@ public class CharacterSelection extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/CharacterSelection.png"))); // NOI18N
 
+        jknight.setBackground(new java.awt.Color(0, 0, 0));
+        jknight.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        jknight.setForeground(new java.awt.Color(153, 153, 0));
+        jknight.setBorder(null);
+
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Img/Start.png"))); // NOI18N
+        jButton1.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 24)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(153, 153, 0));
+        jButton1.setText("Start");
         jButton1.setBorder(null);
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,10 +152,10 @@ public class CharacterSelection extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
+                            .addComponent(jButton1)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(84, 84, 84)
-                                .addComponent(jknight, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(109, 109, 109)
+                                .addComponent(jknight, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,20 +194,16 @@ public class CharacterSelection extends javax.swing.JFrame {
                             .addComponent(swordMan)
                             .addComponent(magician))
                         .addGap(49, 49, 49)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jknight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(40, 40, 40))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))))
+                        .addComponent(jknight, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton1)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(back)
-                .addContainerGap(20, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -215,8 +221,8 @@ public class CharacterSelection extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
-        Menu menu = new Menu();
-        menu.setType(knight);
+        MenuPrincipal menu = new MenuPrincipal();
+        menu.setType(getKnight());
         menu.setSize(587, 492);
         menu.setVisible(true);
         this.setVisible(false);
@@ -226,49 +232,53 @@ public class CharacterSelection extends javax.swing.JFrame {
         ImageIcon nuevaImagen = new ImageIcon("Archer.png");
         jLabel1.setIcon(nuevaImagen);
         jknight.setText("Archer");
-        
+        setKnight(jknight.getText());
     }//GEN-LAST:event_archerActionPerformed
 
     private void barbarianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barbarianActionPerformed
         ImageIcon nuevaImagen = new ImageIcon("Barbarian.png");
         jLabel1.setIcon(nuevaImagen);
         jknight.setText("Barbarian");
+        setKnight(jknight.getText());
     }//GEN-LAST:event_barbarianActionPerformed
 
     private void assasinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assasinActionPerformed
         ImageIcon nuevaImagen = new ImageIcon("Assasin.png");
         jLabel1.setIcon(nuevaImagen);
         jknight.setText("Assasin");
+        setKnight(jknight.getText());
     }//GEN-LAST:event_assasinActionPerformed
 
     private void tankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tankActionPerformed
         ImageIcon nuevaImagen = new ImageIcon("Tank.png");
         jLabel1.setIcon(nuevaImagen);
         jknight.setText("Tank");
+        setKnight(jknight.getText());
     }//GEN-LAST:event_tankActionPerformed
 
     private void swordManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_swordManActionPerformed
         ImageIcon nuevaImagen = new ImageIcon("SwordMan.png");
         jLabel1.setIcon(nuevaImagen);
         jknight.setText("SwordMan");
+        setKnight(jknight.getText());
     }//GEN-LAST:event_swordManActionPerformed
 
     private void magicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_magicianActionPerformed
         ImageIcon nuevaImagen = new ImageIcon("Magician.png");
         jLabel1.setIcon(nuevaImagen);
         jknight.setText("Magician");
+        setKnight(jknight.getText());
+        
     }//GEN-LAST:event_magicianActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        knight = jknight.getText();
-        Levels levelselection = new Levels();
-        levelselection.setVisible(true);
-        levelselection.setKnight(knight);
-        // Crear una nueva ventana y agregar el panel Levels
-        JFrame frame  = new JFrame("Levels");
-        frame.setContentPane(levelselection);
-        frame.pack();
-        frame.setVisible(true);
+        
+        
+        Dungeon map = new Dungeon(0, 0, 1050, 800, getKnight(),"MapaPruebas.txt" );
+        Game gameMap = new Game(map);
+        map.setDrawable(gameMap);
+        gameMap.setSize(1050, 800);
+        gameMap.setVisible(true);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -287,4 +297,18 @@ public class CharacterSelection extends javax.swing.JFrame {
     private javax.swing.JButton swordMan;
     private javax.swing.JButton tank;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the knight
+     */
+    public String getKnight() {
+        return knight;
+    }
+
+    /**
+     * @param knight the knight to set
+     */
+    public void setKnight(String knight) {
+        this.knight = knight;
+    }
 }

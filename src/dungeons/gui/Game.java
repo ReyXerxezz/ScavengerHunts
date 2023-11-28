@@ -3,7 +3,7 @@ package Dungeons.gui;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import Class.Dungeon;
-import dungeons.gui.Menu;
+import dungeons.gui.MenuPrincipal;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -82,7 +82,7 @@ public class Game
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
         if(evt.getKeyCode() == KeyEvent.VK_Q){
-            Menu menu = new Menu();
+            MenuPrincipal menu = new MenuPrincipal();
             menu.setSize(587, 492);
             menu.setVisible(true);
             this.setVisible(false);
