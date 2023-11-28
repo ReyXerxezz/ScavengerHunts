@@ -8,6 +8,7 @@ import Dungeons.gui.Drawable;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 /**
  *
@@ -37,14 +38,14 @@ public abstract class LivingBeing extends Sprite{
     public void setBoundable(Boundable boundable) {
         this.boundable = boundable;
     }
-    public void actionHandle(int key){
+    public void actionHandle(int key, ArrayList<Wall> Muros){
         if(key == KeyEvent.VK_W |
            key == KeyEvent.VK_S |
            key == KeyEvent.VK_A |
            key == KeyEvent.VK_D)
-            move(key);
+            move(key, Muros);
     }
-    public boolean move(int key)
+    public boolean move(int key, ArrayList<Wall> Muros)
     {
         int xOriginal = x;
         int yOriginal = y;
@@ -57,13 +58,14 @@ public abstract class LivingBeing extends Sprite{
             x -= speed;
         if(key == KeyEvent.VK_D)
             x += speed;
+        for(Wall muro : Muros){
+            if(this.checkCollision(muro))
+            {
+                this.setX(xOriginal);
+                this.setY(yOriginal);
 
-        if(!boundable.isValid(this))
-        {
-            this.setX(xOriginal);
-            this.setY(yOriginal);
-            
-            return false;
+                return false;
+            }
         }
         
         return true;

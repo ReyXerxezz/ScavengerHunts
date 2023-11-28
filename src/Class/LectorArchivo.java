@@ -24,31 +24,26 @@ public class LectorArchivo {
         this.output = output;
     }
     
-    public List<Wall> leerMapa() {
-        List<Wall> objetos = new ArrayList<>();
-
+    public ArrayList<Wall> leerMapa() {
+        ArrayList<Wall> objetos = new ArrayList<>();
+        int fila = 0;
+        
         // Leer el archivo de texto
         try (BufferedReader br = new BufferedReader(new FileReader(output))) {
             String linea;
-            int fila = 0;
 
             while ((linea = br.readLine()) != null) {
                 char[] caracteres = linea.toCharArray();
 
-                for (int columna = 0; columna < caracteres.length; columna++) {
-                    if (caracteres[columna] == '*') {
+                for (int columna = 0; columna < caracteres.length; columna+=1) {
+                    if (caracteres[columna] == '1') {
                         // Crear un objeto en la posición (fila, columna)
-                        Wall miObjeto = new Wall(fila*Wall.WIDTH, columna*Wall.HEIGHT);
+                        Wall miObjeto = new Wall((columna*Wall.WIDTH), fila*Wall.HEIGHT);
                         objetos.add(miObjeto);
                     }
                 }
 
-                fila++;
-            }
-
-            // Imprimir la lista de objetos o realizar otras operaciones según sea necesario
-            for (Wall objeto : objetos) {
-                System.out.println("Objeto en posición (" + objeto.getX() + ", " + objeto.getY() + ")");
+                fila+=1;
             }
         } catch (IOException e) {
             e.printStackTrace();

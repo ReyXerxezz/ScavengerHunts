@@ -13,15 +13,8 @@ import Knight.Archer;
 import Dungeons.gui.Drawable;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Point;
 import java.awt.event.KeyEvent;
-import java.nio.charset.Charset;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.time.InstantSource;
 import java.util.ArrayList;
-import java.util.List;
-
 /**
  *
  * @author User
@@ -31,7 +24,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     private LivingBeing arthur;
     private Drawable drawable;
     private LectorArchivo lector;
-    private List<Wall> Muros;
+    private ArrayList<Wall> Muros;
     private String nivel;
 
     public Dungeon(int x, int y, int width, int height, String type, String nivel) {
@@ -49,7 +42,6 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     }
     
     private void mapearDungeon() {
-        System.out.println("leyendo archivo");
         this.Muros = lector.leerMapa();
 
     }
@@ -83,8 +75,8 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
 
         arthur.draw(g);
         for (Wall muro : Muros){
-            g.setColor(color);
-            g.fillRect(x, y, width, height);
+            g.setColor(muro.getColor());
+            g.fillRect(muro.getX(), muro.getY(), muro.getWidth(), muro.getHeight());
             muro.draw(g);
         }
     }
@@ -95,7 +87,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
            key == KeyEvent.VK_A | 
            key == KeyEvent.VK_D)
         {
-            arthur.actionHandle(key);
+            arthur.actionHandle(key, Muros);
             drawable.redraw();  // TODO
         }
     }
