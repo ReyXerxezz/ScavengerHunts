@@ -221,6 +221,7 @@ public class CharacterSelection extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
+
         MenuPrincipal menu = new MenuPrincipal();
         menu.setType(getKnight());
         menu.setSize(587, 492);
