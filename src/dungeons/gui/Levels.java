@@ -4,6 +4,8 @@
  */
 package dungeons.gui;
 
+import Class.Dungeon;
+
 /**
  *
  * @author santi
@@ -45,12 +47,32 @@ public class Levels extends javax.swing.JPanel {
         });
 
         Level2jButton.setText("Lvl 2");
+        Level2jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Level2jButtonActionPerformed(evt);
+            }
+        });
 
         Level3jButton.setText("Lvl 3");
+        Level3jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Level3jButtonActionPerformed(evt);
+            }
+        });
 
         Level4jButton.setText("Lvl 4");
+        Level4jButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Level4jButtonActionPerformed(evt);
+            }
+        });
 
         LevelfinaljButton.setText("Final Lvl");
+        LevelfinaljButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LevelfinaljButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -114,6 +136,9 @@ public class Levels extends javax.swing.JPanel {
 
     private void Level1jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Level1jButtonActionPerformed
         // TODO add your handling code here:
+        CharacterSelection selection = new CharacterSelection();
+        selection.setVisible(true);
+        setKnight(selection.getKnight());
     }//GEN-LAST:event_Level1jButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -124,6 +149,30 @@ public class Levels extends javax.swing.JPanel {
         menu.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void Level2jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Level2jButtonActionPerformed
+        // TODO add your handling code here:
+        CharacterSelection selection = new CharacterSelection();
+        selection.setVisible(true);
+    }//GEN-LAST:event_Level2jButtonActionPerformed
+
+    private void Level3jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Level3jButtonActionPerformed
+        // TODO add your handling code here:
+        CharacterSelection selection = new CharacterSelection();
+        selection.setVisible(true);
+    }//GEN-LAST:event_Level3jButtonActionPerformed
+
+    private void Level4jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Level4jButtonActionPerformed
+        // TODO add your handling code here:
+        CharacterSelection selection = new CharacterSelection();
+        selection.setVisible(true);
+    }//GEN-LAST:event_Level4jButtonActionPerformed
+
+    private void LevelfinaljButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LevelfinaljButtonActionPerformed
+        // TODO add your handling code here:
+        CharacterSelection selection = new CharacterSelection();
+        selection.setVisible(true);
+    }//GEN-LAST:event_LevelfinaljButtonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

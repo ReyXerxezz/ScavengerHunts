@@ -6,6 +6,7 @@ package dungeons.gui;
 
 import Class.Dungeon;
 import Dungeons.gui.Game;
+import javax.swing.JFrame;
 /**
  *
  * @author User
@@ -125,8 +126,16 @@ public class Menu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
-
-        CharacterSelection selection = new CharacterSelection();
+        
+        Levels levelselection = new Levels();
+        levelselection.setVisible(true);
+        
+        // Crear una nueva ventana y agregar el panel Levels
+        JFrame frame  = new JFrame("Levels");
+        frame.setContentPane(levelselection);
+        frame.pack();
+        frame.setVisible(true);
+        /*CharacterSelection selection = new CharacterSelection();
         selection.setVisible(true);
  
         Dungeon map = new Dungeon(0, 0, 1050, 800, type,"MapaPruebas.txt" );
@@ -134,6 +143,7 @@ public class Menu extends javax.swing.JFrame {
         map.setDrawable(gameMap);
         gameMap.setSize(1050, 800);
         gameMap.setVisible(true);
+        */
     }//GEN-LAST:event_startActionPerformed
 
     private void quitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitActionPerformed

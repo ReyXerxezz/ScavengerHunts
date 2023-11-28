@@ -98,21 +98,33 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Lvl 2"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Level2jButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Level3jButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Lvl 3"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Level3jButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="Level4jButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Lvl 4"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Level4jButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="LevelfinaljButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Final Lvl"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LevelfinaljButtonActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>

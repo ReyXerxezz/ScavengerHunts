@@ -8,6 +8,7 @@ import Class.Dungeon;
 import Dungeons.gui.Game;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -216,7 +217,7 @@ public class CharacterSelection extends javax.swing.JFrame {
 
     private void backActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backActionPerformed
         Menu menu = new Menu();
-        menu.setType(knight);
+        menu.setType(getKnight());
         menu.setSize(587, 492);
         menu.setVisible(true);
         this.setVisible(false);
@@ -226,49 +227,53 @@ public class CharacterSelection extends javax.swing.JFrame {
         ImageIcon nuevaImagen = new ImageIcon("Archer.png");
         jLabel1.setIcon(nuevaImagen);
         jknight.setText("Archer");
-        
+        setKnight(jknight.getText());
     }//GEN-LAST:event_archerActionPerformed
 
     private void barbarianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_barbarianActionPerformed
         ImageIcon nuevaImagen = new ImageIcon("Barbarian.png");
         jLabel1.setIcon(nuevaImagen);
         jknight.setText("Barbarian");
+        setKnight(jknight.getText());
     }//GEN-LAST:event_barbarianActionPerformed
 
     private void assasinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assasinActionPerformed
         ImageIcon nuevaImagen = new ImageIcon("Assasin.png");
         jLabel1.setIcon(nuevaImagen);
         jknight.setText("Assasin");
+        setKnight(jknight.getText());
     }//GEN-LAST:event_assasinActionPerformed
 
     private void tankActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tankActionPerformed
         ImageIcon nuevaImagen = new ImageIcon("Tank.png");
         jLabel1.setIcon(nuevaImagen);
         jknight.setText("Tank");
+        setKnight(jknight.getText());
     }//GEN-LAST:event_tankActionPerformed
 
     private void swordManActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_swordManActionPerformed
         ImageIcon nuevaImagen = new ImageIcon("SwordMan.png");
         jLabel1.setIcon(nuevaImagen);
         jknight.setText("SwordMan");
+        setKnight(jknight.getText());
     }//GEN-LAST:event_swordManActionPerformed
 
     private void magicianActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_magicianActionPerformed
         ImageIcon nuevaImagen = new ImageIcon("Magician.png");
         jLabel1.setIcon(nuevaImagen);
         jknight.setText("Magician");
+        setKnight(jknight.getText());
+        
     }//GEN-LAST:event_magicianActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        knight = jknight.getText();
-        Levels levelselection = new Levels();
-        levelselection.setVisible(true);
-        levelselection.setKnight(knight);
-        // Crear una nueva ventana y agregar el panel Levels
-        JFrame frame  = new JFrame("Levels");
-        frame.setContentPane(levelselection);
-        frame.pack();
-        frame.setVisible(true);
+        
+        
+        Dungeon map = new Dungeon(0, 0, 1050, 800, getKnight(),"MapaPruebas.txt" );
+        Game gameMap = new Game(map);
+        map.setDrawable(gameMap);
+        gameMap.setSize(1050, 800);
+        gameMap.setVisible(true);
 
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -287,4 +292,18 @@ public class CharacterSelection extends javax.swing.JFrame {
     private javax.swing.JButton swordMan;
     private javax.swing.JButton tank;
     // End of variables declaration//GEN-END:variables
+
+    /**
+     * @return the knight
+     */
+    public String getKnight() {
+        return knight;
+    }
+
+    /**
+     * @param knight the knight to set
+     */
+    public void setKnight(String knight) {
+        this.knight = knight;
+    }
 }
