@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -22,13 +23,15 @@ public abstract class LivingBeing extends Sprite{
     private int damage;
     private int range;
     private int speed;
+    //private ImageIcon image;
     
-    public LivingBeing(int x, int y, int width, int height, int health, int damage, int range, int speed) {
+    public LivingBeing(int x, int y, int width, int height, int health, int damage, int range, int speed /*,ImageIcon image*/) {
         super(x, y, width, height, Color.BLUE);
         this.health = health;
         this.damage = damage;
         this.range = range;
         this.speed = speed;
+        //this.image = image;
     }
 
     public void setDrawable(Drawable drawable) {

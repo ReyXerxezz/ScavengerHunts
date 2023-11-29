@@ -5,6 +5,7 @@
 package Knight;
 
 import Class.LivingBeing;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -13,7 +14,7 @@ import Class.LivingBeing;
 public class Assasin extends LivingBeing{
     
     public Assasin(int x, int y) {
-        super(x, y, 12, 17, 15, 175, 10, 10);
+        super(x, y, 12, 17, 15, 175, 10, 10 /*, new ImageIcon("Img/AssasinCharacter.png")*/);
     }
     
 }

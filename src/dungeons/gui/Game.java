@@ -4,6 +4,7 @@ import dungeons.gui.Drawable;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import Class.Dungeon;
+import java.awt.Image;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -19,6 +20,8 @@ public class Game
         implements Drawable {
 
     private final Dungeon map;
+    private Image offScreenImage;
+    private Graphics offScreenGraphics;
     /**
      * Creates new form VentanaPrincipal
      * @param map
@@ -28,12 +31,27 @@ public class Game
         this.map = map;
     }
     
+    public void update(Graphics g) {
+        paint(g);
+    }
     
     @Override
-    public void paint(Graphics g)
-    {
-        map.draw(g);
+    public void paint(Graphics g) {
+    if (offScreenImage == null) {
+        offScreenImage = createImage(getWidth(), getHeight());
+        offScreenGraphics = offScreenImage.getGraphics();
     }
+
+    // Clear the off-screen image
+    offScreenGraphics.setColor(getBackground());
+    offScreenGraphics.fillRect(0, 0, getWidth(), getHeight());
+
+    // Draw on the off-screen image
+    map.draw(offScreenGraphics);  // Draw the dungeon
+
+    // Copy the off-screen image to the screen
+    g.drawImage(offScreenImage, 0, 0, this);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.

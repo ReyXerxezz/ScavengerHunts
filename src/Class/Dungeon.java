@@ -13,6 +13,7 @@ import Knight.SwordMan;
 import Knight.Archer;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 /**
@@ -26,6 +27,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     private LectorArchivo lector;
     private ArrayList<Wall> Muros;
     private String nivel;
+    
 
     public Dungeon(int x, int y, int width, int height, String type, String nivel) {
         super(x, y, width, height, Color.BLACK);
@@ -93,7 +95,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     }
     @Override
     public void redraw() {
-        drawable.redraw();
+         
     }
 
     @Override

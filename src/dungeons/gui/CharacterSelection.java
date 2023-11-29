@@ -5,6 +5,7 @@
 package dungeons.gui;
 
 import Class.Dungeon;
+import Knight.Barbarian;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -19,6 +20,7 @@ public class CharacterSelection extends javax.swing.JFrame {
      * Creates new form CustomizeCharacter
      */
     private String knight = null;
+    private String level = null; 
     
     public CharacterSelection() {
         initComponents();
@@ -254,6 +256,7 @@ public class CharacterSelection extends javax.swing.JFrame {
         ImageIcon nuevaImagen = new ImageIcon("Barbarian.png");
         jLabel1.setIcon(nuevaImagen);
         jknight.setText("Barbarian");
+        // jTextArea1.append();
         setKnight(jknight.getText());
     }//GEN-LAST:event_barbarianActionPerformed
 
@@ -287,7 +290,7 @@ public class CharacterSelection extends javax.swing.JFrame {
     }//GEN-LAST:event_magicianActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Dungeon map = new Dungeon(0, 0, 700, 800, getKnight(),"MapaPruebas.txt" );
+        Dungeon map = new Dungeon(0, 0, 700, 800, getKnight(),level );
         Game gameMap = new Game(map);
         map.setDrawable(gameMap);
         gameMap.setSize(700, 800);
@@ -323,5 +326,19 @@ public class CharacterSelection extends javax.swing.JFrame {
      */
     public void setKnight(String knight) {
         this.knight = knight;
+    }
+
+    /**
+     * @return the level
+     */
+    public String getLevel() {
+        return level;
+    }
+
+    /**
+     * @param level the level to set
+     */
+    public void setLevel(String level) {
+        this.level = level;
     }
 }

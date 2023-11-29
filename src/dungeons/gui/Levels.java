@@ -157,6 +157,7 @@ public class Levels extends javax.swing.JPanel {
         CharacterSelection selection = new CharacterSelection();
         selection.setVisible(true);
         setKnight(selection.getKnight());
+        selection.setLevel("MapaPruebas.txt");
     }//GEN-LAST:event_Level1jButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -172,24 +173,28 @@ public class Levels extends javax.swing.JPanel {
         // TODO add your handling code here:
         CharacterSelection selection = new CharacterSelection();
         selection.setVisible(true);
+        selection.setLevel("Mapa2.txt");
     }//GEN-LAST:event_Level2jButtonActionPerformed
 
     private void Level3jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Level3jButtonActionPerformed
         // TODO add your handling code here:
         CharacterSelection selection = new CharacterSelection();
         selection.setVisible(true);
+        selection.setLevel("Mapa3.txt");
     }//GEN-LAST:event_Level3jButtonActionPerformed
 
     private void Level4jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Level4jButtonActionPerformed
         // TODO add your handling code here:
         CharacterSelection selection = new CharacterSelection();
         selection.setVisible(true);
+        selection.setLevel("Mapa4.txt");
     }//GEN-LAST:event_Level4jButtonActionPerformed
 
     private void LevelfinaljButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LevelfinaljButtonActionPerformed
         // TODO add your handling code here:
         CharacterSelection selection = new CharacterSelection();
         selection.setVisible(true);
+        selection.setLevel("Mapafinal.txt");
     }//GEN-LAST:event_LevelfinaljButtonActionPerformed
 
 

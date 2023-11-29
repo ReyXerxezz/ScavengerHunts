@@ -5,6 +5,7 @@
 package Knight;
 
 import Class.LivingBeing;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -13,7 +14,7 @@ import Class.LivingBeing;
 public class Tank extends LivingBeing{
     
     public Tank(int x, int y) {
-        super(x, y, 20, 25, 150, 32, 15, 3);
+        super(x, y, 20, 25, 150, 32, 15, 3/*,new ImageIcon("Img/TankCharacter.png")*/);
     }
     
 }
