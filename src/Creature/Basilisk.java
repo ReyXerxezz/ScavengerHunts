@@ -5,6 +5,7 @@
 package Creature;
 
 import Class.LivingBeing;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -13,7 +14,7 @@ import Class.LivingBeing;
 public class Basilisk extends LivingBeing{
     
     public Basilisk(int x, int y, int width, int height, int health, int damage, int range, int speed) {
-        super(x, y, width, height, health, damage, range, speed);
+        super(x, y, width, height, health, damage, range, speed, new ImageIcon("Basilisk.png"));
     }
     
 }

@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 public class Barbarian extends LivingBeing{
     
     public Barbarian(int x, int y) {
-        super(x, y, 20, 30, 75, 100, 20, 5/*, new ImageIcon("Img/BarbarianCharacter.png")*/);
+        super(x, y, 20, 30, 75, 100, 20, 5, new ImageIcon("BarbarianCharacter.png"));
     }
     
 }

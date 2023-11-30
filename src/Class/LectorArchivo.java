@@ -50,4 +50,32 @@ public class LectorArchivo {
         }
         return objetos;
     }
+    /*
+    public ArrayList<LivingBeing> leerMonstruos() {
+    ArrayList<LivingBeing> monstruos = new ArrayList<>();
+    int fila = 0;
+    
+    // Leer el archivo de texto
+    try (BufferedReader br = new BufferedReader(new FileReader(output))) {
+        String linea;
+
+        while ((linea = br.readLine()) != null) {
+            char[] caracteres = linea.toCharArray();
+
+            for (int columna = 0; columna < caracteres.length; columna+=1) {
+                if (caracteres[columna] == '2') {
+                    // Crear un monstruo en la posición (fila, columna)
+                    LivingBeing miMonstruo = new LivingBeing((columna*LivingBeing.getWidth), fila*LivingBeing.getHeight);
+                    monstruos.add(miMonstruo);
+                }
+            }
+
+            fila+=1;
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    return monstruos;
+}
+*/
 }

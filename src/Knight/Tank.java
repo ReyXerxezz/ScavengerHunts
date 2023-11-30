@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 public class Tank extends LivingBeing{
     
     public Tank(int x, int y) {
-        super(x, y, 20, 25, 150, 32, 15, 3/*,new ImageIcon("Img/TankCharacter.png")*/);
+        super(x, y, 20, 25, 150, 32, 15, 3,new ImageIcon("TankCharacter.png"));
     }
     
 }

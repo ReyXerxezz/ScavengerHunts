@@ -23,15 +23,15 @@ public abstract class LivingBeing extends Sprite{
     private int damage;
     private int range;
     private int speed;
-    //private ImageIcon image;
+    private ImageIcon image;
     
-    public LivingBeing(int x, int y, int width, int height, int health, int damage, int range, int speed /*,ImageIcon image*/) {
+    public LivingBeing(int x, int y, int width, int height, int health, int damage, int range, int speed ,ImageIcon image) {
         super(x, y, width, height, Color.BLUE);
         this.health = health;
         this.damage = damage;
         this.range = range;
         this.speed = speed;
-        //this.image = image;
+        this.image = image; 
     }
 
     public void setDrawable(Drawable drawable) {
@@ -73,13 +73,17 @@ public abstract class LivingBeing extends Sprite{
         
         return true;
     }
-    public void attack(){
+    public void attack(Sprite sprite){
         
     }
     @Override
     public void draw(Graphics g) {
+        if (image != null) {
+        g.drawImage(image.getImage(), x, y,null);
+    } else {
         g.setColor(color);
         g.fillRect(x, y, width, height);
+    }
     }
 
     /**

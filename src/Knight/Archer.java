@@ -9,12 +9,13 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author User
+ * @author Santiago Jimenez
+ * @author Daniel Felipe Lopez
  */
 public class Archer extends LivingBeing{
     
     public Archer(int x, int y) {
-        super(x, y, 11, 18, 25, 40, 125, 10 /*, new ImageIcon("Img/ArcherCharacter.png")*/);
+        super(x, y, 11, 18, 25, 40, 125, 10 , new ImageIcon("ArcherCharacter.png"));
     }
     
 }

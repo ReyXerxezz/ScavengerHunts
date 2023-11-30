@@ -15,7 +15,7 @@ public class Wall extends Sprite{
     public static final int WIDTH = 35;
     public static final int HEIGHT = 40;
     public Wall(int x, int y) {
-        super(x, y, 35, 40, Color.GRAY);
+        super(x, y, 35, 34, Color.GRAY);
     }
     
     @Override

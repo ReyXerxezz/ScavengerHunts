@@ -26,16 +26,18 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     private Drawable drawable;
     private LectorArchivo lector;
     private ArrayList<Wall> Muros;
+    private ArrayList<LivingBeing> creatures;
     private String nivel;
     
 
     public Dungeon(int x, int y, int width, int height, String type, String nivel) {
-        super(x, y, width, height, Color.BLACK);
+        super(x, y, width, height, new Color(186, 222, 248  ));
         arthur = createKnight(40, 50, type);
         arthur.setDrawable(this);
         arthur.setBoundable(this);
         lector = new LectorArchivo(nivel);
         Muros = new ArrayList<>();
+        creatures = new ArrayList<>(); 
         mapearDungeon();
     }
 
