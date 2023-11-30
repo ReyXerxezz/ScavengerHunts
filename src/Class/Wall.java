@@ -6,6 +6,7 @@ package Class;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -14,14 +15,14 @@ import java.awt.Graphics;
 public class Wall extends Sprite{
     public static final int WIDTH = 35;
     public static final int HEIGHT = 40;
+    private ImageIcon wall = new ImageIcon("Wall.png");
     public Wall(int x, int y) {
-        super(x, y, 35, 34, Color.GRAY);
+        super(x, y, 35, 40, Color.GRAY);
     }
     
     @Override
     public void draw(Graphics g) {
-        g.setColor(color);
-        g.fillRect(x, y, width, height);
+        wall.paintIcon(null, g, x, y);
     }
 
     /**

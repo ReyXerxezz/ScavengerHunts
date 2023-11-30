@@ -16,6 +16,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 /**
  *
  * @author User
@@ -28,11 +29,12 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     private ArrayList<Wall> Muros;
     private ArrayList<LivingBeing> creatures;
     private String nivel;
+    private ImageIcon fondo = new ImageIcon("Background.png");
     
 
     public Dungeon(int x, int y, int width, int height, String type, String nivel) {
         super(x, y, width, height, new Color(186, 222, 248  ));
-        arthur = createKnight(40, 50, type);
+        arthur = createKnight(40, 40, type);
         arthur.setDrawable(this);
         arthur.setBoundable(this);
         lector = new LectorArchivo(nivel);
@@ -74,8 +76,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     }
     @Override
     public void draw(Graphics g) {
-        g.setColor(color);
-        g.fillRect(x, y, width, height);
+        fondo.paintIcon(null, g, x, y);
 
         arthur.draw(g);
         for (Wall muro : Muros){

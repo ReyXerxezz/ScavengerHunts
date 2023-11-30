@@ -173,28 +173,28 @@ public class Levels extends javax.swing.JPanel {
         // TODO add your handling code here:
         CharacterSelection selection = new CharacterSelection();
         selection.setVisible(true);
-        selection.setLevel("Mapa2.txt");
+        selection.setLevel("Level2.txt");
     }//GEN-LAST:event_Level2jButtonActionPerformed
 
     private void Level3jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Level3jButtonActionPerformed
         // TODO add your handling code here:
         CharacterSelection selection = new CharacterSelection();
         selection.setVisible(true);
-        selection.setLevel("Mapa3.txt");
+        selection.setLevel("Level3.txt");
     }//GEN-LAST:event_Level3jButtonActionPerformed
 
     private void Level4jButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Level4jButtonActionPerformed
         // TODO add your handling code here:
         CharacterSelection selection = new CharacterSelection();
         selection.setVisible(true);
-        selection.setLevel("Mapa4.txt");
+        selection.setLevel("Level4.txt");
     }//GEN-LAST:event_Level4jButtonActionPerformed
 
     private void LevelfinaljButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LevelfinaljButtonActionPerformed
         // TODO add your handling code here:
         CharacterSelection selection = new CharacterSelection();
         selection.setVisible(true);
-        selection.setLevel("Mapafinal.txt");
+        selection.setLevel("Level5.txt");
     }//GEN-LAST:event_LevelfinaljButtonActionPerformed
 
 
