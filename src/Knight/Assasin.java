@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 public class Assasin extends LivingBeing{
     
     public Assasin(int x, int y) {
-        super(x, y, 12, 17, 15, 175, 10, 10 , new ImageIcon("AssasinCharacter.png"));
+        super(x, y,20,28, 15, 175, 10, 10 , new ImageIcon("AssasinCharacter.png"));
     }
     
 }

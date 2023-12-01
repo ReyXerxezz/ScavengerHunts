@@ -4,7 +4,11 @@
  */
 package Creature;
 
+import Class.Fireball;
 import Class.LivingBeing;
+import Class.Sprite;
+import java.awt.Graphics;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
@@ -12,9 +16,35 @@ import javax.swing.ImageIcon;
  * @author User
  */
 public class Dragon extends LivingBeing{
-    
-    public Dragon(int x, int y, int width, int height, int health, int damage, int range, int speed) {
-        super(x, y, width, height, health, damage, range, speed, new ImageIcon("Dragon.png"));
+    private ArrayList<Fireball> fireballs;
+    public static final int WIDTH = 80;
+    public static final int HEIGHT = 88;
+    public Dragon(int x, int y) {
+        super(x, y, WIDTH, HEIGHT, 3000, 100, 30, 3, new ImageIcon("Dragon.png"));
+    }
+
+    public void attack(Sprite sprite) {
+        Fireball fireball = new Fireball(x, y);
+        fireballs.add(fireball);
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        super.draw(g);
+
+        // Dibuja las bolas de fuego
+        for (Fireball fireball : fireballs) {
+            fireball.draw(g);
+        }
+    }
+     @Override
+    public int getHeight() {
+        return HEIGHT;
+    }
+
+    @Override
+    public int getWidth() {
+        return WIDTH;
     }
     
 }

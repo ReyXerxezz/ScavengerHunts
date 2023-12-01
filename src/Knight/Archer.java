@@ -4,7 +4,11 @@
  */
 package Knight;
 
+import Class.Arrow;
 import Class.LivingBeing;
+import Class.Sprite;
+import java.awt.Graphics;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
@@ -12,10 +16,27 @@ import javax.swing.ImageIcon;
  * @author Santiago Jimenez
  * @author Daniel Felipe Lopez
  */
-public class Archer extends LivingBeing{
-    
+public class Archer extends LivingBeing {
+    private ArrayList<Arrow> arrows = new ArrayList<>();
+
     public Archer(int x, int y) {
-        super(x, y, 11, 18, 25, 40, 125, 10 , new ImageIcon("ArcherCharacter.png"));
+        super(x, y, 23, 28, 25, 40, 125, 10, new ImageIcon("ArcherCharacter.png"));
     }
-    
+
+    @Override
+    public void attack(Sprite sprite) {
+        Arrow arrow = new Arrow(x, y);
+        arrows.add(arrow);
+    }
+
+    @Override
+    public void draw(Graphics g) {
+        super.draw(g);
+
+        // Dibuja las flechas
+        for (Arrow arrow : arrows) {
+            arrow.draw(g);
+        }
+    }
 }
+

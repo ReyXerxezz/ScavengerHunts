@@ -49,7 +49,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     
     private void mapearDungeon() {
         this.Muros = lector.leerMapa();
-
+        this.creatures = lector.leerMonstruos();
     }
     
     public LivingBeing createKnight (int x, int y, String type){
@@ -83,6 +83,9 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
             g.setColor(muro.getColor());
             g.fillRect(muro.getX(), muro.getY(), muro.getWidth(), muro.getHeight());
             muro.draw(g);
+        }
+        for (LivingBeing monstruo : creatures) {
+            monstruo.draw(g);
         }
     }
 

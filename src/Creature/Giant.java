@@ -5,6 +5,9 @@
 package Creature;
 
 import Class.LivingBeing;
+import Class.Sprite;
+import static Creature.Basilisk.HEIGHT;
+import static Creature.Basilisk.WIDTH;
 import javax.swing.ImageIcon;
 
 /**
@@ -12,9 +15,23 @@ import javax.swing.ImageIcon;
  * @author User
  */
 public class Giant extends LivingBeing{
-    
-    public Giant(int x, int y, int width, int height, int health, int damage, int range, int speed) {
-        super(x, y, width, height, health, damage, range, speed, new ImageIcon("Giant.png"));
+    public static final int WIDTH = 25;
+    public static final int HEIGHT = 31;
+    public Giant(int x, int y) {
+        super(x, y, WIDTH, HEIGHT, 1000, 50, 10, 3, new ImageIcon("Giant.png"));
     }
-    
+    @Override
+    public void attack(Sprite sprite) {
+        super.attack(sprite);
+    }
+
+    @Override
+    public int getHeight() {
+        return HEIGHT;
+    }
+
+    @Override
+    public int getWidth() {
+        return WIDTH;
+    }
 }

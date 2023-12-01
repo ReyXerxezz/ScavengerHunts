@@ -5,6 +5,7 @@
 package Creature;
 
 import Class.LivingBeing;
+import Class.Sprite;
 import javax.swing.ImageIcon;
 
 /**
@@ -12,9 +13,24 @@ import javax.swing.ImageIcon;
  * @author User
  */
 public class Harpy extends LivingBeing{
-    
-    public Harpy(int x, int y, int width, int height, int health, int damage, int range, int speed) {
-        super(x, y, width, height, health, damage, range, speed, new ImageIcon("Harpy.png"));
+    public static final int WIDTH = 28;
+    public static final int HEIGHT = 28;
+    public Harpy(int x, int y) {
+        super(x, y, WIDTH, HEIGHT, 500, 80, 12, 7, new ImageIcon("Harpy.png"));
     }
-    
+
+    @Override
+    public void attack(Sprite sprite) {
+        super.attack(sprite);
+    }
+
+    @Override
+    public int getHeight() {
+        return HEIGHT;
+    }
+
+    @Override
+    public int getWidth() {
+        return WIDTH;
+    }
 }

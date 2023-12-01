@@ -4,6 +4,12 @@
  */
 package Class;
 
+import Creature.Basilisk;
+import Creature.Demon;
+import Creature.Dragon;
+import Creature.Giant;
+import Creature.Harpy;
+import Creature.Unicorn;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -50,7 +56,7 @@ public class LectorArchivo {
         }
         return objetos;
     }
-    /*
+    
     public ArrayList<LivingBeing> leerMonstruos() {
     ArrayList<LivingBeing> monstruos = new ArrayList<>();
     int fila = 0;
@@ -65,7 +71,38 @@ public class LectorArchivo {
             for (int columna = 0; columna < caracteres.length; columna+=1) {
                 if (caracteres[columna] == '2') {
                     // Crear un monstruo en la posición (fila, columna)
-                    LivingBeing miMonstruo = new LivingBeing((columna*LivingBeing.getWidth), fila*LivingBeing.getHeight);
+                    
+                    Basilisk miMonstruo = new Basilisk(columna*Wall.WIDTH, fila*Wall.HEIGHT);
+                    monstruos.add(miMonstruo);
+                }
+                if (caracteres[columna] == '3') {
+                    // Crear un monstruo en la posición (fila, columna)
+                    
+                    Demon miMonstruo = new Demon(columna*Wall.WIDTH, fila*Wall.HEIGHT);
+                    monstruos.add(miMonstruo);
+                }
+                if (caracteres[columna] == '4') {
+                    // Crear un monstruo en la posición (fila, columna)
+                    
+                    Dragon miMonstruo = new Dragon(columna*Wall.WIDTH, fila*Wall.HEIGHT);
+                    monstruos.add(miMonstruo);
+                }
+                if (caracteres[columna] == '5') {
+                    // Crear un monstruo en la posición (fila, columna)
+                    
+                    Giant miMonstruo = new Giant(columna*Wall.WIDTH, fila*Wall.HEIGHT);
+                    monstruos.add(miMonstruo);
+                }
+                if (caracteres[columna] == '6') {
+                    // Crear un monstruo en la posición (fila, columna)
+                    
+                    Harpy miMonstruo = new Harpy(columna*Wall.WIDTH, fila*Wall.HEIGHT);
+                    monstruos.add(miMonstruo);
+                }
+                if (caracteres[columna] == '7') {
+                    // Crear un monstruo en la posición (fila, columna)
+                    
+                    Unicorn miMonstruo = new Unicorn(columna*(Wall.WIDTH), fila*(Wall.HEIGHT));
                     monstruos.add(miMonstruo);
                 }
             }
@@ -77,5 +114,5 @@ public class LectorArchivo {
     }
     return monstruos;
 }
-*/
+
 }

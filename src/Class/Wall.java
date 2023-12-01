@@ -17,7 +17,7 @@ public class Wall extends Sprite{
     public static final int HEIGHT = 40;
     private ImageIcon wall = new ImageIcon("Wall.png");
     public Wall(int x, int y) {
-        super(x, y, 35, 40, Color.GRAY);
+        super(x, y, WIDTH, HEIGHT, Color.GRAY);
     }
     
     @Override

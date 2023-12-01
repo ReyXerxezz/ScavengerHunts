@@ -14,7 +14,7 @@ import javax.swing.ImageIcon;
 public class Magician extends LivingBeing{
     
     public Magician(int x, int y) {
-        super(x, y, 10, 17, 15, 80, 100, 5, new ImageIcon("MagicianCharacter.png"));
+        super(x, y, 16, 29, 15, 80, 100, 5, new ImageIcon("MagicianCharacter.png"));
     }
     
 }
