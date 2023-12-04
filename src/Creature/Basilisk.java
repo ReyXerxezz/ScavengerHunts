@@ -34,4 +34,9 @@ public class Basilisk extends LivingBeing{
         return WIDTH;
     }
 
+    @Override
+    public boolean isValid(Sprite sprite) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
 }

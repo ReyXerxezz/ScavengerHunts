@@ -25,4 +25,9 @@ public class Magician extends LivingBeing{
         Fireball fireball = new Fireball(x, y);
         fireballs.add(fireball);
     }
+
+    @Override
+    public boolean isValid(Sprite sprite) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

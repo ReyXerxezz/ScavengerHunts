@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
  *
  * @author santi
  */
-public class Arrow extends Sprite {
+public class Arrow extends Weapon {
     private ImageIcon image;
     public Arrow(int x, int y) {
         super(x, y, 17, 6, Color.YELLOW); 

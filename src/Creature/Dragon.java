@@ -17,8 +17,8 @@ import javax.swing.ImageIcon;
  */
 public class Dragon extends LivingBeing{
     private ArrayList<Fireball> fireballs;
-    public static final int WIDTH = 80;
-    public static final int HEIGHT = 88;
+    public static final int WIDTH = 200;
+    public static final int HEIGHT = 229;
     public Dragon(int x, int y) {
         super(x, y, WIDTH, HEIGHT, 3000, 100, 30, 3, new ImageIcon("Dragon.png"));
         fireballs = new ArrayList<>();
@@ -46,6 +46,11 @@ public class Dragon extends LivingBeing{
     @Override
     public int getWidth() {
         return WIDTH;
+    }
+
+    @Override
+    public boolean isValid(Sprite sprite) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

@@ -11,16 +11,14 @@ import java.awt.Graphics;
  *
  * @author santi
  */
-public class Fireball extends Weapon {
-    public Fireball(int x, int y) {
-        super(x, y, 10, 10, Color.RED);  // Asume que Sprite es una clase que representa un objeto en tu juego
-    }
+public abstract class Weapon extends Sprite{
 
-    // Aquí puedes agregar métodos para mover la bola de fuego, detectar colisiones, etc.
+    public Weapon(int x, int y, int width, int height, Color color) {
+        super(x, y, width, height, color);
+    }
 
     @Override
     public void draw(Graphics g) {
-        g.setColor(color);
-        g.fillOval(x, y, width, height);
     }
+    
 }

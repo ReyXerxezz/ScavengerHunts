@@ -4,6 +4,8 @@
  */
 package Class;
 
+
+import Creature.MonsterThread;
 import dungeons.gui.Drawable;
 import Knight.Assasin;
 import Knight.Barbarian;
@@ -79,14 +81,17 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     public void draw(Graphics g) {
         fondo.paintIcon(null, g, x, y);
 
-        arthur.draw(g);
-        for (Wall muro : muros){
+        getArthur().draw(g);
+        for (Wall muro : getMuros()){
             g.setColor(muro.getColor());
             g.fillRect(muro.getX(), muro.getY(), muro.getWidth(), muro.getHeight());
             muro.draw(g);
         }
-        for (LivingBeing monstruo : creatures) {
+        for (LivingBeing monstruo : getCreatures()) {
             monstruo.draw(g);
+            MonsterThread thread = new MonsterThread(this, monstruo);
+            thread.start();
+            
         }
         drawLife(g);
         drawScore(g);
@@ -94,7 +99,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     
     private void drawLife(Graphics g){
         int[] pos = {10, 770};
-        String lifeToString = Integer.toString(arthur.getHealth());
+        String lifeToString = Integer.toString(getArthur().getHealth());
 
         for (int i = 0; i < lifeToString.length(); i++) {
             int digit = Integer.parseInt(lifeToString.substring(i, i + 1));
@@ -120,8 +125,8 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
            key == KeyEvent.VK_A | 
            key == KeyEvent.VK_D)
         {
-            arthur.actionHandle(key, muros, creatures);
-            drawable.redraw(); // TODO
+            getArthur().actionHandle(key, getMuros(), getCreatures());
+            getDrawable().redraw(); // TODO
         }
     }
     @Override
@@ -144,7 +149,35 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     }
     
     public void eliminarCreature(int index){
-        this.creatures.remove(index);
+        this.getCreatures().remove(index);
+    }
+
+    /**
+     * @return the arthur
+     */
+    public LivingBeing getArthur() {
+        return arthur;
+    }
+
+    /**
+     * @return the drawable
+     */
+    public Drawable getDrawable() {
+        return drawable;
+    }
+
+    /**
+     * @return the muros
+     */
+    public ArrayList<Wall> getMuros() {
+        return muros;
+    }
+
+    /**
+     * @return the creatures
+     */
+    public ArrayList<LivingBeing> getCreatures() {
+        return creatures;
     }
     
 }

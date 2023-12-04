@@ -16,7 +16,7 @@ import javax.swing.ImageIcon;
  *
  * @author User
  */
-public abstract class LivingBeing extends Sprite{
+public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
 
     private Drawable drawable;
     private Boundable boundable;
@@ -26,6 +26,7 @@ public abstract class LivingBeing extends Sprite{
     private int speed;
     private ImageIcon image;
     private Dungeon dungeon;
+    private int direction = 0;
     public LivingBeing(int x, int y, int width, int height, int health, int damage, int range, int speed ,ImageIcon image) {
         super(x, y, width, height, Color.BLUE);
         this.health = health;
@@ -94,6 +95,55 @@ public abstract class LivingBeing extends Sprite{
         
         return true;
     }
+    public boolean moveCreature(Dungeon dungeon, ArrayList<Wall> muros, ArrayList<LivingBeing> creatures) {
+    int randomDirection = (int) (Math.random() * 4);
+    int xOriginal = x;
+    int yOriginal = y;
+
+    switch (randomDirection) {
+        case 0:
+            y -= speed;
+            break;
+        case 1:
+            y += speed;
+            break;
+        case 2:
+            x -= speed;
+            break;
+        case 3:
+            x += speed;
+            break;
+    }
+        if (y < yOriginal - 10) {
+            y = yOriginal;
+        } else if (y > yOriginal + 10) {
+            y = yOriginal;
+        }
+
+    if (x < xOriginal - 15) {
+        x = xOriginal;
+        } else if (x > xOriginal + 10) {
+            x = xOriginal;
+        }
+        for (Wall muro : muros) {
+            if(this.checkCollision(muro)) {
+                x = xOriginal;
+                y = yOriginal;
+                return false;
+            }
+        }
+        for (LivingBeing creature : creatures) {
+            if (this.checkCollision(creature)) {
+            x = xOriginal;
+            y = yOriginal;
+            return false;
+            }
+        }
+    
+
+    return true;
+}
+
     public void attack(Sprite sprite){
         
     }
@@ -105,6 +155,16 @@ public abstract class LivingBeing extends Sprite{
         g.setColor(color);
         g.fillRect(x, y, width, height);
     }
+    }
+    
+
+    @Override
+    public void redraw() {
+        getDrawable().redraw();
+    }
+    
+    public void redraw(int x, int y, int width, int height) {
+        getDrawable().redraw();
     }
 
     /**
@@ -161,4 +221,44 @@ public abstract class LivingBeing extends Sprite{
     public void setSpeed(int speed) {
         this.speed = speed;
     }
+
+    /**
+     * @return the drawable
+     */
+    public Drawable getDrawable() {
+        return drawable;
+    }
+
+    /**
+     * @return the boundable
+     */
+    public Boundable getBoundable() {
+        return boundable;
+    }
+
+    /**
+     * @return the direction
+     */
+    public int getDirection() {
+        return direction;
+    }
+
+    /**
+     * @param direction the direction to set
+     */
+    public void setDirection(int direction) {
+        this.direction = direction;
+    }
+
+    @Override
+    public int getX() {
+        return super.getX(); 
+    }
+
+    @Override
+    public int getY() {
+        return super.getY(); 
+    }
+    
+    
 }

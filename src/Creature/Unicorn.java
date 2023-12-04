@@ -5,6 +5,7 @@
 package Creature;
 
 import Class.LivingBeing;
+import Class.Sprite;
 import static Creature.Harpy.HEIGHT;
 import static Creature.Harpy.WIDTH;
 import java.awt.Graphics;
@@ -31,6 +32,11 @@ public class Unicorn extends LivingBeing{
     @Override
     public int getWidth() {
         return WIDTH;
+    }
+
+    @Override
+    public boolean isValid(Sprite sprite) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }

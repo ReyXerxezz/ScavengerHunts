@@ -5,6 +5,7 @@
 package Knight;
 
 import Class.LivingBeing;
+import Class.Sprite;
 import javax.swing.ImageIcon;
 
 /**
@@ -15,6 +16,11 @@ public class SwordMan extends LivingBeing{
     
     public SwordMan(int x, int y) {
         super(x, y, 22, 25, 60, 62, 60, 8,new ImageIcon("SwordmanCharacter.png"));
+    }
+
+    @Override
+    public boolean isValid(Sprite sprite) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
 }
