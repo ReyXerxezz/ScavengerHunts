@@ -20,5 +20,7 @@ public class Fireball extends Sprite {
 
     @Override
     public void draw(Graphics g) {
+        g.setColor(color);
+        g.fillOval(x, y, width, height);
     }
 }
