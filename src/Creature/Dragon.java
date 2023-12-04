@@ -21,6 +21,7 @@ public class Dragon extends LivingBeing{
     public static final int HEIGHT = 88;
     public Dragon(int x, int y) {
         super(x, y, WIDTH, HEIGHT, 3000, 100, 30, 3, new ImageIcon("Dragon.png"));
+        fireballs = new ArrayList<>();
     }
 
     public void attack(Sprite sprite) {
