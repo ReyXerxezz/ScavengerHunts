@@ -11,15 +11,11 @@ import Knight.Magician;
 import Knight.Tank;
 import Knight.SwordMan;
 import Knight.Archer;
-import dungeons.gui.Game;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
-import java.util.List;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 /**
  *
  * @author User

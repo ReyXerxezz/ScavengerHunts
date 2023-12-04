@@ -1,13 +1,9 @@
 package dungeons.gui;
 
-import dungeons.gui.Drawable;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import Class.Dungeon;
-import java.awt.Color;
-import java.awt.Font;
 import java.awt.Image;
-import javax.swing.JLabel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license

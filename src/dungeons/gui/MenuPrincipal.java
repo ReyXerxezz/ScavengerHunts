@@ -4,7 +4,6 @@
  */
 package dungeons.gui;
 
-import dungeons.gui.Levels;
 import javax.swing.JFrame;
 
 /**
