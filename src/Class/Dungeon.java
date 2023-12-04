@@ -16,6 +16,8 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import java.util.Timer;
+import java.util.TimerTask;
 /**
  *
  * @author User
@@ -41,6 +43,13 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         creatures = new ArrayList<>(); 
         score = 1200;
         mapearDungeon();
+        Timer timer = new Timer(true);
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                setScore(); // Llama al método setScore cada segundo
+            }
+        }, 1000, 1000);
     }
 
     public void setDrawable(Drawable drawable) {
