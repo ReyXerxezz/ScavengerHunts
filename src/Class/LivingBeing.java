@@ -117,8 +117,8 @@ public abstract class LivingBeing extends Sprite{
     /**
      * @param health the health to set
      */
-    public void setHealth(int health) {
-        this.health = health;
+    public void setHealth(int ataque) {
+        this.health = health - ataque;
     }
 
     /**

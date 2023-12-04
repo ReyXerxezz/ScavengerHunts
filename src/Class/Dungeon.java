@@ -33,6 +33,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     private ArrayList<LivingBeing> creatures;
     private String nivel;
     private ImageIcon fondo = new ImageIcon("Background.png");
+    private int score;
 
     public Dungeon(int x, int y, int width, int height, String type, String nivel) {
         super(x, y, width, height, new Color(186, 222, 248  ));
@@ -42,6 +43,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         lector = new LectorArchivo(nivel);
         muros = new ArrayList<>();
         creatures = new ArrayList<>(); 
+        score = 1200;
         mapearDungeon();
     }
 
@@ -91,6 +93,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
             monstruo.draw(g);
         }
         drawLife(g);
+        drawScore(g);
     }
     
     private void drawLife(Graphics g){
@@ -99,6 +102,17 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
 
         for (int i = 0; i < lifeToString.length(); i++) {
             int digit = Integer.parseInt(lifeToString.substring(i, i + 1));
+            g.drawImage(Assets.numbers(digit), pos[0], pos[1], null);
+            pos[0] = pos[0] + 20;
+        }
+    }
+    
+    private void drawScore(Graphics g){
+        int[] pos = {580, 770};
+        String scoreToString = Integer.toString(score);
+
+        for (int i = 0; i < scoreToString.length(); i++) {
+            int digit = Integer.parseInt(scoreToString.substring(i, i + 1));
             g.drawImage(Assets.numbers(digit), pos[0], pos[1], null);
             pos[0] = pos[0] + 20;
         }
@@ -118,7 +132,10 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     public void redraw() {
          
     }
-
+    
+    public void setScore(){
+        score = score - 1;
+    }
     @Override
     public boolean isValid(Sprite sprite) {
         if(sprite.getX() < this.getX() |
