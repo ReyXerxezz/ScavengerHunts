@@ -4,6 +4,7 @@
  */
 package Class;
 
+import Creature.Unicorn;
 import dungeons.gui.Drawable;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -24,7 +25,7 @@ public abstract class LivingBeing extends Sprite{
     private int range;
     private int speed;
     private ImageIcon image;
-    
+    private Dungeon dungeon;
     public LivingBeing(int x, int y, int width, int height, int health, int damage, int range, int speed ,ImageIcon image) {
         super(x, y, width, height, Color.BLUE);
         this.health = health;
@@ -33,22 +34,26 @@ public abstract class LivingBeing extends Sprite{
         this.speed = speed;
         this.image = image; 
     }
-
+    
     public void setDrawable(Drawable drawable) {
         this.drawable = drawable;
+    }
+    
+    public void setDungeon(Dungeon dungeon) {
+        this.dungeon = dungeon;
     }
 
     public void setBoundable(Boundable boundable) {
         this.boundable = boundable;
     }
-    public void actionHandle(int key, ArrayList<Wall> Muros){
+    public void actionHandle(int key, ArrayList<Wall> muros, ArrayList<LivingBeing> creatures){
         if(key == KeyEvent.VK_W |
            key == KeyEvent.VK_S |
            key == KeyEvent.VK_A |
            key == KeyEvent.VK_D)
-            move(key, Muros);
+            move(key, muros, creatures);
     }
-    public boolean move(int key, ArrayList<Wall> Muros)
+    public boolean move(int key, ArrayList<Wall> muros, ArrayList<LivingBeing> creatures)
     {
         int xOriginal = x;
         int yOriginal = y;
@@ -61,7 +66,7 @@ public abstract class LivingBeing extends Sprite{
             x -= speed;
         if(key == KeyEvent.VK_D)
             x += speed;
-        for(Wall muro : Muros){
+        for(Wall muro : muros){
             if(this.checkCollision(muro))
             {
                 this.setX(xOriginal);
@@ -69,6 +74,22 @@ public abstract class LivingBeing extends Sprite{
 
                 return false;
             }
+        }
+        int i = 0;
+        for(LivingBeing monster : creatures){
+            if(this.checkCollision(monster) && !(monster instanceof Unicorn))
+            {
+                this.setX(xOriginal);
+                this.setY(yOriginal);
+                
+                return false;
+            }
+            else if (this.checkCollision(monster) && monster instanceof Unicorn){
+                dungeon.eliminarCreature(i);
+                System.out.println("TODO");
+                return true;
+            }
+            i++;
         }
         
         return true;

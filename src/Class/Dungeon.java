@@ -26,7 +26,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     private LivingBeing arthur;
     private Drawable drawable;
     private LectorArchivo lector;
-    private ArrayList<Wall> Muros;
+    private ArrayList<Wall> muros;
     private ArrayList<LivingBeing> creatures;
     private String nivel;
     private ImageIcon fondo = new ImageIcon("Background.png");
@@ -38,7 +38,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         arthur.setDrawable(this);
         arthur.setBoundable(this);
         lector = new LectorArchivo(nivel);
-        Muros = new ArrayList<>();
+        muros = new ArrayList<>();
         creatures = new ArrayList<>(); 
         mapearDungeon();
     }
@@ -48,7 +48,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     }
     
     private void mapearDungeon() {
-        this.Muros = lector.leerMapa();
+        this.muros = lector.leerMapa();
         this.creatures = lector.leerMonstruos();
     }
     
@@ -72,6 +72,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         else if (type.equals("Tank")){
             knight = new Tank(x, y);
         }
+        knight.setDungeon(this);
         return knight;
     }
     @Override
@@ -79,7 +80,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         fondo.paintIcon(null, g, x, y);
 
         arthur.draw(g);
-        for (Wall muro : Muros){
+        for (Wall muro : muros){
             g.setColor(muro.getColor());
             g.fillRect(muro.getX(), muro.getY(), muro.getWidth(), muro.getHeight());
             muro.draw(g);
@@ -95,7 +96,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
            key == KeyEvent.VK_A | 
            key == KeyEvent.VK_D)
         {
-            arthur.actionHandle(key, Muros);
+            arthur.actionHandle(key, muros, creatures);
             drawable.redraw();  // TODO
         }
     }
@@ -113,6 +114,10 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
             return false;
 
         return true;
+    }
+    
+    public void eliminarCreature(int index){
+        this.creatures.remove(index);
     }
     
 }
