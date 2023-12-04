@@ -4,7 +4,10 @@
  */
 package Knight;
 
+import Class.Fireball;
 import Class.LivingBeing;
+import Class.Sprite;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
@@ -12,9 +15,14 @@ import javax.swing.ImageIcon;
  * @author User
  */
 public class Magician extends LivingBeing{
+    private ArrayList<Fireball> fireballs = new ArrayList<>();
     
     public Magician(int x, int y) {
         super(x, y, 16, 29, 15, 80, 100, 5, new ImageIcon("MagicianCharacter.png"));
     }
     
+    public void attack(Sprite sprite) {
+        Fireball fireball = new Fireball(x, y);
+        fireballs.add(fireball);
+    }
 }
