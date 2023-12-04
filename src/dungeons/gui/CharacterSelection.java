@@ -5,10 +5,7 @@
 package dungeons.gui;
 
 import Class.Dungeon;
-import Knight.Barbarian;
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -295,7 +292,6 @@ public class CharacterSelection extends javax.swing.JFrame {
         map.setDrawable(gameMap);
         gameMap.setSize(700, 800);
         gameMap.setVisible(true);
-
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

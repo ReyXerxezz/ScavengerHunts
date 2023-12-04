@@ -4,7 +4,10 @@ import dungeons.gui.Drawable;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import Class.Dungeon;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
+import javax.swing.JLabel;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -30,7 +33,6 @@ public class Game
         initComponents();
         this.map = map;
     }
-    
     public void update(Graphics g) {
         paint(g);
     }
@@ -42,16 +44,16 @@ public class Game
         offScreenGraphics = offScreenImage.getGraphics();
     }
 
-    // Clear the off-screen image
-    offScreenGraphics.setColor(getBackground());
-    offScreenGraphics.fillRect(0, 0, getWidth(), getHeight());
+        // Clear the off-screen image
+        offScreenGraphics.setColor(getBackground());
+        offScreenGraphics.fillRect(0, 0, getWidth(), getHeight());
 
-    // Draw on the off-screen image
-    map.draw(offScreenGraphics);  // Draw the dungeon
+        // Draw on the off-screen image
+        map.draw(offScreenGraphics);  // Draw the dungeon
 
-    // Copy the off-screen image to the screen
-    g.drawImage(offScreenImage, 0, 0, this);
-}
+        // Copy the off-screen image to the screen
+        g.drawImage(offScreenImage, 0, 0, this);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -63,6 +65,8 @@ public class Game
     private void initComponents() {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
+        Jvida = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         jInternalFrame1.setVisible(true);
 
@@ -84,15 +88,33 @@ public class Game
             }
         });
 
+        Jvida.setBackground(new java.awt.Color(153, 153, 153));
+        Jvida.setFont(new java.awt.Font("Copperplate Gothic Bold", 1, 14)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Copperplate Gothic Bold", 0, 12)); // NOI18N
+        jLabel1.setText("jLabel1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(250, 250, 250)
+                .addComponent(Jvida, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(315, 315, 315)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(365, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(561, Short.MAX_VALUE)
+                .addComponent(Jvida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(19, 19, 19)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
 
         pack();
@@ -114,6 +136,8 @@ public class Game
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel Jvida;
     private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

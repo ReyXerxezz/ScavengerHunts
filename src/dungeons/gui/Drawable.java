@@ -4,6 +4,8 @@
  */
 package dungeons.gui;
 
+import javax.swing.JLabel;
+
 /**
  *
  * @author educacion

@@ -11,12 +11,15 @@ import Knight.Magician;
 import Knight.Tank;
 import Knight.SwordMan;
 import Knight.Archer;
+import dungeons.gui.Game;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 /**
  *
  * @author User
@@ -30,7 +33,6 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     private ArrayList<LivingBeing> creatures;
     private String nivel;
     private ImageIcon fondo = new ImageIcon("Background.png");
-    
 
     public Dungeon(int x, int y, int width, int height, String type, String nivel) {
         super(x, y, width, height, new Color(186, 222, 248  ));
@@ -88,6 +90,18 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         for (LivingBeing monstruo : creatures) {
             monstruo.draw(g);
         }
+        drawLife(g);
+    }
+    
+    private void drawLife(Graphics g){
+        int[] pos = {10, 770};
+        String lifeToString = Integer.toString(arthur.getHealth());
+
+        for (int i = 0; i < lifeToString.length(); i++) {
+            int digit = Integer.parseInt(lifeToString.substring(i, i + 1));
+            g.drawImage(Assets.numbers(digit), pos[0], pos[1], null);
+            pos[0] = pos[0] + 20;
+        }
     }
 
     public void actKnight(int key){
@@ -97,7 +111,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
            key == KeyEvent.VK_D)
         {
             arthur.actionHandle(key, muros, creatures);
-            drawable.redraw();  // TODO
+            drawable.redraw(); // TODO
         }
     }
     @Override
