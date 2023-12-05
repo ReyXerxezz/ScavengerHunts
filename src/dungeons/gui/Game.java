@@ -34,7 +34,8 @@ public class Game
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                map.setScore();// Llama al método setScore cada segundo
+                map.setScore();
+                map.redraw();// Llama al método setScore cada segundo
             }
         }, 1000, 1000);
     }

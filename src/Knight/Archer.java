@@ -24,7 +24,7 @@ public class Archer extends LivingBeing {
     }
 
     @Override
-    public void attack(Sprite sprite) {
+    public void attack() {
         Arrow arrow = new Arrow(x, y);
         arrows.add(arrow);
     }

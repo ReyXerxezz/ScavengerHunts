@@ -22,8 +22,8 @@ public class Demon extends LivingBeing{
         super(x, y, WIDTH, HEIGHT, 650, 45, 10, 3, new ImageIcon("Demon.png"));
     }
     @Override
-    public void attack(Sprite sprite) {
-        super.attack(sprite);
+    public void attack() {
+        super.attack();
     }
 
     @Override

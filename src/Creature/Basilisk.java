@@ -20,8 +20,8 @@ public class Basilisk extends LivingBeing{
     }
 
     @Override
-    public void attack(Sprite sprite) {
-        super.attack(sprite);
+    public void attack() {
+        super.attack();
     }
 
     @Override

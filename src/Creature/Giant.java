@@ -21,8 +21,8 @@ public class Giant extends LivingBeing{
         super(x, y, WIDTH, HEIGHT, 1000, 50, 10, 1, new ImageIcon("Giant.png"));
     }
     @Override
-    public void attack(Sprite sprite) {
-        super.attack(sprite);
+    public void attack() {
+        super.attack();
     }
 
     @Override

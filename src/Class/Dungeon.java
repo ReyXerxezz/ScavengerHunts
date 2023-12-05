@@ -5,6 +5,7 @@
 package Class;
 
 
+import Creature.Dragon;
 import Creature.MonsterThread;
 import dungeons.gui.Drawable;
 import Knight.Assasin;
@@ -44,6 +45,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         creatures = new ArrayList<>(); 
         score = 1200;
         mapearDungeon();
+        createWeaponThreads();
     }
 
     public void setDrawable(Drawable drawable) {
@@ -94,7 +96,15 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
                 MonsterThread thread = new MonsterThread(this, monstruo);
                 thread.start();
             }
+            
         }
+        for (LivingBeing creature : creatures) {
+        if (creature instanceof Dragon) {
+            for (Weapon weapon : ((Dragon) creature).getFireballs()) {
+                weapon.draw(g);
+            }
+        }
+    }
         drawLife(g);
         drawScore(g);
     }
@@ -133,7 +143,8 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     }
     @Override
     public void redraw() {
-         
+      
+    
     }
     
     public void setScore(){
@@ -198,4 +209,13 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
 
         return false;
     }
+    private void createWeaponThreads() {
+    for (LivingBeing creature : creatures) {
+        if (creature instanceof Dragon || creature instanceof Magician || creature instanceof Archer) {
+            ShootThread thread = new ShootThread(creature, creatures);
+            thread.start();
+        }
+    }
+}
+
 }

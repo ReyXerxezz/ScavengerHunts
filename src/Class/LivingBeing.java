@@ -11,6 +11,7 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import dungeons.gui.Upgrade;
 
 /**
  *
@@ -30,6 +31,7 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
     boolean yDoMove;
     boolean xRiMove;
     boolean xLeMove;
+    private int lastMoveDirection;
     
     public LivingBeing(int x, int y, int width, int height, int health, int damage, int range, int speed ,ImageIcon image) {
         super(x, y, width, height, Color.BLUE);
@@ -42,6 +44,7 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         yDoMove = false;
         xRiMove = false;
         xLeMove = true;
+        this.lastMoveDirection = 0;
     }
     
     public void setDrawable(Drawable drawable) {
@@ -75,6 +78,11 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
             x -= speed;
         if(key == KeyEvent.VK_D)
             x += speed;
+        
+        if (key == KeyEvent.VK_W || key == KeyEvent.VK_S || key == KeyEvent.VK_A || key == KeyEvent.VK_D) {
+        lastMoveDirection = key;
+        }
+        
         for(Wall muro : muros){
             if(this.checkCollision(muro))
             {
@@ -95,6 +103,8 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
             }
             else if (this.checkCollision(monster) && monster instanceof Unicorn){
                 dungeon.eliminarCreature(i);
+                Upgrade u = new Upgrade(null, true);
+                u.setVisible(true);
                 System.out.println("TODO");
                 return true;
             }
@@ -116,6 +126,7 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
             }
         }
         if (this.checkCollision(arthur)) {
+            this.attack();
             return false;
         }
 
@@ -161,10 +172,11 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
                 xRiMove = false;
                 yDoMove = false;
             }
+            
         }
     }
 
-    public void attack(Sprite sprite){
+    public void attack(){
         
     }
     @Override
@@ -267,5 +279,11 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         return super.getY(); 
     }
     
-    
+    public int getLastMoveDirection() {
+        return lastMoveDirection;
+    }
+
+    public void setLastMoveDirection(int lastMoveDirection) {
+        this.lastMoveDirection = lastMoveDirection;
+    }
 }

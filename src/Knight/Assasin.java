@@ -19,6 +19,12 @@ public class Assasin extends LivingBeing{
     }
 
     @Override
+    public void attack() {
+        super.attack(); 
+    }
+    
+
+    @Override
     public boolean isValid(Sprite sprite) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }

@@ -7,6 +7,7 @@ package Creature;
 import Class.Fireball;
 import Class.LivingBeing;
 import Class.Sprite;
+import Class.Wall;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -24,17 +25,18 @@ public class Dragon extends LivingBeing{
         fireballs = new ArrayList<>();
     }
 
-    public void attack(Sprite sprite) {
+    public void attack() {
         Fireball fireball = new Fireball(x, y);
-        fireballs.add(fireball);
+        getFireballs().add(fireball);
     }
+    
 
     @Override
     public void draw(Graphics g) {
         super.draw(g);
 
         // Dibuja las bolas de fuego
-        for (Fireball fireball : fireballs) {
+        for (Fireball fireball : getFireballs()) {
             fireball.draw(g);
         }
     }
@@ -51,6 +53,13 @@ public class Dragon extends LivingBeing{
     @Override
     public boolean isValid(Sprite sprite) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    /**
+     * @return the fireballs
+     */
+    public ArrayList<Fireball> getFireballs() {
+        return fireballs;
     }
     
 }

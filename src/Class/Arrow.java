@@ -4,6 +4,7 @@
  */
 package Class;
 
+import dungeons.gui.Drawable;
 import java.awt.Color;
 import java.awt.Graphics;
 import javax.swing.ImageIcon;
@@ -12,13 +13,17 @@ import javax.swing.ImageIcon;
  *
  * @author santi
  */
-public class Arrow extends Weapon {
+public class Arrow extends Weapon implements Drawable{
     private ImageIcon image;
+    
+
     public Arrow(int x, int y) {
-        super(x, y, 17, 6, Color.YELLOW); 
+        super(x, y, 17, 6,null,null);
         this.image = new ImageIcon("Arrow.png");
-        // Asume que Sprite es una clase que representa un objeto en tu juego
+         // Establecer un valor predeterminado
     }
+
+    
 
     // Aquí puedes agregar métodos para mover la flecha, detectar colisiones, etc.
 
@@ -31,5 +36,10 @@ public class Arrow extends Weapon {
         g.fillRect(x, y, width, height);
     }
 }
+
+    @Override
+    public void redraw() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
 
