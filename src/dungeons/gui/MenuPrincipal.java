@@ -104,23 +104,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jbStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbStartActionPerformed
-        // TODO add your handling code here:
         Levels levelselection = new Levels();
-        levelselection.setVisible(true);        
-        // Crear una nueva ventana y agregar el panel Levels
+        levelselection.setVisible(true);
         JFrame frame  = new JFrame("Levels");
         frame.setContentPane(levelselection);
         frame.pack();
         frame.setVisible(true);
-        /*CharacterSelection selection = new CharacterSelection();
-        selection.setVisible(true);
- 
-        Dungeon map = new Dungeon(0, 0, 1050, 800, type,"MapaPruebas.txt" );
-        Game gameMap = new Game(map);
-        map.setDrawable(gameMap);
-        gameMap.setSize(1050, 800);
-        gameMap.setVisible(true);
-        */
     }//GEN-LAST:event_jbStartActionPerformed
 
     private void jbQuitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbQuitActionPerformed
@@ -151,10 +140,4 @@ public class MenuPrincipal extends javax.swing.JFrame {
     public void setType(String type) {
         this.type = type;
     }
-
-    
- 
-
-    
-    
 }
