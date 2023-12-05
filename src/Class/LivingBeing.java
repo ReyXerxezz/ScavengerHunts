@@ -27,11 +27,19 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
     private int speed;
     private ImageIcon image;
     private Dungeon dungeon;
+<<<<<<< HEAD
     boolean yUpMove;
     boolean yDoMove;
     boolean xRiMove;
     boolean xLeMove;
     private int lastMoveDirection;
+=======
+    private boolean yUpMove;
+    private boolean yDoMove;
+    private boolean xRiMove;
+    private boolean xLeMove;
+    private int turnCounter;
+>>>>>>> a81bd39273602ae8d694fc75a3161bb7b73b1131
     
     public LivingBeing(int x, int y, int width, int height, int health, int damage, int range, int speed ,ImageIcon image) {
         super(x, y, width, height, Color.BLUE);
@@ -44,7 +52,11 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         yDoMove = false;
         xRiMove = false;
         xLeMove = true;
+<<<<<<< HEAD
         this.lastMoveDirection = 0;
+=======
+        turnCounter = 0;
+>>>>>>> a81bd39273602ae8d694fc75a3161bb7b73b1131
     }
     
     public void setDrawable(Drawable drawable) {
@@ -136,47 +148,70 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         int xOriginal = x;
         int yOriginal = y;
 
+        // Cambiar de dirección después de 10 vueltas del hilo
+        if (turnCounter % 100 == 0) {
+            changeDirection();
+        }
+
         if (xLeMove) {
             x -= speed;
             if (!verificarMove(muros, creatures, arthur)) {
                 x = xOriginal;
-                xLeMove = false;
-                yUpMove = true;
-                xRiMove = false;
-                yDoMove = false;
+                changeDirection();
             }
         } else if (yUpMove) {
             y -= speed;
             if (!verificarMove(muros, creatures, arthur)) {
                 y = yOriginal;
-                xLeMove = false;
-                yUpMove = false;
-                xRiMove = true;
-                yDoMove = false;
+                changeDirection();
             }
         } else if (xRiMove) {
             x += speed;
             if (!verificarMove(muros, creatures, arthur)) {
                 x = xOriginal;
-                xLeMove = false;
-                yUpMove = false;
-                xRiMove = false;
-                yDoMove = true;
+                changeDirection();
             }
         } else if (yDoMove) {
             y += speed;
             if (!verificarMove(muros, creatures, arthur)) {
                 y = yOriginal;
-                xLeMove = true;
-                yUpMove = false;
-                xRiMove = false;
-                yDoMove = false;
+                changeDirection();
             }
             
         }
-    }
 
+<<<<<<< HEAD
     public void attack(){
+=======
+        turnCounter++;
+    }
+    
+    private void changeDirection() {
+        // Cambiar la dirección de manera aleatoria
+        int randomDirection = (int) (Math.random() * 4);
+
+        xLeMove = false;
+        yUpMove = false;
+        xRiMove = false;
+        yDoMove = false;
+
+        switch (randomDirection) {
+            case 0:
+                xLeMove = true;
+                break;
+            case 1:
+                yUpMove = true;
+                break;
+            case 2:
+                xRiMove = true;
+                break;
+            case 3:
+                yDoMove = true;
+                break;
+        }
+    }
+    public void attack(Sprite sprite){
+>>>>>>> a81bd39273602ae8d694fc75a3161bb7b73b1131
         
     }
     @Override
