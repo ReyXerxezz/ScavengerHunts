@@ -7,21 +7,42 @@ package Class;
 import dungeons.gui.Drawable;
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
  *
  * @author santi
  */
-public class Arrow extends Weapon implements Drawable{
-    private ImageIcon image;
+public class Arrow extends Weapon {
     
-
-    public Arrow(int x, int y) {
-        super(x, y, 17, 6,null,null);
+    private int arrowSpeed;
+    private int arrowDamage;
+    private Dungeon dungeon;
+    
+    public Arrow(int x, int y, int arrowSpeed, int arrowDamage) {
+        super(x, y, 22, 12, null, null, null);
+        this.arrowSpeed = arrowSpeed;
+        this.arrowDamage = arrowDamage;
+        this.setDirection(0);
         this.image = new ImageIcon("Arrow.png");
-         // Establecer un valor predeterminado
     }
+    
+    
+    public void move(ArrayList<LivingBeing> targets) {
+        // Mueve la flecha
+        super.move();
+
+        // Verifica colisiones con los objetivos
+        for (LivingBeing target : targets) {
+            if (checkCollision(target)) {
+                // Realiza acciones en caso de colisión, como reducir la salud del objetivo, etc.
+                target.setHealth(target.getHealth() - arrowDamage);
+                setExpired(true);  // Marca la flecha como expirada después de colisionar
+            }
+        }
+    }
+    
 
     
 
@@ -40,6 +61,27 @@ public class Arrow extends Weapon implements Drawable{
     @Override
     public void redraw() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+ 
     }
+
+    @Override
+    public void setDirection(int direction) {
+        super.setDirection(direction);
+    }
+
+    /**
+     * @return the dungeon
+     */
+    public Dungeon getDungeon() {
+        return dungeon;
+    }
+
+    /**
+     * @param dungeon the dungeon to set
+     */
+    public void setDungeon(Dungeon dungeon) {
+        this.dungeon = dungeon;
+    }
+    
 }
 

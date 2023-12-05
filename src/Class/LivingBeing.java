@@ -5,13 +5,22 @@
 package Class;
 
 import Creature.Unicorn;
+import Knight.Archer;
+import Knight.Assasin;
+import Knight.Barbarian;
+import Knight.Magician;
+import Knight.SwordMan;
+import Knight.Tank;
+import dungeons.gui.Downgrade;
 import dungeons.gui.Drawable;
+import dungeons.gui.Upgrade;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
-import dungeons.gui.Upgrade;
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -27,19 +36,13 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
     private int speed;
     private ImageIcon image;
     private Dungeon dungeon;
-<<<<<<< HEAD
-    boolean yUpMove;
-    boolean yDoMove;
-    boolean xRiMove;
-    boolean xLeMove;
-    private int lastMoveDirection;
-=======
     private boolean yUpMove;
     private boolean yDoMove;
     private boolean xRiMove;
     private boolean xLeMove;
     private int turnCounter;
->>>>>>> a81bd39273602ae8d694fc75a3161bb7b73b1131
+    private int direction;
+    private ArrayList<LivingBeing> targets = new ArrayList<>();
     
     public LivingBeing(int x, int y, int width, int height, int health, int damage, int range, int speed ,ImageIcon image) {
         super(x, y, width, height, Color.BLUE);
@@ -51,12 +54,9 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         yUpMove = false;
         yDoMove = false;
         xRiMove = false;
-        xLeMove = true;
-<<<<<<< HEAD
-        this.lastMoveDirection = 0;
-=======
+        xLeMove = false;
         turnCounter = 0;
->>>>>>> a81bd39273602ae8d694fc75a3161bb7b73b1131
+        this.direction =0;
     }
     
     public void setDrawable(Drawable drawable) {
@@ -74,8 +74,13 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         if(key == KeyEvent.VK_W |
            key == KeyEvent.VK_S |
            key == KeyEvent.VK_A |
-           key == KeyEvent.VK_D)
+           key == KeyEvent.VK_D){
+            setDirection(key);
             move(key, muros, creatures);
+        }
+        if(key == KeyEvent.VK_SPACE && (this instanceof Archer | this instanceof Magician | this instanceof Barbarian | this instanceof SwordMan | this instanceof Tank | this instanceof Assasin )){
+            this.attack();
+        }
     }
     public boolean move(int key, ArrayList<Wall> muros, ArrayList<LivingBeing> creatures)
     {
@@ -90,11 +95,6 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
             x -= speed;
         if(key == KeyEvent.VK_D)
             x += speed;
-        
-        if (key == KeyEvent.VK_W || key == KeyEvent.VK_S || key == KeyEvent.VK_A || key == KeyEvent.VK_D) {
-        lastMoveDirection = key;
-        }
-        
         for(Wall muro : muros){
             if(this.checkCollision(muro))
             {
@@ -115,8 +115,48 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
             }
             else if (this.checkCollision(monster) && monster instanceof Unicorn){
                 dungeon.eliminarCreature(i);
-                Upgrade u = new Upgrade(null, true);
-                u.setVisible(true);
+                int random = (int) (Math.random() * 2);
+                int randomupgrade = (int) (Math.random() * 3);
+                if(random == 0){
+                    Upgrade u = new Upgrade(null, true);
+                    u.setVisible(true);
+                    switch (randomupgrade) {
+                        case 0:
+                            this.setHealth(getHealth()+20);
+                            JOptionPane.showMessageDialog(null, "Health Upgrade");
+                            break;
+                        case 1:
+                            this.setDamage(getDamage()+20);
+                            JOptionPane.showMessageDialog(null, "Damage Upgrade");
+                            break;   
+                        case 2:
+                            this.setSpeed(getSpeed()+1);
+                            JOptionPane.showMessageDialog(null, "Speed Upgrade");
+                            break;
+                        default:
+                            throw new AssertionError();
+                    }
+                }
+                if(random == 1){
+                    Downgrade d = new Downgrade(null, true);
+                    d.setVisible(true);
+                        switch (randomupgrade) {
+                        case 0:
+                            this.setHealth(getHealth()-10);
+                            JOptionPane.showMessageDialog(null, "Health Downgrade");
+                            break;
+                        case 1:
+                            this.setDamage(getDamage()-10);
+                            JOptionPane.showMessageDialog(null, "Damage Downgrade");
+                            break;   
+                        case 2:
+                            this.setSpeed(getSpeed()-1);
+                            JOptionPane.showMessageDialog(null, "Speed Downgrade");
+                            break;
+                        default:
+                            throw new AssertionError();
+                    }
+                }
                 System.out.println("TODO");
                 return true;
             }
@@ -138,7 +178,6 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
             }
         }
         if (this.checkCollision(arthur)) {
-            this.attack();
             return false;
         }
 
@@ -177,12 +216,8 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
                 y = yOriginal;
                 changeDirection();
             }
-            
         }
 
-<<<<<<< HEAD
-    public void attack(){
-=======
         turnCounter++;
     }
     
@@ -210,8 +245,7 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
                 break;
         }
     }
-    public void attack(Sprite sprite){
->>>>>>> a81bd39273602ae8d694fc75a3161bb7b73b1131
+    public void attack(){
         
     }
     @Override
@@ -313,12 +347,34 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
     public int getY() {
         return super.getY(); 
     }
-    
-    public int getLastMoveDirection() {
-        return lastMoveDirection;
+
+    /**
+     * @return the direction
+     */
+    public int getDirection() {
+        return direction;
     }
 
-    public void setLastMoveDirection(int lastMoveDirection) {
-        this.lastMoveDirection = lastMoveDirection;
+    /**
+     * @param direction the direction to set
+     */
+    public void setDirection(int direction) {
+        this.direction = direction;
     }
+
+    /**
+     * @return the targets
+     */
+    public ArrayList<LivingBeing> getTargets() {
+        return targets;
+    }
+
+    /**
+     * @param targets the targets to set
+     */
+    public void setTargets(ArrayList<LivingBeing> targets) {
+        this.targets = targets;
+    }
+    
+    
 }

@@ -18,19 +18,17 @@ public class MonsterThread extends Thread {
 
     @Override
     public void run() {
-        
-         getMonster().moveCreature(dungeon, dungeon.getMuros(), dungeon.getCreatures(), dungeon.getArthur());
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+
+        scheduler.scheduleAtFixedRate(() -> {
+            getMonster().moveCreature(dungeon, dungeon.getMuros(), dungeon.getCreatures(), dungeon.getArthur());
 
             if (getMonster().checkCollision(dungeon.getArthur())) {
                 getMonster().attack();
             }
-            
+
             dungeon.getDrawable().redraw();
-            try {
-                Thread.sleep(10);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        }, 0, 20, TimeUnit.SECONDS); // Ajustado el intervalo a 5 segundos
     }
 
     /**

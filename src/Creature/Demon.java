@@ -21,10 +21,12 @@ public class Demon extends LivingBeing{
     public Demon(int x, int y) {
         super(x, y, WIDTH, HEIGHT, 650, 45, 10, 3, new ImageIcon("Demon.png"));
     }
+
     @Override
     public void attack() {
-        super.attack();
+        super.attack(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
+    
 
     @Override
     public int getHeight() {

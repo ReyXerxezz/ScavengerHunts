@@ -5,6 +5,9 @@
 package dungeons.gui;
 
 import Class.Dungeon;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
@@ -292,6 +295,13 @@ public class CharacterSelection extends javax.swing.JFrame {
         map.setDrawable(gameMap);
         gameMap.setSize(700, 800);
         gameMap.setVisible(true);
+        try {
+            PlayerSoundPrincipal player = new PlayerSoundPrincipal("Medievalmusic.wav");
+            new Thread(player).start();
+        } catch (IOException ex) {
+            Logger.getLogger(CharacterSelection.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

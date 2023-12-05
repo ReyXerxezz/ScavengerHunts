@@ -7,6 +7,7 @@ package Class;
 import dungeons.gui.Drawable;
 import java.awt.Color;
 import java.awt.Graphics;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -15,7 +16,8 @@ import java.awt.Graphics;
 public class Fireball extends Weapon implements Drawable{
 
     public Fireball(int x, int y) {
-        super(x, y, 10, 10, Color.RED, null);
+        super(x, y, 10, 10, Color.RED, null, null);
+        this.image = new ImageIcon("Fireball.png");
     }
     
 
@@ -27,8 +29,12 @@ public class Fireball extends Weapon implements Drawable{
 
     @Override
     public void draw(Graphics g) {
+        if (image != null) {
+        g.drawImage(image.getImage(), x, y,null);
+    } else {
         g.setColor(color);
-        g.fillOval(x, y, width, height);
+        g.fillRect(x, y, width, height);
+    }
     }
 
     @Override

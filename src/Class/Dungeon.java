@@ -45,7 +45,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         creatures = new ArrayList<>(); 
         score = 1200;
         mapearDungeon();
-        createWeaponThreads();
+        //createWeaponThreads();
     }
 
     public void setDrawable(Drawable drawable) {
@@ -61,21 +61,27 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         LivingBeing knight = null;
         if (type.equals("Assasin")){
             knight = new Assasin(x, y);
+            knight.setTargets(creatures);
         }
         else if (type.equals("Archer")){
             knight = new Archer(x, y);
+            knight.setTargets(creatures);
         }
         else if (type.equals("Barbarian")){
             knight = new Barbarian(x, y);
+            knight.setTargets(creatures);
         }
         else if (type.equals("Magician")){
             knight = new Magician(x, y);
+            knight.setTargets(creatures);
         }
         else if (type.equals("SwordMan")){
             knight = new SwordMan(x, y);
+            knight.setTargets(creatures);
         }
         else if (type.equals("Tank")){
             knight = new Tank(x, y);
+            knight.setTargets(creatures);
         }
         knight.setDungeon(this);
         return knight;

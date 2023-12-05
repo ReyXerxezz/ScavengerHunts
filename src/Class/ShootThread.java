@@ -32,6 +32,7 @@ public class ShootThread extends Thread {
             // Move the projectile until it hits a target or disappears
             while (!projectile.isExpired()) {
                 projectile.move();
+                shooter.redraw();
 
                 // Check for collisions with targets
                 for (LivingBeing target : targets) {
@@ -57,9 +58,9 @@ public class ShootThread extends Thread {
         if (shooter instanceof Dragon) {
             return new Fireball(shooter.getX(), shooter.getY()+50);
         } else if (shooter instanceof Magician) {
-            return new Fireball(shooter.getX(), shooter.getY());
+            return new Fireball(shooter.getX(), shooter.getY()+5);
         } else if (shooter instanceof Archer) {
-            return new Arrow(shooter.getX(), shooter.getY());
+            return new Arrow(shooter.getX(), shooter.getY()+5, 5, shooter.getDamage());
         } else {
             return null;
         }
