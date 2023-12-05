@@ -28,7 +28,7 @@ public class MonsterThread extends Thread {
             }
 
             dungeon.getDrawable().redraw();
-        }, 0, 10, TimeUnit.SECONDS); // Ajustado el intervalo a 5 segundos
+        }, 0, 20, TimeUnit.SECONDS); // Ajustado el intervalo a 5 segundos
     }
 
     /**

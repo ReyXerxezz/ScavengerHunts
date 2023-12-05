@@ -42,7 +42,7 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         yUpMove = false;
         yDoMove = false;
         xRiMove = false;
-        xLeMove = true;
+        xLeMove = false;
         turnCounter = 0;
     }
     
