@@ -55,11 +55,8 @@ public class Archer extends LivingBeing {
     }
 
     @Override
-    public int getDirection() {
-        return super.getDirection(); 
+    public int getAtaqueDireccion() {
+        return super.getAtaqueDireccion(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
-
-   
-    
 }
 
