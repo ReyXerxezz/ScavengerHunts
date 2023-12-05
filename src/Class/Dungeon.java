@@ -34,7 +34,6 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     private String nivel;
     private ImageIcon fondo = new ImageIcon("Background.png");
     private int score;
-
     public Dungeon(int x, int y, int width, int height, String type, String nivel) {
         super(x, y, width, height, new Color(186, 222, 248  ));
         arthur = createKnight(40, 40, type);
@@ -91,9 +90,10 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         }
         for (LivingBeing monstruo : getCreatures()) {
             monstruo.draw(g);
-            MonsterThread thread = new MonsterThread(this, monstruo);
-            thread.start();
-            
+            if (!monsterThreadIsRunning(monstruo)) {
+                MonsterThread thread = new MonsterThread(this, monstruo);
+                thread.start();
+            }
         }
         drawLife(g);
         drawScore(g);
@@ -182,4 +182,20 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         return creatures;
     }
     
+    private boolean monsterThreadIsRunning(LivingBeing monstruo) {
+        ThreadGroup group = Thread.currentThread().getThreadGroup();
+        Thread[] threads = new Thread[group.activeCount()];
+        group.enumerate(threads, true);
+
+        for (Thread thread : threads) {
+            if (thread instanceof MonsterThread) {
+                MonsterThread monsterThread = (MonsterThread) thread;
+                if (monsterThread.getMonster() == monstruo) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 }

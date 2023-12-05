@@ -104,21 +104,30 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         return true;
     }
     
-    public boolean verificarMove(ArrayList<Wall> muros){
+    public boolean verificarMove(ArrayList<Wall> muros, ArrayList<LivingBeing> creatures, LivingBeing arthur) {
         for (Wall muro : muros) {
-            if(this.checkCollision(muro)) {
+            if (this.checkCollision(muro)) {
                 return false;
             }
         }
+        for (LivingBeing creature : creatures) {
+            if (creature != this && this.checkCollision(creature) && !(creature instanceof Unicorn)) {
+                return false;
+            }
+        }
+        if (this.checkCollision(arthur)) {
+            return false;
+        }
+
         return true;
     }
-    public void moveCreature(Dungeon dungeon, ArrayList<Wall> muros) {
+    public void moveCreature(Dungeon dungeon, ArrayList<Wall> muros, ArrayList<LivingBeing> creatures, LivingBeing arthur) {
         int xOriginal = x;
         int yOriginal = y;
 
         if (xLeMove) {
             x -= speed;
-            if (!verificarMove(muros)) {
+            if (!verificarMove(muros, creatures, arthur)) {
                 x = xOriginal;
                 xLeMove = false;
                 yUpMove = true;
@@ -127,7 +136,7 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
             }
         } else if (yUpMove) {
             y -= speed;
-            if (!verificarMove(muros)) {
+            if (!verificarMove(muros, creatures, arthur)) {
                 y = yOriginal;
                 xLeMove = false;
                 yUpMove = false;
@@ -136,7 +145,7 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
             }
         } else if (xRiMove) {
             x += speed;
-            if (!verificarMove(muros)) {
+            if (!verificarMove(muros, creatures, arthur)) {
                 x = xOriginal;
                 xLeMove = false;
                 yUpMove = false;
@@ -145,7 +154,7 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
             }
         } else if (yDoMove) {
             y += speed;
-            if (!verificarMove(muros)) {
+            if (!verificarMove(muros, creatures, arthur)) {
                 y = yOriginal;
                 xLeMove = true;
                 yUpMove = false;
