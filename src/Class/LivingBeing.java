@@ -38,9 +38,9 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         this.range = range;
         this.speed = speed;
         this.image = image; 
-        yUpMove = true;
-        yDoMove = true;
-        xRiMove = true;
+        yUpMove = false;
+        yDoMove = false;
+        xRiMove = false;
         xLeMove = true;
     }
     
@@ -112,39 +112,47 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         }
         return true;
     }
-    public boolean moveCreature(Dungeon dungeon, ArrayList<Wall> muros) {
+    public void moveCreature(Dungeon dungeon, ArrayList<Wall> muros) {
         int xOriginal = x;
         int yOriginal = y;
-        
-        x-=speed;
-            if(verificarMove(muros) == false && xLeMove == true){
+
+        if (xLeMove) {
+            x -= speed;
+            if (!verificarMove(muros)) {
                 x = xOriginal;
                 xLeMove = false;
-                xRiMove = true;
-                return false;
-            }
-        x+=speed;
-            if(verificarMove(muros) == false && xRiMove == true){
-                x = xOriginal;
-                xRiMove = false;
-                xLeMove = true;
-                return false;
-            }
-        y-=speed;
-            if(verificarMove(muros) == false && yUpMove == true){
-                x = xOriginal;
-                yUpMove = false;
-                yDoMove = true;
-                return false;
-            }
-        y+=speed;
-            if(verificarMove(muros) == false && yDoMove == true){
-                x = xOriginal;
-                yDoMove = false;
                 yUpMove = true;
-                return false;
+                xRiMove = false;
+                yDoMove = false;
             }
-        return true;
+        } else if (yUpMove) {
+            y -= speed;
+            if (!verificarMove(muros)) {
+                y = yOriginal;
+                xLeMove = false;
+                yUpMove = false;
+                xRiMove = true;
+                yDoMove = false;
+            }
+        } else if (xRiMove) {
+            x += speed;
+            if (!verificarMove(muros)) {
+                x = xOriginal;
+                xLeMove = false;
+                yUpMove = false;
+                xRiMove = false;
+                yDoMove = true;
+            }
+        } else if (yDoMove) {
+            y += speed;
+            if (!verificarMove(muros)) {
+                y = yOriginal;
+                xLeMove = true;
+                yUpMove = false;
+                xRiMove = false;
+                yDoMove = false;
+            }
+        }
     }
 
     public void attack(Sprite sprite){

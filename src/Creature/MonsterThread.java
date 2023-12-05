@@ -1,15 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Creature;
 
 import Class.Dungeon;
 import Class.LivingBeing;
 import Class.Wall;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.SwingUtilities;
 
 /**
  *
@@ -19,6 +15,7 @@ public class MonsterThread extends Thread {
 
     private final Dungeon dungeon;
     private LivingBeing monster;
+    private final int MOVE_INTERVAL = 10000; // Intervalo de movimiento en milisegundos
 
     public MonsterThread(Dungeon dungeon, LivingBeing monster) {
         this.dungeon = dungeon;
@@ -28,29 +25,31 @@ public class MonsterThread extends Thread {
     @Override
     public void run() {
         while (true) {
-            
-            boolean movedSuccessfully = monster.moveCreature(dungeon,dungeon.getMuros());
+            long startTime = System.currentTimeMillis();
 
-            if (!movedSuccessfully) {
-                continue;
-            }
+            monster.moveCreature(dungeon, dungeon.getMuros());
 
+            // Check for collision with Arthur and perform attack
             if (monster.checkCollision(dungeon.getArthur())) {
                 monster.attack(dungeon.getArthur());
             }
 
-            // Simulate monster movement delay
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            // Redraw the game on the UI thread
+            SwingUtilities.invokeLater(() -> {
+                dungeon.getDrawable().redraw();
+            });
 
-            dungeon.getDrawable().redraw();
+            // Calcular el tiempo transcurrido y dormir para mantener el intervalo de movimiento
+            long elapsedTime = System.currentTimeMillis() - startTime;
+            long sleepTime = MOVE_INTERVAL - elapsedTime;
+
+            if (sleepTime > 0) {
+                try {
+                    Thread.sleep(sleepTime);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }
- 
-    
-
-    
