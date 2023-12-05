@@ -16,7 +16,7 @@ public class Basilisk extends LivingBeing{
     public static final int WIDTH = 30;
     public static final int HEIGHT = 27;
     public Basilisk(int x, int y) {
-        super(x, y, WIDTH, HEIGHT, 600, 40, 10, 4, new ImageIcon("Basilisk.png"));
+        super(x, y, WIDTH, HEIGHT, 600, 40, 10, 2, new ImageIcon("Basilisk.png"));
     }
 
     @Override

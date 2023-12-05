@@ -26,7 +26,11 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
     private int speed;
     private ImageIcon image;
     private Dungeon dungeon;
-    private int direction = 0;
+    boolean yUpMove;
+    boolean yDoMove;
+    boolean xRiMove;
+    boolean xLeMove;
+    
     public LivingBeing(int x, int y, int width, int height, int health, int damage, int range, int speed ,ImageIcon image) {
         super(x, y, width, height, Color.BLUE);
         this.health = health;
@@ -34,6 +38,10 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         this.range = range;
         this.speed = speed;
         this.image = image; 
+        yUpMove = true;
+        yDoMove = true;
+        xRiMove = true;
+        xLeMove = true;
     }
     
     public void setDrawable(Drawable drawable) {
@@ -95,54 +103,49 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         
         return true;
     }
-    public boolean moveCreature(Dungeon dungeon, ArrayList<Wall> muros, ArrayList<LivingBeing> creatures) {
-    int randomDirection = (int) (Math.random() * 4);
-    int xOriginal = x;
-    int yOriginal = y;
-
-    switch (randomDirection) {
-        case 0:
-            y -= speed;
-            break;
-        case 1:
-            y += speed;
-            break;
-        case 2:
-            x -= speed;
-            break;
-        case 3:
-            x += speed;
-            break;
-    }
-        if (y < yOriginal - 10) {
-            y = yOriginal;
-        } else if (y > yOriginal + 10) {
-            y = yOriginal;
-        }
-
-    if (x < xOriginal - 15) {
-        x = xOriginal;
-        } else if (x > xOriginal + 10) {
-            x = xOriginal;
-        }
+    
+    public boolean verificarMove(ArrayList<Wall> muros){
         for (Wall muro : muros) {
             if(this.checkCollision(muro)) {
-                x = xOriginal;
-                y = yOriginal;
                 return false;
             }
         }
-        for (LivingBeing creature : creatures) {
-            if (this.checkCollision(creature)) {
-            x = xOriginal;
-            y = yOriginal;
-            return false;
+        return true;
+    }
+    public boolean moveCreature(Dungeon dungeon, ArrayList<Wall> muros) {
+        int xOriginal = x;
+        int yOriginal = y;
+        
+        x-=speed;
+            if(verificarMove(muros) == false && xLeMove == true){
+                x = xOriginal;
+                xLeMove = false;
+                xRiMove = true;
+                return false;
             }
-        }
-    
-
-    return true;
-}
+        x+=speed;
+            if(verificarMove(muros) == false && xRiMove == true){
+                x = xOriginal;
+                xRiMove = false;
+                xLeMove = true;
+                return false;
+            }
+        y-=speed;
+            if(verificarMove(muros) == false && yUpMove == true){
+                x = xOriginal;
+                yUpMove = false;
+                yDoMove = true;
+                return false;
+            }
+        y+=speed;
+            if(verificarMove(muros) == false && yDoMove == true){
+                x = xOriginal;
+                yDoMove = false;
+                yUpMove = true;
+                return false;
+            }
+        return true;
+    }
 
     public void attack(Sprite sprite){
         
@@ -175,6 +178,7 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
     }
 
     /**
+     * @param ataque
      */
     public void setHealth(int ataque) {
         this.health = health - ataque;
@@ -234,20 +238,6 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
      */
     public Boundable getBoundable() {
         return boundable;
-    }
-
-    /**
-     * @return the direction
-     */
-    public int getDirection() {
-        return direction;
-    }
-
-    /**
-     * @param direction the direction to set
-     */
-    public void setDirection(int direction) {
-        this.direction = direction;
     }
 
     @Override

@@ -19,7 +19,7 @@ public class Unicorn extends LivingBeing{
     public static final int WIDTH = 25;
     public static final int HEIGHT = 25;
     public Unicorn(int x, int y) {
-        super(x, y, WIDTH, HEIGHT, 500, 80, 12, 7, new ImageIcon("Unicorn.png"));
+        super(x, y, WIDTH, HEIGHT, 500, 80, 12, 0, new ImageIcon("Unicorn.png"));
     }
 
     

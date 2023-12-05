@@ -18,7 +18,7 @@ public class Giant extends LivingBeing{
     public static final int WIDTH = 25;
     public static final int HEIGHT = 31;
     public Giant(int x, int y) {
-        super(x, y, WIDTH, HEIGHT, 1000, 50, 10, 3, new ImageIcon("Giant.png"));
+        super(x, y, WIDTH, HEIGHT, 1000, 50, 10, 1, new ImageIcon("Giant.png"));
     }
     @Override
     public void attack(Sprite sprite) {

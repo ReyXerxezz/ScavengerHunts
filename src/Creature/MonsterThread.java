@@ -29,7 +29,7 @@ public class MonsterThread extends Thread {
     public void run() {
         while (true) {
             
-            boolean movedSuccessfully = monster.moveCreature(dungeon,dungeon.getMuros(), dungeon.getCreatures());
+            boolean movedSuccessfully = monster.moveCreature(dungeon,dungeon.getMuros());
 
             if (!movedSuccessfully) {
                 continue;
@@ -41,7 +41,7 @@ public class MonsterThread extends Thread {
 
             // Simulate monster movement delay
             try {
-                Thread.sleep(2000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

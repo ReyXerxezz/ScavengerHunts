@@ -16,7 +16,7 @@ public class Harpy extends LivingBeing{
     public static final int WIDTH = 28;
     public static final int HEIGHT = 28;
     public Harpy(int x, int y) {
-        super(x, y, WIDTH, HEIGHT, 500, 80, 12, 7, new ImageIcon("Harpy.png"));
+        super(x, y, WIDTH, HEIGHT, 500, 80, 12, 4, new ImageIcon("Harpy.png"));
     }
 
     @Override

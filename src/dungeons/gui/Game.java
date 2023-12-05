@@ -4,6 +4,8 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import Class.Dungeon;
 import java.awt.Image;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -28,6 +30,13 @@ public class Game
     public Game(Dungeon map) {
         initComponents();
         this.map = map;
+        Timer timer = new Timer(true);
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                map.setScore();// Llama al método setScore cada segundo
+            }
+        }, 1000, 1000);
     }
     public void update(Graphics g) {
         paint(g);
@@ -46,7 +55,6 @@ public class Game
 
         // Draw on the off-screen image
         map.draw(offScreenGraphics);  // Draw the dungeon
-
         // Copy the off-screen image to the screen
         g.drawImage(offScreenImage, 0, 0, this);
     }

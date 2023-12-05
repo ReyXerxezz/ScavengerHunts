@@ -45,13 +45,6 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         creatures = new ArrayList<>(); 
         score = 1200;
         mapearDungeon();
-        Timer timer = new Timer(true);
-        timer.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                setScore(); // Llama al método setScore cada segundo
-            }
-        }, 1000, 1000);
     }
 
     public void setDrawable(Drawable drawable) {
@@ -117,7 +110,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         }
     }
     
-    private void drawScore(Graphics g){
+    public void drawScore(Graphics g){
         int[] pos = {580, 770};
         String scoreToString = Integer.toString(score);
 
