@@ -123,6 +123,10 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
             g.setColor(muro.getColor());
             g.fillRect(muro.getX(), muro.getY(), muro.getWidth(), muro.getHeight());
             muro.draw(g);
+            if (arthur.getSword() != null){
+                System.out.println("Espada");
+                arthur.getSword().draw(g);
+            }
         }
         for (LivingBeing monstruo : getCreatures()) {
             monstruo.draw(g);
@@ -133,12 +137,12 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
             
         }
         for (LivingBeing creature : creatures) {
-        if (creature instanceof Dragon) {
-            for (Weapon weapon : ((Dragon) creature).getFireballs()) {
-                weapon.draw(g);
+            if (creature instanceof Dragon) {
+                for (Weapon weapon : ((Dragon) creature).getFireballs()) {
+                    weapon.draw(g);
+                }
             }
         }
-    }
         drawLife(g);
         drawScore(g);
     }
@@ -177,7 +181,8 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         if(key == KeyEvent.VK_W |
            key == KeyEvent.VK_S |
            key == KeyEvent.VK_A | 
-           key == KeyEvent.VK_D)
+           key == KeyEvent.VK_D |
+           key == KeyEvent.VK_SPACE)       
         {
             getArthur().actionHandle(key, getMuros(), getCreatures());
             getDrawable().redraw(); // TODO

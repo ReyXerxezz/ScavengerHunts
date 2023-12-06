@@ -43,8 +43,9 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
     private boolean xRiMove;
     private boolean xLeMove;
     private int turnCounter;
-    private int direction;
+    private int ataqueDireccion;
     private ArrayList<LivingBeing> targets = new ArrayList<>();
+    private Espada sword;
     
     /**
      *  Constructor que crea instancias de la clase LivingBeing.
@@ -70,7 +71,8 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         xRiMove = false;
         xLeMove = false;
         turnCounter = 0;
-        this.direction =0;
+        ataqueDireccion = 0;
+        sword = null;
     }
     
     /**
@@ -108,11 +110,11 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
            key == KeyEvent.VK_S |
            key == KeyEvent.VK_A |
            key == KeyEvent.VK_D){
-            setDirection(key);
             move(key, muros, creatures);
         }
-        if(key == KeyEvent.VK_SPACE && (this instanceof Archer | this instanceof Magician | this instanceof Barbarian | this instanceof SwordMan | this instanceof Tank | this instanceof Assasin )){
-            this.attack();
+        else if(key == KeyEvent.VK_SPACE){
+            System.out.println("Ataque");
+            attackArthur(creatures);
         }
     }
 
@@ -128,14 +130,26 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         int xOriginal = x;
         int yOriginal = y;
         
-        if(key == KeyEvent.VK_W)
+        if(key == KeyEvent.VK_W){
+            sword = null;
             y -= speed;
-        if(key == KeyEvent.VK_S)
+            ataqueDireccion = 0;
+        }
+        if(key == KeyEvent.VK_S){
+            sword = null;
             y += speed;
-        if(key == KeyEvent.VK_A)
+            ataqueDireccion = 1;
+        }
+        if(key == KeyEvent.VK_A){
+            sword = null;
             x -= speed;
-        if(key == KeyEvent.VK_D)
+            ataqueDireccion = 2;
+        }
+        if(key == KeyEvent.VK_D){
+            sword = null;
             x += speed;
+            ataqueDireccion = 3;
+        }
         for(Wall muro : muros){
             if(this.checkCollision(muro))
             {
@@ -163,7 +177,7 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
                     u.setVisible(true);
                     switch (randomupgrade) {
                         case 0:
-                            this.setHealth(getHealth()+20);
+                            health= getHealth()+20;
                             JOptionPane.showMessageDialog(null, "Health Upgrade");
                             break;
                         case 1:
@@ -207,6 +221,7 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         return true;
     }
     
+<<<<<<< HEAD
     /**
      * Verifica la validez del movimiento de un objeto en el mapa.
      * .
@@ -216,22 +231,26 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
      * @return Booleano que indica si es válido el movimiento.
      */
     public boolean verificarMove(ArrayList<Wall> muros, ArrayList<LivingBeing> creatures, LivingBeing arthur) {
+=======
+    public int verificarMove(ArrayList<Wall> muros, ArrayList<LivingBeing> creatures, LivingBeing arthur) {
+>>>>>>> 513bbd0dfe6a79914d22f9b2dd176d43e3374968
         for (Wall muro : muros) {
             if (this.checkCollision(muro)) {
-                return false;
+                return -1;
             }
         }
         for (LivingBeing creature : creatures) {
             if (creature != this && this.checkCollision(creature) && !(creature instanceof Unicorn)) {
-                return false;
+                return -1;
             }
         }
         if (this.checkCollision(arthur)) {
-            return false;
+            return 0;
         }
 
-        return true;
+        return 1;
     }
+<<<<<<< HEAD
 
     /**
      * Genera el movimiento de las creaturas que no maneja el usuario.
@@ -240,6 +259,13 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
      * @param creatures Arreglo de montruos del mapa.
      * @param arthur Personaje del usuario.
      */
+=======
+    
+    public void quitarVida(int daño){
+        health = health - daño;
+    }
+    
+>>>>>>> 513bbd0dfe6a79914d22f9b2dd176d43e3374968
     public void moveCreature(Dungeon dungeon, ArrayList<Wall> muros, ArrayList<LivingBeing> creatures, LivingBeing arthur) {
         int xOriginal = x;
         int yOriginal = y;
@@ -251,35 +277,57 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
 
         if (xLeMove) {
             x -= speed;
-            if (!verificarMove(muros, creatures, arthur)) {
+            if (verificarMove(muros, creatures, arthur) == -1) {
                 x = xOriginal;
                 changeDirection();
+            } else if (verificarMove(muros, creatures, arthur) == 0){
+                x = xOriginal;
+                changeDirection();
+                dungeon.getArthur().quitarVida(damage);
             }
         } else if (yUpMove) {
             y -= speed;
-            if (!verificarMove(muros, creatures, arthur)) {
+            if (verificarMove(muros, creatures, arthur) == -1) {
                 y = yOriginal;
                 changeDirection();
+            } else if (verificarMove(muros, creatures, arthur) == 0){
+                y = yOriginal;
+                changeDirection();
+                dungeon.getArthur().quitarVida(damage);
             }
         } else if (xRiMove) {
             x += speed;
-            if (!verificarMove(muros, creatures, arthur)) {
+            if (verificarMove(muros, creatures, arthur) == -1) {
                 x = xOriginal;
                 changeDirection();
+            } else if (verificarMove(muros, creatures, arthur) == 0){
+                x = xOriginal;
+                changeDirection();
+                dungeon.getArthur().quitarVida(damage);
             }
         } else if (yDoMove) {
             y += speed;
-            if (!verificarMove(muros, creatures, arthur)) {
+            if (verificarMove(muros, creatures, arthur) == -1) {
                 y = yOriginal;
                 changeDirection();
+            } else if (verificarMove(muros, creatures, arthur) == 0){
+                y = yOriginal;
+                changeDirection();
+                dungeon.getArthur().quitarVida(damage);
             }
         }
 
         turnCounter++;
     }
+<<<<<<< HEAD
     /**
      * Cambia la direccion de movimiento de un objeto.
      */
+=======
+    public void attack(){
+    
+    }
+>>>>>>> 513bbd0dfe6a79914d22f9b2dd176d43e3374968
     private void changeDirection() {
         // Cambiar la dirección de manera aleatoria
         int randomDirection = (int) (Math.random() * 4);
@@ -304,6 +352,7 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
                 break;
         }
     }
+<<<<<<< HEAD
 
     /**
      *  Ataque de un LivingBeing
@@ -315,14 +364,63 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
      * Dibuja la imagen que representa el LivingBeing.
      * @param g 
      */
+=======
+    public void attackArthur(ArrayList<LivingBeing> creatures){
+        int ataque = -1;
+        System.out.println("Espada1");
+        switch (getAtaqueDireccion()) {
+            case 0 -> {
+                sword = new Espada(x+(width/2),(y-17), 9, 17);
+                ataque = verificarAtaque(creatures, sword);
+                if (ataque != -1){
+                    dungeon.eliminarCreature(ataque);
+                }
+            }
+            case 1 -> {
+                sword = new Espada(x+(width/2), (y+height), 9, 17);
+                ataque = verificarAtaque(creatures, sword);
+                if (ataque != -1){
+                    dungeon.eliminarCreature(ataque);
+                }
+            }
+            case 2 -> {
+                sword = new Espada((x-9), y+(height/2), 17, 9);
+                ataque = verificarAtaque(creatures, sword);
+                if (ataque != -1){
+                    dungeon.eliminarCreature(ataque);
+                }
+            }
+            case 3 -> {
+                sword = new Espada((x+width), y+(height/2), 17, 9);
+                ataque = verificarAtaque(creatures, sword);
+                if (ataque != -1){
+                    dungeon.eliminarCreature(ataque);
+                }
+            }
+            default -> {
+            }
+        }
+    }
+    private int verificarAtaque(ArrayList<LivingBeing> creatures, Espada espada){
+        int i = 0;
+        for (LivingBeing creature : creatures) {
+            if (espada.checkCollision(creature) && !(creature instanceof Unicorn)) {
+                return i;
+            }
+            i++;
+        }
+        return -1;
+    }
+    
+>>>>>>> 513bbd0dfe6a79914d22f9b2dd176d43e3374968
     @Override
     public void draw(Graphics g) {
         if (image != null) {
         g.drawImage(image.getImage(), x, y,null);
-    } else {
-        g.setColor(color);
-        g.fillRect(x, y, width, height);
-    }
+        } else {
+            g.setColor(color);
+            g.fillRect(x, y, width, height);
+        }
     }
     
     /**
@@ -433,20 +531,6 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
     }
 
     /**
-     * @return the direction
-     */
-    public int getDirection() {
-        return direction;
-    }
-
-    /**
-     * @param direction the direction to set
-     */
-    public void setDirection(int direction) {
-        this.direction = direction;
-    }
-
-    /**
      * @return the targets
      */
     public ArrayList<LivingBeing> getTargets() {
@@ -458,6 +542,20 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
      */
     public void setTargets(ArrayList<LivingBeing> targets) {
         this.targets = targets;
+    }
+
+    /**
+     * @return the sword
+     */
+    public Espada getSword() {
+        return sword;
+    }
+
+    /**
+     * @return the ataqueDireccion
+     */
+    public int getAtaqueDireccion() {
+        return ataqueDireccion;
     }
     
     

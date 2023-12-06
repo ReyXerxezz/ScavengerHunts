@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 513bbd0dfe6a79914d22f9b2dd176d43e3374968
 package Creature;
 
 import Class.Dungeon;
