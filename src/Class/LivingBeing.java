@@ -221,7 +221,7 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         return true;
     }
     
-<<<<<<< HEAD
+
     /**
      * Verifica la validez del movimiento de un objeto en el mapa.
      * .
@@ -230,10 +230,10 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
      * @param arthur Personaje del usuario que se mueve en el mapa.
      * @return Booleano que indica si es válido el movimiento.
      */
-    public boolean verificarMove(ArrayList<Wall> muros, ArrayList<LivingBeing> creatures, LivingBeing arthur) {
-=======
+    
+
     public int verificarMove(ArrayList<Wall> muros, ArrayList<LivingBeing> creatures, LivingBeing arthur) {
->>>>>>> 513bbd0dfe6a79914d22f9b2dd176d43e3374968
+
         for (Wall muro : muros) {
             if (this.checkCollision(muro)) {
                 return -1;
@@ -250,7 +250,7 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
 
         return 1;
     }
-<<<<<<< HEAD
+
 
     /**
      * Genera el movimiento de las creaturas que no maneja el usuario.
@@ -259,13 +259,12 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
      * @param creatures Arreglo de montruos del mapa.
      * @param arthur Personaje del usuario.
      */
-=======
+
     
     public void quitarVida(int daño){
         health = health - daño;
     }
     
->>>>>>> 513bbd0dfe6a79914d22f9b2dd176d43e3374968
     public void moveCreature(Dungeon dungeon, ArrayList<Wall> muros, ArrayList<LivingBeing> creatures, LivingBeing arthur) {
         int xOriginal = x;
         int yOriginal = y;
@@ -319,15 +318,15 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
 
         turnCounter++;
     }
-<<<<<<< HEAD
-    /**
-     * Cambia la direccion de movimiento de un objeto.
-     */
-=======
+
+    
+
     public void attack(){
     
     }
->>>>>>> 513bbd0dfe6a79914d22f9b2dd176d43e3374968
+    /**
+     * Cambia la direccion de movimiento de un objeto.
+     */
     private void changeDirection() {
         // Cambiar la dirección de manera aleatoria
         int randomDirection = (int) (Math.random() * 4);
@@ -352,19 +351,15 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
                 break;
         }
     }
-<<<<<<< HEAD
 
-    /**
-     *  Ataque de un LivingBeing
-     */
-    public void attack(){
-        
-    }
+
+    
+    
     /**
      * Dibuja la imagen que representa el LivingBeing.
      * @param g 
      */
-=======
+
     public void attackArthur(ArrayList<LivingBeing> creatures){
         int ataque = -1;
         System.out.println("Espada1");
@@ -412,7 +407,6 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         return -1;
     }
     
->>>>>>> 513bbd0dfe6a79914d22f9b2dd176d43e3374968
     @Override
     public void draw(Graphics g) {
         if (image != null) {
