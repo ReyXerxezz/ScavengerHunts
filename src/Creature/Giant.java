@@ -4,27 +4,29 @@
  */
 package Creature;
 
-import Class.LivingBeing;
-import Class.Sprite;
-import static Creature.Basilisk.HEIGHT;
-import static Creature.Basilisk.WIDTH;
+import Class.Dungeon;
 import javax.swing.ImageIcon;
 
 /**
  *
  * @author User
  */
+<<<<<<< HEAD
 public class Giant extends LivingBeing{
 
     /**
      *
      */
+=======
+public class Giant extends Monster{
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     public static final int WIDTH = 25;
 
     /**
      *
      */
     public static final int HEIGHT = 31;
+<<<<<<< HEAD
 
     /**
      *
@@ -33,6 +35,10 @@ public class Giant extends LivingBeing{
      */
     public Giant(int x, int y) {
         super(x, y, WIDTH, HEIGHT, 1000, 50, 10, 1, new ImageIcon("Giant.png"));
+=======
+    public Giant(int x, int y, Dungeon dungeon) {
+        super(x, y, WIDTH, HEIGHT, 1000, 20, 10, 1, new ImageIcon("Giant.png"), dungeon);
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     }
 
     /**
@@ -60,6 +66,7 @@ public class Giant extends LivingBeing{
     public int getWidth() {
         return WIDTH;
     }
+<<<<<<< HEAD
 
     /**
      *
@@ -70,4 +77,6 @@ public class Giant extends LivingBeing{
     public boolean isValid(Sprite sprite) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+=======
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
 }

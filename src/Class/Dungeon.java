@@ -6,6 +6,7 @@ package Class;
 
 
 import Creature.Dragon;
+import Creature.Monster;
 import Creature.MonsterThread;
 import dungeons.gui.Drawable;
 import Knight.Assasin;
@@ -14,6 +15,7 @@ import Knight.Magician;
 import Knight.Tank;
 import Knight.SwordMan;
 import Knight.Archer;
+import Knight.Knight;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -29,11 +31,11 @@ import java.util.TimerTask;
  */
 public class Dungeon extends Sprite implements Drawable, Boundable{
 
-    private LivingBeing arthur;
+    private Knight arthur;
     private Drawable drawable;
     private LectorArchivo lector;
     private ArrayList<Wall> muros;
-    private ArrayList<LivingBeing> creatures;
+    private ArrayList<Monster> creatures;
     private String nivel;
     private ImageIcon fondo = new ImageIcon("Background.png");
     private int score;
@@ -49,9 +51,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
      */
     public Dungeon(int x, int y, int width, int height, String type, String nivel) {
         super(x, y, width, height, new Color(186, 222, 248  ));
-        arthur = createKnight(40, 40, type);
-        arthur.setDrawable(this);
-        arthur.setBoundable(this);
+        arthur = createKnight(40, 40, type, this);
         lector = new LectorArchivo(nivel);
         muros = new ArrayList<>();
         creatures = new ArrayList<>(); 
@@ -70,9 +70,10 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     
     private void mapearDungeon() {
         this.muros = lector.leerMapa();
-        this.creatures = lector.leerMonstruos();
+        this.creatures = lector.leerMonstruos(this);
     }
     
+<<<<<<< HEAD
     /**
      * Crea un caballero dependiendo del tipo de knight del mapa.
      * @param x posicion en  x de la creacion del caballero.
@@ -82,31 +83,28 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
      */
     public LivingBeing createKnight (int x, int y, String type){
         LivingBeing knight = null;
+=======
+    public Knight createKnight (int x, int y, String type, Dungeon dungeon){
+        Knight knight = null;
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
         if (type.equals("Assasin")){
-            knight = new Assasin(x, y);
-            knight.setTargets(creatures);
+            knight = new Assasin(x, y, dungeon);
         }
         else if (type.equals("Archer")){
-            knight = new Archer(x, y);
-            knight.setTargets(creatures);
+            knight = new Archer(x, y, dungeon);
         }
         else if (type.equals("Barbarian")){
-            knight = new Barbarian(x, y);
-            knight.setTargets(creatures);
+            knight = new Barbarian(x, y, dungeon);
         }
         else if (type.equals("Magician")){
-            knight = new Magician(x, y);
-            knight.setTargets(creatures);
+            knight = new Magician(x, y, dungeon);
         }
         else if (type.equals("SwordMan")){
-            knight = new SwordMan(x, y);
-            knight.setTargets(creatures);
+            knight = new SwordMan(x, y, dungeon);
         }
         else if (type.equals("Tank")){
-            knight = new Tank(x, y);
-            knight.setTargets(creatures);
+            knight = new Tank(x, y, dungeon);
         }
-        knight.setDungeon(this);
         return knight;
     }
 
@@ -118,7 +116,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     public void draw(Graphics g) {
         fondo.paintIcon(null, g, x, y);
 
-        getArthur().draw(g);
+        arthur.draw(g);
         for (Wall muro : getMuros()){
             g.setColor(muro.getColor());
             g.fillRect(muro.getX(), muro.getY(), muro.getWidth(), muro.getHeight());
@@ -128,9 +126,10 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
                 arthur.getSword().draw(g);
             }
         }
-        for (LivingBeing monstruo : getCreatures()) {
+        for (Monster monstruo : getCreatures()) {
             monstruo.draw(g);
             if (!monsterThreadIsRunning(monstruo)) {
+                monstruo.setDungeon(this);
                 MonsterThread thread = new MonsterThread(this, monstruo);
                 thread.start();
             }
@@ -149,7 +148,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     
     private void drawLife(Graphics g){
         int[] pos = {10, 770};
-        String lifeToString = Integer.toString(getArthur().getHealth());
+        String lifeToString = Integer.toString(arthur.getHealth());
 
         for (int i = 0; i < lifeToString.length(); i++) {
             int digit = Integer.parseInt(lifeToString.substring(i, i + 1));
@@ -204,12 +203,16 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     public void setScore(){
         score = score - 1;
     }
+<<<<<<< HEAD
 
     /**
      * Verifica si es valido el movimiento de un sprite.
      * @param sprite
      * @return
      */
+=======
+    
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     @Override
     public boolean isValid(Sprite sprite) {
         if(sprite.getX() < this.getX() |
@@ -232,7 +235,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     /**
      * @return the arthur
      */
-    public LivingBeing getArthur() {
+    public Knight getArthur() {
         return arthur;
     }
 
@@ -253,7 +256,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     /**
      * @return the creatures
      */
-    public ArrayList<LivingBeing> getCreatures() {
+    public ArrayList<Monster> getCreatures() {
         return creatures;
     }
     

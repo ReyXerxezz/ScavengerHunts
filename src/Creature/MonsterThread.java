@@ -16,14 +16,18 @@ import java.util.concurrent.TimeUnit;
 public class MonsterThread extends Thread {
 
     private final Dungeon dungeon;
-    private final LivingBeing monster;
+    private final Monster monster;
 
+<<<<<<< HEAD
     /**
      *
      * @param dungeon
      * @param monster
      */
     public MonsterThread(Dungeon dungeon, LivingBeing monster) {
+=======
+    public MonsterThread(Dungeon dungeon, Monster monster) {
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
         this.dungeon = dungeon;
         this.monster = monster;
     }
@@ -49,7 +53,7 @@ public class MonsterThread extends Thread {
     /**
      * @return the monster
      */
-    public LivingBeing getMonster() {
+    public Monster getMonster() {
         return monster;
     }
     

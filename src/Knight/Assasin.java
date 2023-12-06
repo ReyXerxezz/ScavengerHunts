@@ -4,8 +4,7 @@
  */
 package Knight;
 
-import Class.LivingBeing;
-import Class.Sprite;
+import Class.Dungeon;
 import javax.swing.ImageIcon;
 
 /**
@@ -14,8 +13,9 @@ import javax.swing.ImageIcon;
  * @author Daniel Felipe Lopez
  * @version 1.0.1
  */
-public class Assasin extends LivingBeing{
+public class Assasin extends Knight{
     
+<<<<<<< HEAD
     /**
      *
      * @param x
@@ -43,4 +43,9 @@ public class Assasin extends LivingBeing{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+=======
+    public Assasin(int x, int y, Dungeon dungeon) {
+        super(x, y,20,28, 15, 175, 10, 10 , new ImageIcon("AssasinCharacter.png"), dungeon);
+    }
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
 }

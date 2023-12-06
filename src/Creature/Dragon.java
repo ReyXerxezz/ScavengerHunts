@@ -4,10 +4,8 @@
  */
 package Creature;
 
+import Class.Dungeon;
 import Class.Fireball;
-import Class.LivingBeing;
-import Class.Sprite;
-import Class.Wall;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -16,7 +14,7 @@ import javax.swing.ImageIcon;
  *
  * @author User
  */
-public class Dragon extends LivingBeing{
+public class Dragon extends Monster{
     private ArrayList<Fireball> fireballs;
 
     /**
@@ -28,6 +26,7 @@ public class Dragon extends LivingBeing{
      *
      */
     public static final int HEIGHT = 229;
+<<<<<<< HEAD
 
     /**
      *
@@ -36,6 +35,10 @@ public class Dragon extends LivingBeing{
      */
     public Dragon(int x, int y) {
         super(x, y, WIDTH, HEIGHT, 3000, 100, 30, 1, new ImageIcon("Dragon.png"));
+=======
+    public Dragon(int x, int y, Dungeon dungeon) {
+        super(x, y, WIDTH, HEIGHT, 3000, 30, 30, 1, new ImageIcon("Dragon.png"), dungeon);
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
         fireballs = new ArrayList<>();
     }
 
@@ -76,6 +79,7 @@ public class Dragon extends LivingBeing{
         return WIDTH;
     }
 
+<<<<<<< HEAD
     /**
      *
      * @param sprite
@@ -86,6 +90,8 @@ public class Dragon extends LivingBeing{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+=======
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     /**
      * @return the fireballs
      */

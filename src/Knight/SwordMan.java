@@ -4,16 +4,16 @@
  */
 package Knight;
 
-import Class.LivingBeing;
-import Class.Sprite;
+import Class.Dungeon;
 import javax.swing.ImageIcon;
 
 /**
  *
  * @author User
  */
-public class SwordMan extends LivingBeing{
+public class SwordMan extends Knight{
     
+<<<<<<< HEAD
     /**
      *
      * @param x
@@ -33,4 +33,9 @@ public class SwordMan extends LivingBeing{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
+=======
+    public SwordMan(int x, int y, Dungeon dungeon) {
+        super(x, y, 22, 25, 60, 62, 60, 8,new ImageIcon("SwordmanCharacter.png"), dungeon);
+    }
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
 }

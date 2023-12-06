@@ -9,6 +9,7 @@ import Creature.Demon;
 import Creature.Dragon;
 import Creature.Giant;
 import Creature.Harpy;
+import Creature.Monster;
 import Creature.Unicorn;
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -63,12 +64,17 @@ public class LectorArchivo {
         return objetos;
     }
     
+<<<<<<< HEAD
     /**
      * Lee el archivo del mapa y genera un arreglo de monstruos leídos en el archivo.
      * @return Arreglo de monstruos que están en el mapa.
      */
     public ArrayList<LivingBeing> leerMonstruos() {
     ArrayList<LivingBeing> monstruos = new ArrayList<>();
+=======
+    public ArrayList<Monster> leerMonstruos(Dungeon dungeon) {
+    ArrayList<Monster> monstruos = new ArrayList<>();
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     int fila = 0;
     
     // Leer el archivo de texto
@@ -82,37 +88,37 @@ public class LectorArchivo {
                 if (caracteres[columna] == '2') {
                     // Crear un monstruo en la posición (fila, columna)
                     
-                    Basilisk miMonstruo = new Basilisk(columna*Wall.WIDTH, fila*Wall.HEIGHT);
+                    Basilisk miMonstruo = new Basilisk(columna*Wall.WIDTH, fila*Wall.HEIGHT, dungeon);
                     monstruos.add(miMonstruo);
                 }
                 if (caracteres[columna] == '3') {
                     // Crear un monstruo en la posición (fila, columna)
                     
-                    Demon miMonstruo = new Demon(columna*Wall.WIDTH, fila*Wall.HEIGHT);
+                    Demon miMonstruo = new Demon(columna*Wall.WIDTH, fila*Wall.HEIGHT, dungeon);
                     monstruos.add(miMonstruo);
                 }
                 if (caracteres[columna] == '4') {
                     // Crear un monstruo en la posición (fila, columna)
                     
-                    Dragon miMonstruo = new Dragon(columna*Wall.WIDTH, fila*Wall.HEIGHT);
+                    Dragon miMonstruo = new Dragon(columna*Wall.WIDTH, fila*Wall.HEIGHT, dungeon);
                     monstruos.add(miMonstruo);
                 }
                 if (caracteres[columna] == '5') {
                     // Crear un monstruo en la posición (fila, columna)
                     
-                    Giant miMonstruo = new Giant(columna*Wall.WIDTH, fila*Wall.HEIGHT);
+                    Giant miMonstruo = new Giant(columna*Wall.WIDTH, fila*Wall.HEIGHT, dungeon);
                     monstruos.add(miMonstruo);
                 }
                 if (caracteres[columna] == '6') {
                     // Crear un monstruo en la posición (fila, columna)
                     
-                    Harpy miMonstruo = new Harpy(columna*Wall.WIDTH, fila*Wall.HEIGHT);
+                    Harpy miMonstruo = new Harpy(columna*Wall.WIDTH, fila*Wall.HEIGHT, dungeon);
                     monstruos.add(miMonstruo);
                 }
                 if (caracteres[columna] == '7') {
                     // Crear un monstruo en la posición (fila, columna)
                     
-                    Unicorn miMonstruo = new Unicorn(columna*(Wall.WIDTH), fila*(Wall.HEIGHT));
+                    Unicorn miMonstruo = new Unicorn(columna*(Wall.WIDTH), fila*(Wall.HEIGHT), dungeon);
                     monstruos.add(miMonstruo);
                 }
             }

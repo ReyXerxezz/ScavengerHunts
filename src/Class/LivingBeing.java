@@ -28,25 +28,17 @@ import javax.swing.JOptionPane;
  * @author Daniel Felipe Lopez
  * @version 1.0.1
  */
-public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
+public abstract class LivingBeing extends Sprite{
 
     private Drawable drawable;
-    private Boundable boundable;
     private int health;
     private int damage;
     private int range;
     private int speed;
     private ImageIcon image;
     private Dungeon dungeon;
-    private boolean yUpMove;
-    private boolean yDoMove;
-    private boolean xRiMove;
-    private boolean xLeMove;
-    private int turnCounter;
-    private int ataqueDireccion;
-    private ArrayList<LivingBeing> targets = new ArrayList<>();
-    private Espada sword;
     
+<<<<<<< HEAD
     /**
      *  Constructor que crea instancias de la clase LivingBeing.
      * @param x posicion en x del Livingbeing
@@ -60,11 +52,15 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
      * @param image Imagen que representa el Livingbeing
      */
     public LivingBeing(int x, int y, int width, int height, int health, int damage, int range, int speed ,ImageIcon image) {
+=======
+    public LivingBeing(int x, int y, int width, int height, int health, int damage, int range, int speed ,ImageIcon image, Dungeon dungeon) {
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
         super(x, y, width, height, Color.BLUE);
         this.health = health;
         this.damage = damage;
         this.range = range;
         this.speed = speed;
+<<<<<<< HEAD
         this.image = image; 
         yUpMove = false;
         yDoMove = false;
@@ -81,6 +77,10 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
      */
     public void setDrawable(Drawable drawable) {
         this.drawable = drawable;
+=======
+        this.image = image;
+        this.dungeon = dungeon;
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     }
     
     /**
@@ -90,6 +90,7 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
     public void setDungeon(Dungeon dungeon) {
         this.dungeon = dungeon;
     }
+<<<<<<< HEAD
 
     /**
      *
@@ -260,11 +261,14 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
      * @param arthur Personaje del usuario.
      */
 
+=======
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     
     public void quitarVida(int daño){
         health = health - daño;
     }
     
+<<<<<<< HEAD
     public void moveCreature(Dungeon dungeon, ArrayList<Wall> muros, ArrayList<LivingBeing> creatures, LivingBeing arthur) {
         int xOriginal = x;
         int yOriginal = y;
@@ -406,6 +410,13 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         }
         return -1;
     }
+=======
+    
+    public void attack(){
+    
+    }
+    
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     
     @Override
     public void draw(Graphics g) {
@@ -417,6 +428,7 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         }
     }
     
+<<<<<<< HEAD
     /**
      * Redibuja el LivingBeing
      */
@@ -432,6 +444,8 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
      * @param width
      * @param height
      */
+=======
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     public void redraw(int x, int y, int width, int height) {
         getDrawable().redraw();
     }
@@ -499,6 +513,7 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         return drawable;
     }
 
+<<<<<<< HEAD
     /**
      * @return the boundable
      */
@@ -510,6 +525,8 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
      *
      * @return
      */
+=======
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     @Override
     public int getX() {
         return super.getX(); 
@@ -523,34 +540,4 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
     public int getY() {
         return super.getY(); 
     }
-
-    /**
-     * @return the targets
-     */
-    public ArrayList<LivingBeing> getTargets() {
-        return targets;
-    }
-
-    /**
-     * @param targets the targets to set
-     */
-    public void setTargets(ArrayList<LivingBeing> targets) {
-        this.targets = targets;
-    }
-
-    /**
-     * @return the sword
-     */
-    public Espada getSword() {
-        return sword;
-    }
-
-    /**
-     * @return the ataqueDireccion
-     */
-    public int getAtaqueDireccion() {
-        return ataqueDireccion;
-    }
-    
-    
 }

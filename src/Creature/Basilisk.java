@@ -4,7 +4,7 @@
  */
 package Creature;
 
-import Class.LivingBeing;
+import Class.Dungeon;
 import Class.Sprite;
 import javax.swing.ImageIcon;
 
@@ -12,17 +12,22 @@ import javax.swing.ImageIcon;
  *
  * @author User
  */
+<<<<<<< HEAD
 public class Basilisk extends LivingBeing{
 
     /**
      * Ancho del objeto basilisk.
      */
+=======
+public class Basilisk extends Monster{
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     public static final int WIDTH = 30;
 
     /**
      * Alto del objeto basilisk.
      */
     public static final int HEIGHT = 27;
+<<<<<<< HEAD
 
     /**
      *
@@ -31,6 +36,10 @@ public class Basilisk extends LivingBeing{
      */
     public Basilisk(int x, int y) {
         super(x, y, WIDTH, HEIGHT, 600, 40, 10, 2, new ImageIcon("Basilisk.png"));
+=======
+    public Basilisk(int x, int y, Dungeon dungeon) {
+        super(x, y, WIDTH, HEIGHT, 600, 5, 10, 2, new ImageIcon("Basilisk.png"), dungeon);
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     }
 
     /**
@@ -58,6 +67,7 @@ public class Basilisk extends LivingBeing{
     public int getWidth() {
         return WIDTH;
     }
+<<<<<<< HEAD
 
     /**
      *
@@ -69,4 +79,6 @@ public class Basilisk extends LivingBeing{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+=======
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
 }

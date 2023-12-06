@@ -4,8 +4,7 @@
  */
 package Knight;
 
-import Class.LivingBeing;
-import Class.Sprite;
+import Class.Dungeon;
 import javax.swing.ImageIcon;
 
 /**
@@ -14,8 +13,9 @@ import javax.swing.ImageIcon;
  * @author Daniel Felipe Lopez
  * @version 1.0.1
  */
-public class Barbarian extends LivingBeing{
+public class Barbarian extends Knight{
     
+<<<<<<< HEAD
     /**
      *
      * @param x
@@ -33,6 +33,10 @@ public class Barbarian extends LivingBeing{
     @Override
     public boolean isValid(Sprite sprite) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+=======
+    public Barbarian(int x, int y, Dungeon dungeon) {
+        super(x, y, 20, 30, 75, 100, 20, 5, new ImageIcon("BarbarianCharacter.png"), dungeon);
+>>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     }
     
 }
