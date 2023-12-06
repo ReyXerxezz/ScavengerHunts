@@ -13,27 +13,57 @@ import javax.swing.ImageIcon;
  * @author User
  */
 public class Harpy extends LivingBeing{
+
+    /**
+     *
+     */
     public static final int WIDTH = 28;
+
+    /**
+     *
+     */
     public static final int HEIGHT = 28;
+
+    /**
+     *
+     * @param x
+     * @param y
+     */
     public Harpy(int x, int y) {
         super(x, y, WIDTH, HEIGHT, 500, 80, 12, 4, new ImageIcon("Harpy.png"));
     }
 
+    /**
+     *
+     */
     @Override
     public void attack() {
         super.attack();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getHeight() {
         return HEIGHT;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getWidth() {
         return WIDTH;
     }
 
+    /**
+     *
+     * @param sprite
+     * @return
+     */
     @Override
     public boolean isValid(Sprite sprite) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

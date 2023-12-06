@@ -15,26 +15,57 @@ import javax.swing.ImageIcon;
  * @author User
  */
 public class Giant extends LivingBeing{
+
+    /**
+     *
+     */
     public static final int WIDTH = 25;
+
+    /**
+     *
+     */
     public static final int HEIGHT = 31;
+
+    /**
+     *
+     * @param x
+     * @param y
+     */
     public Giant(int x, int y) {
         super(x, y, WIDTH, HEIGHT, 1000, 50, 10, 1, new ImageIcon("Giant.png"));
     }
+
+    /**
+     *
+     */
     @Override
     public void attack() {
         super.attack();
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getHeight() {
         return HEIGHT;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getWidth() {
         return WIDTH;
     }
 
+    /**
+     *
+     * @param sprite
+     * @return
+     */
     @Override
     public boolean isValid(Sprite sprite) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

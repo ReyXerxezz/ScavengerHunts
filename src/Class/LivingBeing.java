@@ -24,7 +24,9 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author User
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
+ * @version 1.0.1
  */
 public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
 
@@ -44,6 +46,18 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
     private int direction;
     private ArrayList<LivingBeing> targets = new ArrayList<>();
     
+    /**
+     *  Constructor que crea instancias de la clase LivingBeing.
+     * @param x posicion en x del Livingbeing
+     * @param y posicion en y del Livingbeing
+     * @param width ancho del Livingbeing
+     * @param height alto del Livingbeing
+     * @param health Vida del Livingbeing
+     * @param damage Daño que genera el Livingbeing
+     * @param range Rango de ataque del Livingbeing
+     * @param speed Velocidad de movimiento del Livingbeing
+     * @param image Imagen que representa el Livingbeing
+     */
     public LivingBeing(int x, int y, int width, int height, int health, int damage, int range, int speed ,ImageIcon image) {
         super(x, y, width, height, Color.BLUE);
         this.health = health;
@@ -59,17 +73,36 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         this.direction =0;
     }
     
+    /**
+     *
+     * @param drawable
+     */
     public void setDrawable(Drawable drawable) {
         this.drawable = drawable;
     }
     
+    /**
+     *
+     * @param dungeon
+     */
     public void setDungeon(Dungeon dungeon) {
         this.dungeon = dungeon;
     }
 
+    /**
+     *
+     * @param boundable
+     */
     public void setBoundable(Boundable boundable) {
         this.boundable = boundable;
     }
+
+    /**
+     * Maneja las acciones del teclado que generan el movimiento del LivingBeing.
+     * @param key Numero que representa la tecla hundida.
+     * @param muros Arreglo de muros del mapa.
+     * @param creatures Arreglo de creaturas del mapa.
+     */
     public void actionHandle(int key, ArrayList<Wall> muros, ArrayList<LivingBeing> creatures){
         if(key == KeyEvent.VK_W |
            key == KeyEvent.VK_S |
@@ -82,6 +115,14 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
             this.attack();
         }
     }
+
+    /**
+     * Genera el movimiento del LivingBeing a partir de las acciones de teclado.
+     * @param key Numero que representa la tecla hundida.
+     * @param muros Arreglo de muros del mapa.
+     * @param creatures Arreglo de creaturas del mapa.
+     * @return Booleano que indica si fue exitoso o no el movimiento.
+     */
     public boolean move(int key, ArrayList<Wall> muros, ArrayList<LivingBeing> creatures)
     {
         int xOriginal = x;
@@ -166,6 +207,14 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         return true;
     }
     
+    /**
+     * Verifica la validez del movimiento de un objeto en el mapa.
+     * .
+     * @param muros Arreglo de muros del mapa.
+     * @param creatures Arreglo de creaturas del mapa.
+     * @param arthur Personaje del usuario que se mueve en el mapa.
+     * @return Booleano que indica si es válido el movimiento.
+     */
     public boolean verificarMove(ArrayList<Wall> muros, ArrayList<LivingBeing> creatures, LivingBeing arthur) {
         for (Wall muro : muros) {
             if (this.checkCollision(muro)) {
@@ -183,6 +232,14 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
 
         return true;
     }
+
+    /**
+     * Genera el movimiento de las creaturas que no maneja el usuario.
+     * @param dungeon Mapa que se ha ejecutado.
+     * @param muros Arreglo de muros del mapa.
+     * @param creatures Arreglo de montruos del mapa.
+     * @param arthur Personaje del usuario.
+     */
     public void moveCreature(Dungeon dungeon, ArrayList<Wall> muros, ArrayList<LivingBeing> creatures, LivingBeing arthur) {
         int xOriginal = x;
         int yOriginal = y;
@@ -220,7 +277,9 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
 
         turnCounter++;
     }
-    
+    /**
+     * Cambia la direccion de movimiento de un objeto.
+     */
     private void changeDirection() {
         // Cambiar la dirección de manera aleatoria
         int randomDirection = (int) (Math.random() * 4);
@@ -245,9 +304,17 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
                 break;
         }
     }
+
+    /**
+     *  Ataque de un LivingBeing
+     */
     public void attack(){
         
     }
+    /**
+     * Dibuja la imagen que representa el LivingBeing.
+     * @param g 
+     */
     @Override
     public void draw(Graphics g) {
         if (image != null) {
@@ -258,12 +325,21 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
     }
     }
     
-
+    /**
+     * Redibuja el LivingBeing
+     */
     @Override
     public void redraw() {
         getDrawable().redraw();
     }
     
+    /**
+     * Redibuja de acuerdo a los parametros básicos del objeto.
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     */
     public void redraw(int x, int y, int width, int height) {
         getDrawable().redraw();
     }
@@ -338,11 +414,19 @@ public abstract class LivingBeing extends Sprite implements Drawable, Boundable{
         return boundable;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getX() {
         return super.getX(); 
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getY() {
         return super.getY(); 

@@ -7,6 +7,12 @@ package Class;
 import javax.swing.ImageIcon;
 import java.awt.Image;
 
+/**
+ *
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
+ * @version 1.0.1
+ */
 public class Assets {
     private static Image[] numberImages;
 
@@ -19,6 +25,11 @@ public class Assets {
         }
     }
 
+    /**
+     *
+     * @param digit
+     * @return
+     */
     public static Image numbers(int digit) {
         if (digit >= 0 && digit <= 9) {
             return numberImages[digit];

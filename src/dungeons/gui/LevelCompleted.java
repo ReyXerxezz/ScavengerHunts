@@ -14,6 +14,8 @@ public class LevelCompleted extends javax.swing.JDialog {
 
     /**
      * Creates new form LevelCompleted
+     * @param parent
+     * @param modal
      */
     public LevelCompleted(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

@@ -15,6 +15,11 @@ import javax.swing.ImageIcon;
  */
 public class Fireball extends Weapon implements Drawable{
 
+    /**
+     *
+     * @param x
+     * @param y
+     */
     public Fireball(int x, int y) {
         super(x, y, 10, 10, Color.RED, null, null);
         this.image = new ImageIcon("Fireball.png");
@@ -37,6 +42,9 @@ public class Fireball extends Weapon implements Drawable{
     }
     }
 
+    /**
+     *
+     */
     @Override
     public void redraw() {
         throw new UnsupportedOperationException("Not supported yet."); 

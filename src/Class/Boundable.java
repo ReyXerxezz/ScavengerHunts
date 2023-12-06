@@ -9,5 +9,11 @@ package Class;
  * @author educacion
  */
 public interface Boundable {
+
+    /**
+     *
+     * @param sprite
+     * @return
+     */
     public boolean isValid(Sprite sprite);
 }

@@ -14,10 +14,20 @@ import javax.swing.ImageIcon;
  */
 public class SwordMan extends LivingBeing{
     
+    /**
+     *
+     * @param x
+     * @param y
+     */
     public SwordMan(int x, int y) {
         super(x, y, 22, 25, 60, 62, 60, 8,new ImageIcon("SwordmanCharacter.png"));
     }
 
+    /**
+     *
+     * @param sprite
+     * @return
+     */
     @Override
     public boolean isValid(Sprite sprite) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

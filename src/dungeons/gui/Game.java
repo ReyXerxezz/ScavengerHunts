@@ -9,7 +9,9 @@ import java.util.TimerTask;
 
 /**
  *
- * @author educacion
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
+ * @version 1.0.1
  */
 public class Game 
         extends javax.swing.JFrame 
@@ -34,10 +36,19 @@ public class Game
             }
         }, 1000, 1000);
     }
+
+    /**
+     *
+     * @param g
+     */
     public void update(Graphics g) {
         paint(g);
     }
     
+    /**
+     *
+     * @param g
+     */
     @Override
     public void paint(Graphics g) {
     if (offScreenImage == null) {
@@ -130,6 +141,9 @@ public class Game
         map.actKnight(evt.getKeyCode());
     }//GEN-LAST:event_formKeyPressed
 
+    /**
+     *
+     */
     @Override
     public void redraw() {
         repaint();

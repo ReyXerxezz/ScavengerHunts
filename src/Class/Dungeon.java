@@ -22,8 +22,10 @@ import javax.swing.ImageIcon;
 import java.util.Timer;
 import java.util.TimerTask;
 /**
- *
- * @author User
+ * Clase que representa el mapa del juego que contiene los muros y creaturas.
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
+ * @version 1.0.1
  */
 public class Dungeon extends Sprite implements Drawable, Boundable{
 
@@ -35,6 +37,16 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     private String nivel;
     private ImageIcon fondo = new ImageIcon("Background.png");
     private int score;
+
+    /**
+     *
+     * @param x posición en x del mapa
+     * @param y posición en y del mapa
+     * @param width ancho del mapa
+     * @param height altura del mapa
+     * @param type tipo de caballero que sera utilizado.
+     * @param nivel nivel o mapa que sera jugado.
+     */
     public Dungeon(int x, int y, int width, int height, String type, String nivel) {
         super(x, y, width, height, new Color(186, 222, 248  ));
         arthur = createKnight(40, 40, type);
@@ -48,6 +60,10 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         //createWeaponThreads();
     }
 
+    /**
+     *
+     * @param drawable
+     */
     public void setDrawable(Drawable drawable) {
         this.drawable = drawable;
     }
@@ -57,6 +73,13 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         this.creatures = lector.leerMonstruos();
     }
     
+    /**
+     * Crea un caballero dependiendo del tipo de knight del mapa.
+     * @param x posicion en  x de la creacion del caballero.
+     * @param y posicion en y de la creacion del caballero.
+     * @param type tipo de caballero a crear.
+     * @return caballero creado.
+     */
     public LivingBeing createKnight (int x, int y, String type){
         LivingBeing knight = null;
         if (type.equals("Assasin")){
@@ -86,6 +109,11 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         knight.setDungeon(this);
         return knight;
     }
+
+    /**
+     * Dibuja el mapa o Dungeon en la ventana.
+     * @param g 
+     */
     @Override
     public void draw(Graphics g) {
         fondo.paintIcon(null, g, x, y);
@@ -126,6 +154,10 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         }
     }
     
+    /**
+     * Dibuja el score que lleva el personaje en el nivel.
+     * @param g
+     */
     public void drawScore(Graphics g){
         int[] pos = {580, 770};
         String scoreToString = Integer.toString(score);
@@ -137,6 +169,10 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         }
     }
 
+    /**
+     *  
+     * @param key
+     */
     public void actKnight(int key){
         if(key == KeyEvent.VK_W |
            key == KeyEvent.VK_S |
@@ -147,15 +183,28 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
             getDrawable().redraw(); // TODO
         }
     }
+
+    /**
+     * Redibuja el mapa
+     */
     @Override
     public void redraw() {
       
     
     }
     
+    /**
+     * Da valor al score.
+     */
     public void setScore(){
         score = score - 1;
     }
+
+    /**
+     * Verifica si es valido el movimiento de un sprite.
+     * @param sprite
+     * @return
+     */
     @Override
     public boolean isValid(Sprite sprite) {
         if(sprite.getX() < this.getX() |
@@ -167,6 +216,10 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         return true;
     }
     
+    /**
+     * Elimina una creatura que ha sido vencida.
+     * @param index
+     */
     public void eliminarCreature(int index){
         this.getCreatures().remove(index);
     }
@@ -215,13 +268,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
 
         return false;
     }
-    private void createWeaponThreads() {
-    for (LivingBeing creature : creatures) {
-        if (creature instanceof Dragon || creature instanceof Magician || creature instanceof Archer) {
-            ShootThread thread = new ShootThread(creature, creatures);
-            thread.start();
-        }
-    }
+   
 }
 
-}
+

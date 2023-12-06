@@ -8,7 +8,9 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author User
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
+ * @version 1.0.1
  */
 public class CharacterSelection extends javax.swing.JFrame {
 
@@ -18,6 +20,9 @@ public class CharacterSelection extends javax.swing.JFrame {
     private String knight = null;
     private String level = null; 
     
+    /**
+     *
+     */
     public CharacterSelection() {
         initComponents();
     }

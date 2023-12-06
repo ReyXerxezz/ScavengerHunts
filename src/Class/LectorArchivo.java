@@ -17,15 +17,25 @@ import java.util.ArrayList;
 
 /**
  *
- * @author User
+ *@author Santiago Jiménez
+ * @author Daniel Felipe Lopez
+ * @version 1.0.1
  */
 public class LectorArchivo {
     private final String output;
 
+    /**
+     * Ruta del archivo a leer.
+     * @param output
+     */
     public LectorArchivo(String output) {
         this.output = output;
     }
     
+    /**
+     * Lee el archivo del mapa y genera un arreglo de muros para dibujar en el mapa.
+     * @return Arreglo de muros del mapa.
+     */
     public ArrayList<Wall> leerMapa() {
         ArrayList<Wall> objetos = new ArrayList<>();
         int fila = 0;
@@ -53,6 +63,10 @@ public class LectorArchivo {
         return objetos;
     }
     
+    /**
+     * Lee el archivo del mapa y genera un arreglo de monstruos leídos en el archivo.
+     * @return Arreglo de monstruos que están en el mapa.
+     */
     public ArrayList<LivingBeing> leerMonstruos() {
     ArrayList<LivingBeing> monstruos = new ArrayList<>();
     int fila = 0;

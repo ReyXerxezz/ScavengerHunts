@@ -15,29 +15,57 @@ import javax.swing.ImageIcon;
  * @author User
  */
 public class Demon extends LivingBeing{
+
+    /**
+     *
+     */
     public static final int WIDTH = 30;
+
+    /**
+     *
+     */
     public static final int HEIGHT = 27;
     
+    /**
+     *
+     * @param x
+     * @param y
+     */
     public Demon(int x, int y) {
         super(x, y, WIDTH, HEIGHT, 650, 45, 10, 3, new ImageIcon("Demon.png"));
     }
 
+    /**
+     *
+     */
     @Override
     public void attack() {
         super.attack(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
     }
     
-
+    /**
+     *
+     * @return
+     */
     @Override
     public int getHeight() {
         return HEIGHT;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getWidth() {
         return WIDTH;
     }
 
+    /**
+     *
+     * @param sprite
+     * @return
+     */
     @Override
     public boolean isValid(Sprite sprite) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

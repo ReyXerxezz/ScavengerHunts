@@ -20,6 +20,13 @@ public class Arrow extends Weapon {
     private int arrowDamage;
     private Dungeon dungeon;
     
+    /**
+     *
+     * @param x
+     * @param y
+     * @param arrowSpeed
+     * @param arrowDamage
+     */
     public Arrow(int x, int y, int arrowSpeed, int arrowDamage) {
         super(x, y, 22, 12, null, null, null);
         this.arrowSpeed = arrowSpeed;
@@ -28,7 +35,10 @@ public class Arrow extends Weapon {
         this.image = new ImageIcon("Arrow.png");
     }
     
-    
+    /**
+     *
+     * @param targets
+     */
     public void move(ArrayList<LivingBeing> targets) {
         // Mueve la flecha
         super.move();
@@ -58,12 +68,19 @@ public class Arrow extends Weapon {
     }
 }
 
+    /**
+     *
+     */
     @Override
     public void redraw() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
  
     }
 
+    /**
+     *
+     * @param direction
+     */
     @Override
     public void setDirection(int direction) {
         super.setDirection(direction);

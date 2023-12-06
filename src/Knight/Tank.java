@@ -14,10 +14,20 @@ import javax.swing.ImageIcon;
  */
 public class Tank extends LivingBeing{
     
+    /**
+     *
+     * @param x
+     * @param y
+     */
     public Tank(int x, int y) {
         super(x, y, 20, 30, 150, 32, 15, 3,new ImageIcon("TankCharacter1.png"));
     }
 
+    /**
+     *
+     * @param sprite
+     * @return
+     */
     @Override
     public boolean isValid(Sprite sprite) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody

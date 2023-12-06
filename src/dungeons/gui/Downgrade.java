@@ -12,6 +12,8 @@ public class Downgrade extends javax.swing.JDialog {
 
     /**
      * Creates new form Downgrade
+     * @param parent
+     * @param modal
      */
     public Downgrade(java.awt.Frame parent, boolean modal) {
         super(parent, modal);

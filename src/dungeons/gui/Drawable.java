@@ -10,5 +10,9 @@ package dungeons.gui;
  * @author educacion
  */
 public interface Drawable {
+
+    /**
+     *
+     */
     public void redraw();
 }

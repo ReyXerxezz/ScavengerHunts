@@ -6,7 +6,6 @@ package Knight;
 
 import Class.Arrow;
 import Class.LivingBeing;
-import Class.ShootThread;
 import Class.Sprite;
 import java.awt.Graphics;
 import java.util.ArrayList;
@@ -14,17 +13,25 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author Santiago Jimenez
+ * @author Santiago Jiménez
  * @author Daniel Felipe Lopez
+ * @version 1.0.1
  */
 public class Archer extends LivingBeing {
     private ArrayList<Arrow> arrows = new ArrayList<>();
     
-
+    /**
+     *
+     * @param x
+     * @param y
+     */
     public Archer(int x, int y) {
         super(x, y, 23, 28, 25, 40, 125, 10, new ImageIcon("ArcherCharacter.png"));
     }
 
+    /**
+     *
+     */
     @Override
      public void attack() {
         // Crea una flecha y establece su posición inicial
@@ -49,11 +56,20 @@ public class Archer extends LivingBeing {
         
     }
 
+    /**
+     *
+     * @param sprite
+     * @return
+     */
     @Override
     public boolean isValid(Sprite sprite) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public int getDirection() {
         return super.getDirection(); 

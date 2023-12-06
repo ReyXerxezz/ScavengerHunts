@@ -19,6 +19,7 @@ public class PlayerSoundPrincipal extends PlayerSound implements Runnable{
      * Carga el sonido principal y abre el clip para su reproducción.
      *
      * @param name El nombre del archivo de sonido a cargar.
+     * @throws java.io.IOException
      */
     public PlayerSoundPrincipal(String name) throws IOException {
         super(name);

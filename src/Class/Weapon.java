@@ -10,8 +10,10 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author santi
+ * Arma que posee un personaje del juego.
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
+ * @version 1.0.1
  */
 public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
     private int direction; // Nueva propiedad para almacenar la dirección de movimiento
@@ -21,18 +23,37 @@ public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
     private LivingBeing shooter;
     ImageIcon image;
     
+    /**
+     * Constructor de la clase Weapon.
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     * @param color
+     * @param dungeon
+     * @param image
+     */
     public Weapon(int x, int y, int width, int height, Color color, Dungeon dungeon, ImageIcon image) {
         super(x, y, width, height, color);
         this.direction = 0;
         this.expired = false;
         this.dungeon = dungeon;
     }
+
+    /**
+     *
+     * @param direction
+     */
     public void setDirection(int direction) {
         this.direction = direction;
     }
     @Override
     public void draw(Graphics g) {
     }
+
+    /**
+     * Genera el movimiento de un arma para el ataque.
+     */
     public void move() {
         // Mover la fireball en la dirección especificada
         switch (direction) {
@@ -55,6 +76,12 @@ public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
             // Puedes agregar más casos según sea necesario
         }
     }
+
+    /**
+     * Detecta la colisión de el arma con un muro o un monstruo.
+     * @param target monstruo alcanzado por el Weapon.
+     * @return Booleano que indica si hay colisióno no.
+     */
     public boolean checkCollision(LivingBeing target) {
         // Check for collisions with walls
         for (Wall wall : dungeon.getMuros()) {
@@ -73,6 +100,11 @@ public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
         }
         return false;
     }
+
+    /**
+     *
+     * @return
+     */
     public boolean isExpired() {
     return expired;
     }

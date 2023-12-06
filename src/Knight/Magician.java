@@ -12,20 +12,36 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author User
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
+ * @version 1.0.1
  */
 public class Magician extends LivingBeing{
     private ArrayList<Fireball> fireballs = new ArrayList<>();
     
+    /**
+     *
+     * @param x
+     * @param y
+     */
     public Magician(int x, int y) {
         super(x, y, 16, 29, 15, 80, 100, 5, new ImageIcon("MagicianCharacter.png"));
     }
     
+    /**
+     *
+     * @param sprite
+     */
     public void attack(Sprite sprite) {
         Fireball fireball = new Fireball(x, y);
         fireballs.add(fireball);
     }
 
+    /**
+     *
+     * @param sprite
+     * @return
+     */
     @Override
     public boolean isValid(Sprite sprite) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
