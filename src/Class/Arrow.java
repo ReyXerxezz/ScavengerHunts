@@ -4,6 +4,7 @@
  */
 package Class;
 
+import Creature.Monster;
 import dungeons.gui.Drawable;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -29,7 +30,7 @@ public class Arrow extends Weapon {
     }
     
     
-    public void move(ArrayList<LivingBeing> targets) {
+    public void move(ArrayList<Monster> targets) {
         // Mueve la flecha
         super.move();
 
@@ -57,12 +58,6 @@ public class Arrow extends Weapon {
         g.fillRect(x, y, width, height);
     }
 }
-
-    @Override
-    public void redraw() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
- 
-    }
 
     @Override
     public void setDirection(int direction) {

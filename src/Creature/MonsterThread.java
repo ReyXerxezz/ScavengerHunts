@@ -9,9 +9,9 @@ import java.util.concurrent.TimeUnit;
 public class MonsterThread extends Thread {
 
     private final Dungeon dungeon;
-    private final LivingBeing monster;
+    private final Monster monster;
 
-    public MonsterThread(Dungeon dungeon, LivingBeing monster) {
+    public MonsterThread(Dungeon dungeon, Monster monster) {
         this.dungeon = dungeon;
         this.monster = monster;
     }
@@ -34,7 +34,7 @@ public class MonsterThread extends Thread {
     /**
      * @return the monster
      */
-    public LivingBeing getMonster() {
+    public Monster getMonster() {
         return monster;
     }
     

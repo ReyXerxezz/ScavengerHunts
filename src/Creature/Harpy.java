@@ -4,19 +4,18 @@
  */
 package Creature;
 
-import Class.LivingBeing;
-import Class.Sprite;
+import Class.Dungeon;
 import javax.swing.ImageIcon;
 
 /**
  *
  * @author User
  */
-public class Harpy extends LivingBeing{
+public class Harpy extends Monster{
     public static final int WIDTH = 28;
     public static final int HEIGHT = 28;
-    public Harpy(int x, int y) {
-        super(x, y, WIDTH, HEIGHT, 500, 80, 12, 4, new ImageIcon("Harpy.png"));
+    public Harpy(int x, int y, Dungeon dungeon) {
+        super(x, y, WIDTH, HEIGHT, 500, 15, 12, 4, new ImageIcon("Harpy.png"), dungeon);
     }
 
     @Override
@@ -32,10 +31,5 @@ public class Harpy extends LivingBeing{
     @Override
     public int getWidth() {
         return WIDTH;
-    }
-
-    @Override
-    public boolean isValid(Sprite sprite) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

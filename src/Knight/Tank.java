@@ -4,23 +4,16 @@
  */
 package Knight;
 
-import Class.LivingBeing;
-import Class.Sprite;
+import Class.Dungeon;
 import javax.swing.ImageIcon;
 
 /**
  *
  * @author User
  */
-public class Tank extends LivingBeing{
+public class Tank extends Knight{
     
-    public Tank(int x, int y) {
-        super(x, y, 20, 30, 150, 32, 15, 3,new ImageIcon("TankCharacter1.png"));
+    public Tank(int x, int y, Dungeon dungeon) {
+        super(x, y, 20, 30, 150, 32, 15, 3,new ImageIcon("TankCharacter1.png"), dungeon);
     }
-
-    @Override
-    public boolean isValid(Sprite sprite) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
 }

@@ -4,6 +4,7 @@
  */
 package Knight;
 
+import Class.Dungeon;
 import Class.Fireball;
 import Class.LivingBeing;
 import Class.Sprite;
@@ -14,20 +15,15 @@ import javax.swing.ImageIcon;
  *
  * @author User
  */
-public class Magician extends LivingBeing{
+public class Magician extends Knight{
     private ArrayList<Fireball> fireballs = new ArrayList<>();
     
-    public Magician(int x, int y) {
-        super(x, y, 16, 29, 15, 80, 100, 5, new ImageIcon("MagicianCharacter.png"));
+    public Magician(int x, int y, Dungeon dungeon) {
+        super(x, y, 16, 29, 15, 80, 100, 5, new ImageIcon("MagicianCharacter.png"), dungeon);
     }
     
     public void attack(Sprite sprite) {
         Fireball fireball = new Fireball(x, y);
         fireballs.add(fireball);
-    }
-
-    @Override
-    public boolean isValid(Sprite sprite) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

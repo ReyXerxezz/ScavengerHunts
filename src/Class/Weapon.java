@@ -4,6 +4,7 @@
  */
 package Class;
 
+import Knight.Knight;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -13,7 +14,7 @@ import javax.swing.ImageIcon;
  *
  * @author santi
  */
-public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
+public abstract class Weapon extends Sprite{
     private int direction; // Nueva propiedad para almacenar la dirección de movimiento
     private boolean expired;
     private Dungeon dungeon;
@@ -38,24 +39,20 @@ public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
         switch (direction) {
             case KeyEvent.VK_W:
                 y -= 5;
-                shooter.redraw();
                 break;
             case KeyEvent.VK_S:
                 y += 5;
-                shooter.redraw();
                 break;
             case KeyEvent.VK_A:
                 x -= 5;
-                shooter.redraw();
                 break;
             case KeyEvent.VK_D:
                 x += 5;
-                shooter.redraw();
                 break;
             // Puedes agregar más casos según sea necesario
         }
     }
-    public boolean checkCollision(LivingBeing target) {
+    public boolean checkCollision(Knight target) {
         // Check for collisions with walls
         for (Wall wall : dungeon.getMuros()) {
             if (wall.checkCollision(this)) {

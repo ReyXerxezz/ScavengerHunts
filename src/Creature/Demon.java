@@ -4,22 +4,20 @@
  */
 package Creature;
 
-import Class.LivingBeing;
+import Class.Dungeon;
 import Class.Sprite;
-import static Creature.Basilisk.HEIGHT;
-import static Creature.Basilisk.WIDTH;
 import javax.swing.ImageIcon;
 
 /**
  *
  * @author User
  */
-public class Demon extends LivingBeing{
+public class Demon extends Monster{
     public static final int WIDTH = 30;
     public static final int HEIGHT = 27;
     
-    public Demon(int x, int y) {
-        super(x, y, WIDTH, HEIGHT, 650, 45, 10, 3, new ImageIcon("Demon.png"));
+    public Demon(int x, int y, Dungeon dungeon) {
+        super(x, y, WIDTH, HEIGHT, 650, 10, 10, 3, new ImageIcon("Demon.png"), dungeon);
     }
 
     @Override
@@ -36,10 +34,5 @@ public class Demon extends LivingBeing{
     @Override
     public int getWidth() {
         return WIDTH;
-    }
-
-    @Override
-    public boolean isValid(Sprite sprite) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

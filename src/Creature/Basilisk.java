@@ -4,7 +4,7 @@
  */
 package Creature;
 
-import Class.LivingBeing;
+import Class.Dungeon;
 import Class.Sprite;
 import javax.swing.ImageIcon;
 
@@ -12,11 +12,11 @@ import javax.swing.ImageIcon;
  *
  * @author User
  */
-public class Basilisk extends LivingBeing{
+public class Basilisk extends Monster{
     public static final int WIDTH = 30;
     public static final int HEIGHT = 27;
-    public Basilisk(int x, int y) {
-        super(x, y, WIDTH, HEIGHT, 600, 40, 10, 2, new ImageIcon("Basilisk.png"));
+    public Basilisk(int x, int y, Dungeon dungeon) {
+        super(x, y, WIDTH, HEIGHT, 600, 5, 10, 2, new ImageIcon("Basilisk.png"), dungeon);
     }
 
     @Override
@@ -33,10 +33,4 @@ public class Basilisk extends LivingBeing{
     public int getWidth() {
         return WIDTH;
     }
-
-    @Override
-    public boolean isValid(Sprite sprite) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
 }

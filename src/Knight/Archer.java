@@ -5,9 +5,11 @@
 package Knight;
 
 import Class.Arrow;
+import Class.Dungeon;
 import Class.LivingBeing;
 import Class.ShootThread;
 import Class.Sprite;
+import Creature.Monster;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -17,23 +19,22 @@ import javax.swing.ImageIcon;
  * @author Santiago Jimenez
  * @author Daniel Felipe Lopez
  */
-public class Archer extends LivingBeing {
+public class Archer extends Knight {
     private ArrayList<Arrow> arrows = new ArrayList<>();
     
 
-    public Archer(int x, int y) {
-        super(x, y, 23, 28, 25, 40, 125, 10, new ImageIcon("ArcherCharacter.png"));
+    public Archer(int x, int y, Dungeon dungeon) {
+        super(x, y, 23, 28, 25, 40, 125, 10, new ImageIcon("ArcherCharacter.png"), dungeon);
     }
-
-    @Override
-     public void attack() {
+    
+    public void attack(ArrayList<Monster> targets) {
         // Crea una flecha y establece su posición inicial
         Arrow arrow = new Arrow(this.getX(), this.getY(), 5, this.getDamage());
         arrow.setShooter(this);
         
         // Ciclo para mover la flecha hasta que alcance su rango
         for (int i = 0; i < this.getRange(); i++) {
-            arrow.move(this.getTargets()); // Actualiza la posición de la flecha
+            arrow.move(targets); // Actualiza la posición de la flecha
             // Lógica para verificar colisiones con criaturas o muros si es necesario
             // (similar a la lógica que ya tienes para verificar colisiones en tu código)
             
@@ -48,12 +49,7 @@ public class Archer extends LivingBeing {
         // Dibuja las flechas
         
     }
-
-    @Override
-    public boolean isValid(Sprite sprite) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
+    
     @Override
     public int getAtaqueDireccion() {
         return super.getAtaqueDireccion(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody

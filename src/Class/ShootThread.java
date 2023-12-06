@@ -5,6 +5,7 @@
 package Class;
 
 import Creature.Dragon;
+import Creature.Monster;
 import Knight.Archer;
 import Knight.Magician;
 import java.util.ArrayList;
@@ -16,9 +17,9 @@ import java.util.ArrayList;
 public class ShootThread extends Thread {
 
     private LivingBeing shooter; // The LivingBeing that is shooting
-    private ArrayList<LivingBeing> targets; // The list of targets that the projectiles can hit
+    private ArrayList<Monster> targets; // The list of targets that the projectiles can hit
 
-    public ShootThread(LivingBeing shooter, ArrayList<LivingBeing> targets) {
+    public ShootThread(LivingBeing shooter, ArrayList<Monster> targets) {
         this.shooter = shooter;
         this.targets = targets;
     }
@@ -32,8 +33,6 @@ public class ShootThread extends Thread {
             // Move the projectile until it hits a target or disappears
             while (!projectile.isExpired()) {
                 projectile.move();
-                shooter.redraw();
-
                 // Check for collisions with targets
                 for (LivingBeing target : targets) {
                     if (projectile.checkCollision(target)) {
