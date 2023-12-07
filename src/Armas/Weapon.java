@@ -27,7 +27,7 @@ public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
     private int damage;
     private LivingBeing shooter;
     private String path;
-    
+    private boolean inRange;
     /**
      * Constructor de la clase Weapon.
      * @param x
@@ -44,8 +44,15 @@ public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
         this.expired = false;
         this.dungeon = dungeon;
         this.path = path;
+        inRange = true;
     }
 
+    public Weapon() {
+        super(0, 0, 0, 0, null);
+    }
+    
+     
+    
     /**
      *
      * @param direction
@@ -122,6 +129,16 @@ public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
         return path;
     }
     
+    /**
+     * @return the inRange
+     */
+    public boolean isInRange() {
+        return inRange;
+    }
+
+    public void move(int i) {
+        
+    }
     
 }
 

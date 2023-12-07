@@ -4,10 +4,14 @@
  */
 package Knight;
 
+import Armas.Acha;
+import Armas.Fireball;
 import Class.Dungeon;
 import Armas.Fireball;
 import Class.LivingBeing;
 import Class.Sprite;
+import Creature.Monster;
+import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
@@ -31,13 +35,76 @@ public class Magician extends Knight{
         super(x, y, 16, 29, 80, 80, 100, 5, new ImageIcon("MagicianCharacter.png"), dungeon);
     }
     
-    /**
-     *
-     * @param sprite
-     */
-    public void attack(Sprite sprite) {
-        Fireball fireball = new Fireball(x, y, getDungeon(), "Fireball.png");
-        fireballs.add(fireball);
+    public void attackArthur(ArrayList<Monster> creatures) {
+    int ataque = -1;
+    
+    Fireball fireball = null;
+    switch (getAtaqueDireccion()) {
+      case 0 -> {
+        fireball = new Fireball(x+(width/2),(y-17),getDungeon(), "fireball.png");
+        while (fireball.isInRange()) {
+          fireball.move(0);
+          System.out.println(fireball.getX()+fireball.getY());
+          dungeon.redraw();
+          ataque = verificarAtaque(creatures, fireball);
+          if (ataque != -1){
+            getDungeon().quitarVidaCreature(ataque, getDamage());
+            break;
+          }
+        }
+      }
+      case 1 -> {
+        fireball = new Fireball(x+(width/2), (y+height),getDungeon(), "fireball.png");
+        while (fireball.isInRange()) {
+          fireball.move(1);
+          System.out.println(fireball.getX()+fireball.getY());
+          dungeon.redraw();
+          ataque = verificarAtaque(creatures, fireball);
+          if (ataque != -1){
+            getDungeon().quitarVidaCreature(ataque, getDamage());
+            break;
+          }
+        }
+      }
+      case 2 -> {
+        fireball = new Fireball((x-9), y+(height/2), getDungeon(), "fireball.png");
+        while (fireball.isInRange()) {
+          fireball.move(2);
+          System.out.println(fireball.getX()+fireball.getY());
+          dungeon.redraw();
+          ataque = verificarAtaque(creatures, fireball);
+          if (ataque != -1){
+            getDungeon().quitarVidaCreature(ataque, getDamage());
+            break;
+          }
+        }
+      }
+      case 3 -> {
+        fireball = new Fireball((x+width), y+(height/2), getDungeon(), "fireball.png");
+        while (fireball.isInRange()) {
+          fireball.move(3);
+            System.out.println(fireball.getX()+fireball.getY());
+          dungeon.redraw();
+          ataque = verificarAtaque(creatures, fireball);
+          if (ataque != -1){
+            getDungeon().quitarVidaCreature(ataque, getDamage());
+            break;
+          }
+        }
+      }
+      default -> {
+      }
     }
+    fireballs.add(fireball);
+  }
+    @Override
+    public void draw(Graphics g) {
+        super.draw(g);
+        for (Fireball fireball : fireballs) {
+            fireball.draw(g);
+        }
+    }
+
+
 
 }

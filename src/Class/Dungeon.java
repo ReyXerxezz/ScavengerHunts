@@ -43,6 +43,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     private ImageIcon fondo = new ImageIcon("Background.png");
     private int score;
     private boolean active;
+    private int llamado;
 
     /**
      *
@@ -62,6 +63,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         score = 1200;
         mapearDungeon();
         active = true;
+        llamado = 0;
     }
 
     /**
@@ -118,17 +120,18 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         fondo.paintIcon(null, g, x, y);
 
         arthur.draw(g);
+        
         for (Wall muro : getMuros()){
             g.setColor(muro.getColor());
             g.fillRect(muro.getX(), muro.getY(), muro.getWidth(), muro.getHeight());
             muro.draw(g);
             if (arthur.getSword() != null){
-                System.out.println("Espada");
                 arthur.getSword().draw(g);
             }
         }
         for (Monster monstruo : getCreatures()) {
             monstruo.draw(g);
+           
             if (!monsterThreadIsRunning(monstruo)) {
                 monstruo.setDungeon(this);
                 MonsterThread thread = new MonsterThread(this, monstruo);
@@ -148,14 +151,16 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     }
     
     private void drawLife(Graphics g){
-        int[] pos = {10, 770};
-        String lifeToString = Integer.toString(arthur.getHealth());
-
-        for (int i = 0; i < lifeToString.length(); i++) {
-            int digit = Integer.parseInt(lifeToString.substring(i, i + 1));
-            g.drawImage(Assets.numbers(digit), pos[0], pos[1], null);
-            pos[0] = pos[0] + 20;
+        if (arthur.getHealth() > 0){
+            int[] pos = {10, 770};
+            String lifeToString = Integer.toString(arthur.getHealth());
+            for (int i = 0; i < lifeToString.length(); i++) {
+                int digit = Integer.parseInt(lifeToString.substring(i, i + 1));
+                g.drawImage(Assets.numbers(digit), pos[0], pos[1], null);
+                pos[0] = pos[0] + 20;
+            }  
         }
+        verificarPerder(llamado);
     }
     
     /**
@@ -163,13 +168,18 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
      * @param g
      */
     public void drawScore(Graphics g){
-        int[] pos = {580, 770};
-        String scoreToString = Integer.toString(score);
+        if (score >= 0){
+            int[] pos = {580, 770};
+            String scoreToString = Integer.toString(score);
 
-        for (int i = 0; i < scoreToString.length(); i++) {
-            int digit = Integer.parseInt(scoreToString.substring(i, i + 1));
-            g.drawImage(Assets.numbers(digit), pos[0], pos[1], null);
-            pos[0] = pos[0] + 20;
+            for (int i = 0; i < scoreToString.length(); i++) {
+                int digit = Integer.parseInt(scoreToString.substring(i, i + 1));
+                g.drawImage(Assets.numbers(digit), pos[0], pos[1], null);
+                pos[0] = pos[0] + 20;
+            }
+        } else {
+            llamado += 1;
+            verificarPerder(llamado);
         }
     }
 
@@ -177,7 +187,10 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
      *  
      * @param key
      */
-    public void actKnight(int key){
+    
+
+
+public void actKnight(int key){
         if(key == KeyEvent.VK_W |
            key == KeyEvent.VK_S |
            key == KeyEvent.VK_A | 
@@ -185,23 +198,21 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
            key == KeyEvent.VK_SPACE)       
         {
             getArthur().actionHandle(key, getMuros(), getCreatures());
-            verificarPerder();
             getDrawable().redraw(); // TODO
         }
     }
     
-    public void verificarPerder(){
-        if (this.arthur.getHealth() <= 0) {
+    public void verificarPerder(int llamado){
+        if (arthur.getHealth() <= 0 || score <= 0 && llamado == 1) {
             GameOver go = new GameOver(null, true);
             go.setVisible(true);
             this.score = 0;
             this.active = false;
-            
         }
     }
     
-    public void verificarVictoria(){
-        if(this.creatures.size() == 0){
+    public void verificarVictoria(int llamado){
+        if(this.creatures.isEmpty() && llamado == 1){
             LevelCompleted lc = new LevelCompleted(null, true);
             lc.setVisible(true);
             this.active = false;
@@ -251,7 +262,6 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
                 monstruo.quitarVida(daño);
                 if (monstruo.getHealth() <= 0){
                     eliminarCreature(index);
-                    verificarVictoria();
                 }
             }
         }
@@ -285,7 +295,13 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
      * @return the creatures
      */
     public ArrayList<Monster> getCreatures() {
-        return creatures;
+        if (!creatures.isEmpty()){
+            return creatures;
+        } else {
+            llamado+=1;
+            verificarVictoria(llamado);
+        }
+        return null;
     }
     
     private boolean monsterThreadIsRunning(LivingBeing monstruo) {
@@ -313,5 +329,3 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     }
    
 }
-
-

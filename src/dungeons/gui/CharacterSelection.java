@@ -257,7 +257,7 @@ public class CharacterSelection extends javax.swing.JFrame {
         ImageIcon nuevaImagen = new ImageIcon("Barbarian.png");
         jLabel1.setIcon(nuevaImagen);
         jknight.setText("Barbarian");
-        // jTextArea1.append();
+        //jTextArea1.append();
         setKnight(jknight.getText());
     }//GEN-LAST:event_barbarianActionPerformed
 
@@ -295,12 +295,7 @@ public class CharacterSelection extends javax.swing.JFrame {
         Game gameMap = new Game(map);
         map.setDrawable(gameMap);
         gameMap.setSize(700, 800);
-         if(map.isActive()) {            
-           gameMap.setVisible(true); 
-        }
-         else{
-             gameMap.setVisible(false);
-         }
+        gameMap.setVisible(true); 
         try {
             PlayerSoundPrincipal player = new PlayerSoundPrincipal("Medievalmusic.wav");
             new Thread(player).start();

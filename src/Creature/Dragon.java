@@ -32,6 +32,7 @@ public class Dragon extends Monster{
      *
      * @param x
      * @param y
+     * @param dungeon
      */
     
     public Dragon(int x, int y, Dungeon dungeon) {

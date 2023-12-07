@@ -32,7 +32,7 @@ public class Knight extends LivingBeing{
     private int range;
     private int speed;
     private ImageIcon image;
-    private Dungeon dungeon;
+    Dungeon dungeon;
     private int ataqueDireccion;
     Weapon sword;
     
@@ -56,7 +56,6 @@ public class Knight extends LivingBeing{
             move(key, muros, creatures);
         }
         else if(key == KeyEvent.VK_SPACE){
-            System.out.println("Ataque");
             attackArthur(creatures);
         }
     }
@@ -161,7 +160,7 @@ public class Knight extends LivingBeing{
         
     }
     
-    public int verificarAtaque(ArrayList<Monster> creatures, Espada espada){
+    public int verificarAtaque(ArrayList<Monster> creatures, Weapon espada){
         return 0;
     }
 
