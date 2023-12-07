@@ -27,6 +27,7 @@ public class Game
     public Game(Dungeon map) {
         initComponents();
         this.map = map;
+        this.setVisible(true); 
         Timer timer = new Timer(true);
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -132,11 +133,11 @@ public class Game
     }// </editor-fold>//GEN-END:initComponents
 
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
-        if(evt.getKeyCode() == KeyEvent.VK_Q){
+        if (map.isActive() == false){
             MenuPrincipal menu = new MenuPrincipal();
             menu.setSize(587, 492);
             menu.setVisible(true);
-            this.setVisible(false);
+            this.setVisible(false); 
         }
         map.actKnight(evt.getKeyCode());
     }//GEN-LAST:event_formKeyPressed

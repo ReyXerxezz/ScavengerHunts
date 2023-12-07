@@ -9,6 +9,7 @@ import Class.Dungeon;
 import Armas.Espada;
 import Class.LivingBeing;
 import Class.Wall;
+import Knight.Knight;
 import dungeons.gui.Drawable;
 import java.awt.Color;
 import java.util.ArrayList;
@@ -47,7 +48,7 @@ public class Monster extends LivingBeing{
         turnCounter = 0;
     }
     
-    public void moveCreature(Dungeon dungeon, ArrayList<Wall> muros, ArrayList<Monster> creatures, LivingBeing arthur) {
+    public void moveCreature(Dungeon dungeon, ArrayList<Wall> muros, ArrayList<Monster> creatures, Knight arthur) {
         int xOriginal = x;
         int yOriginal = y;
 
@@ -101,7 +102,7 @@ public class Monster extends LivingBeing{
         turnCounter++;
     }
     
-    public int verificarMove(ArrayList<Wall> muros, ArrayList<Monster> creatures, LivingBeing arthur) {
+    public int verificarMove(ArrayList<Wall> muros, ArrayList<Monster> creatures, Knight arthur) {
         for (Wall muro : muros) {
             if (this.checkCollision(muro)) {
                 return -1;
@@ -114,6 +115,9 @@ public class Monster extends LivingBeing{
         }
         if (this.checkCollision(arthur)) {
             return 0;
+        }
+        if (this.checkCollision(arthur.getSword())){
+            return -1;
         }
 
         return 1;

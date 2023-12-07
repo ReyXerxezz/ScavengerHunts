@@ -56,7 +56,6 @@ public class Knight extends LivingBeing{
             move(key, muros, creatures);
         }
         else if(key == KeyEvent.VK_SPACE){
-            System.out.println("Ataque");
             attackArthur(creatures);
         }
     }

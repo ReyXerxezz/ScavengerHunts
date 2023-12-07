@@ -31,7 +31,6 @@ public class SwordMan extends Knight{
     @Override
     public void attackArthur(ArrayList<Monster> creatures) {
         int ataque = -1;
-        System.out.println("Espada1");
         switch (getAtaqueDireccion()) {
             case 0 -> {
                 sword = new Espada(x+(width/2),(y-17), 9, 17, getDungeon(), "Sword.png");
