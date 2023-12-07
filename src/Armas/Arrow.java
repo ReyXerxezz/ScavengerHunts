@@ -3,8 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Class;
+package Armas;
 
+import Armas.Weapon;
+import Class.Dungeon;
+import Class.LivingBeing;
 import dungeons.gui.Drawable;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -20,6 +23,7 @@ public class Arrow extends Weapon {
     private int arrowSpeed;
     private int arrowDamage;
     private Dungeon dungeon;
+    private ImageIcon image;
     
     /**
      *
@@ -28,12 +32,12 @@ public class Arrow extends Weapon {
      * @param arrowSpeed
      * @param arrowDamage
      */
-    public Arrow(int x, int y, int arrowSpeed, int arrowDamage) {
-        super(x, y, 22, 12, null, null, null);
+    public Arrow(int x, int y, Dungeon dungeon) {
+        super(x, y, 22, 12, Color.BLACK, dungeon, "Arrow.png");
         this.arrowSpeed = arrowSpeed;
         this.arrowDamage = arrowDamage;
         this.setDirection(0);
-        this.image = new ImageIcon("Arrow.png");
+        this.image = new ImageIcon(getPath());
     }
     
     /**
@@ -53,54 +57,11 @@ public class Arrow extends Weapon {
             }
         }
     }
-    
 
-    
-
-    // Aquí puedes agregar métodos para mover la flecha, detectar colisiones, etc.
-
-    @Override
-    public void draw(Graphics g) {
-        if (image != null) {
-        g.drawImage(image.getImage(), x, y,null);
-    } else {
-        g.setColor(color);
-        g.fillRect(x, y, width, height);
-    }
-}
-
-    /**
-     *
-     */
     @Override
     public void redraw() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
- 
     }
-
-    /**
-     *
-     * @param direction
-     */
-    @Override
-    public void setDirection(int direction) {
-        super.setDirection(direction);
-    }
-
-    /**
-     * @return the dungeon
-     */
-    public Dungeon getDungeon() {
-        return dungeon;
-    }
-
-    /**
-     * @param dungeon the dungeon to set
-     */
-    public void setDungeon(Dungeon dungeon) {
-        this.dungeon = dungeon;
-    }
-    
 }
 
 

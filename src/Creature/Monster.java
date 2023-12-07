@@ -6,7 +6,7 @@ package Creature;
 
 import Class.Boundable;
 import Class.Dungeon;
-import Class.Espada;
+import Armas.Espada;
 import Class.LivingBeing;
 import Class.Wall;
 import dungeons.gui.Drawable;
@@ -25,7 +25,7 @@ public class Monster extends LivingBeing{
     private int range;
     private int speed;
     private ImageIcon image;
-    private Dungeon dungeon;
+    public Dungeon dungeon;
     private boolean yUpMove;
     private boolean yDoMove;
     private boolean xRiMove;
@@ -143,5 +143,6 @@ public class Monster extends LivingBeing{
                 break;
         }
     }
+    
     
 }
