@@ -64,17 +64,13 @@ public class LectorArchivo {
         return objetos;
     }
     
-<<<<<<< HEAD
     /**
      * Lee el archivo del mapa y genera un arreglo de monstruos leídos en el archivo.
      * @return Arreglo de monstruos que están en el mapa.
      */
-    public ArrayList<LivingBeing> leerMonstruos() {
-    ArrayList<LivingBeing> monstruos = new ArrayList<>();
-=======
+    
     public ArrayList<Monster> leerMonstruos(Dungeon dungeon) {
     ArrayList<Monster> monstruos = new ArrayList<>();
->>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     int fila = 0;
     
     // Leer el archivo de texto

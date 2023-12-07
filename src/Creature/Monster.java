@@ -33,7 +33,7 @@ public class Monster extends LivingBeing{
     private int turnCounter;
     
     public Monster(int x, int y, int width, int height, int health, int damage, int range, int speed ,ImageIcon image, Dungeon dungeon) {
-        super(x, y, width, height, health, damage, range, speed, null, dungeon);
+        super(x, y, width, height, health, damage, range, speed, image, dungeon);
         this.health = health;
         this.damage = damage;
         this.range = range;

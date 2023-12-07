@@ -12,34 +12,26 @@ import javax.swing.ImageIcon;
  *
  * @author User
  */
-<<<<<<< HEAD
-public class Basilisk extends LivingBeing{
 
-    /**
-     * Ancho del objeto basilisk.
-     */
-=======
+
 public class Basilisk extends Monster{
->>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
+
     public static final int WIDTH = 30;
 
     /**
      * Alto del objeto basilisk.
      */
     public static final int HEIGHT = 27;
-<<<<<<< HEAD
+
 
     /**
      *
      * @param x
      * @param y
      */
-    public Basilisk(int x, int y) {
-        super(x, y, WIDTH, HEIGHT, 600, 40, 10, 2, new ImageIcon("Basilisk.png"));
-=======
+    
     public Basilisk(int x, int y, Dungeon dungeon) {
         super(x, y, WIDTH, HEIGHT, 600, 5, 10, 2, new ImageIcon("Basilisk.png"), dungeon);
->>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     }
 
     /**
@@ -67,18 +59,5 @@ public class Basilisk extends Monster{
     public int getWidth() {
         return WIDTH;
     }
-<<<<<<< HEAD
 
-    /**
-     *
-     * @param sprite
-     * @return
-     */
-    @Override
-    public boolean isValid(Sprite sprite) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-=======
->>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
 }

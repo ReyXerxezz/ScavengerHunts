@@ -38,7 +38,7 @@ public abstract class LivingBeing extends Sprite{
     private ImageIcon image;
     private Dungeon dungeon;
     
-<<<<<<< HEAD
+
     /**
      *  Constructor que crea instancias de la clase LivingBeing.
      * @param x posicion en x del Livingbeing
@@ -51,24 +51,16 @@ public abstract class LivingBeing extends Sprite{
      * @param speed Velocidad de movimiento del Livingbeing
      * @param image Imagen que representa el Livingbeing
      */
-    public LivingBeing(int x, int y, int width, int height, int health, int damage, int range, int speed ,ImageIcon image) {
-=======
+   
+
     public LivingBeing(int x, int y, int width, int height, int health, int damage, int range, int speed ,ImageIcon image, Dungeon dungeon) {
->>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
         super(x, y, width, height, Color.BLUE);
         this.health = health;
         this.damage = damage;
         this.range = range;
         this.speed = speed;
-<<<<<<< HEAD
         this.image = image; 
-        yUpMove = false;
-        yDoMove = false;
-        xRiMove = false;
-        xLeMove = false;
-        turnCounter = 0;
-        ataqueDireccion = 0;
-        sword = null;
+        
     }
     
     /**
@@ -77,10 +69,8 @@ public abstract class LivingBeing extends Sprite{
      */
     public void setDrawable(Drawable drawable) {
         this.drawable = drawable;
-=======
         this.image = image;
         this.dungeon = dungeon;
->>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     }
     
     /**
@@ -90,352 +80,37 @@ public abstract class LivingBeing extends Sprite{
     public void setDungeon(Dungeon dungeon) {
         this.dungeon = dungeon;
     }
-<<<<<<< HEAD
-
-    /**
-     *
-     * @param boundable
-     */
-    public void setBoundable(Boundable boundable) {
-        this.boundable = boundable;
-    }
-
-    /**
-     * Maneja las acciones del teclado que generan el movimiento del LivingBeing.
-     * @param key Numero que representa la tecla hundida.
-     * @param muros Arreglo de muros del mapa.
-     * @param creatures Arreglo de creaturas del mapa.
-     */
-    public void actionHandle(int key, ArrayList<Wall> muros, ArrayList<LivingBeing> creatures){
-        if(key == KeyEvent.VK_W |
-           key == KeyEvent.VK_S |
-           key == KeyEvent.VK_A |
-           key == KeyEvent.VK_D){
-            move(key, muros, creatures);
-        }
-        else if(key == KeyEvent.VK_SPACE){
-            System.out.println("Ataque");
-            attackArthur(creatures);
-        }
-    }
-
-    /**
-     * Genera el movimiento del LivingBeing a partir de las acciones de teclado.
-     * @param key Numero que representa la tecla hundida.
-     * @param muros Arreglo de muros del mapa.
-     * @param creatures Arreglo de creaturas del mapa.
-     * @return Booleano que indica si fue exitoso o no el movimiento.
-     */
-    public boolean move(int key, ArrayList<Wall> muros, ArrayList<LivingBeing> creatures)
-    {
-        int xOriginal = x;
-        int yOriginal = y;
-        
-        if(key == KeyEvent.VK_W){
-            sword = null;
-            y -= speed;
-            ataqueDireccion = 0;
-        }
-        if(key == KeyEvent.VK_S){
-            sword = null;
-            y += speed;
-            ataqueDireccion = 1;
-        }
-        if(key == KeyEvent.VK_A){
-            sword = null;
-            x -= speed;
-            ataqueDireccion = 2;
-        }
-        if(key == KeyEvent.VK_D){
-            sword = null;
-            x += speed;
-            ataqueDireccion = 3;
-        }
-        for(Wall muro : muros){
-            if(this.checkCollision(muro))
-            {
-                this.setX(xOriginal);
-                this.setY(yOriginal);
-
-                return false;
-            }
-        }
-        int i = 0;
-        for(LivingBeing monster : creatures){
-            if(this.checkCollision(monster) && !(monster instanceof Unicorn))
-            {
-                this.setX(xOriginal);
-                this.setY(yOriginal);
-                
-                return false;
-            }
-            else if (this.checkCollision(monster) && monster instanceof Unicorn){
-                dungeon.eliminarCreature(i);
-                int random = (int) (Math.random() * 2);
-                int randomupgrade = (int) (Math.random() * 3);
-                if(random == 0){
-                    Upgrade u = new Upgrade(null, true);
-                    u.setVisible(true);
-                    switch (randomupgrade) {
-                        case 0:
-                            health= getHealth()+20;
-                            JOptionPane.showMessageDialog(null, "Health Upgrade");
-                            break;
-                        case 1:
-                            this.setDamage(getDamage()+20);
-                            JOptionPane.showMessageDialog(null, "Damage Upgrade");
-                            break;   
-                        case 2:
-                            this.setSpeed(getSpeed()+1);
-                            JOptionPane.showMessageDialog(null, "Speed Upgrade");
-                            break;
-                        default:
-                            throw new AssertionError();
-                    }
-                }
-                if(random == 1){
-                    Downgrade d = new Downgrade(null, true);
-                    d.setVisible(true);
-                        switch (randomupgrade) {
-                        case 0:
-                            this.setHealth(getHealth()-10);
-                            JOptionPane.showMessageDialog(null, "Health Downgrade");
-                            break;
-                        case 1:
-                            this.setDamage(getDamage()-10);
-                            JOptionPane.showMessageDialog(null, "Damage Downgrade");
-                            break;   
-                        case 2:
-                            this.setSpeed(getSpeed()-1);
-                            JOptionPane.showMessageDialog(null, "Speed Downgrade");
-                            break;
-                        default:
-                            throw new AssertionError();
-                    }
-                }
-                System.out.println("TODO");
-                return true;
-            }
-            i++;
-        }
-        
-        return true;
-    }
-    
-
-    /**
-     * Verifica la validez del movimiento de un objeto en el mapa.
-     * .
-     * @param muros Arreglo de muros del mapa.
-     * @param creatures Arreglo de creaturas del mapa.
-     * @param arthur Personaje del usuario que se mueve en el mapa.
-     * @return Booleano que indica si es válido el movimiento.
-     */
-    
-
-    public int verificarMove(ArrayList<Wall> muros, ArrayList<LivingBeing> creatures, LivingBeing arthur) {
-
-        for (Wall muro : muros) {
-            if (this.checkCollision(muro)) {
-                return -1;
-            }
-        }
-        for (LivingBeing creature : creatures) {
-            if (creature != this && this.checkCollision(creature) && !(creature instanceof Unicorn)) {
-                return -1;
-            }
-        }
-        if (this.checkCollision(arthur)) {
-            return 0;
-        }
-
-        return 1;
-    }
 
 
-    /**
-     * Genera el movimiento de las creaturas que no maneja el usuario.
-     * @param dungeon Mapa que se ha ejecutado.
-     * @param muros Arreglo de muros del mapa.
-     * @param creatures Arreglo de montruos del mapa.
-     * @param arthur Personaje del usuario.
-     */
 
-=======
->>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
-    
     public void quitarVida(int daño){
         health = health - daño;
     }
-    
-<<<<<<< HEAD
-    public void moveCreature(Dungeon dungeon, ArrayList<Wall> muros, ArrayList<LivingBeing> creatures, LivingBeing arthur) {
-        int xOriginal = x;
-        int yOriginal = y;
-
-        // Cambiar de dirección después de 10 vueltas del hilo
-        if (turnCounter % 100 == 0) {
-            changeDirection();
-        }
-
-        if (xLeMove) {
-            x -= speed;
-            if (verificarMove(muros, creatures, arthur) == -1) {
-                x = xOriginal;
-                changeDirection();
-            } else if (verificarMove(muros, creatures, arthur) == 0){
-                x = xOriginal;
-                changeDirection();
-                dungeon.getArthur().quitarVida(damage);
-            }
-        } else if (yUpMove) {
-            y -= speed;
-            if (verificarMove(muros, creatures, arthur) == -1) {
-                y = yOriginal;
-                changeDirection();
-            } else if (verificarMove(muros, creatures, arthur) == 0){
-                y = yOriginal;
-                changeDirection();
-                dungeon.getArthur().quitarVida(damage);
-            }
-        } else if (xRiMove) {
-            x += speed;
-            if (verificarMove(muros, creatures, arthur) == -1) {
-                x = xOriginal;
-                changeDirection();
-            } else if (verificarMove(muros, creatures, arthur) == 0){
-                x = xOriginal;
-                changeDirection();
-                dungeon.getArthur().quitarVida(damage);
-            }
-        } else if (yDoMove) {
-            y += speed;
-            if (verificarMove(muros, creatures, arthur) == -1) {
-                y = yOriginal;
-                changeDirection();
-            } else if (verificarMove(muros, creatures, arthur) == 0){
-                y = yOriginal;
-                changeDirection();
-                dungeon.getArthur().quitarVida(damage);
-            }
-        }
-
-        turnCounter++;
-    }
-
-    
 
     public void attack(){
     
     }
-    /**
-     * Cambia la direccion de movimiento de un objeto.
-     */
-    private void changeDirection() {
-        // Cambiar la dirección de manera aleatoria
-        int randomDirection = (int) (Math.random() * 4);
 
-        xLeMove = false;
-        yUpMove = false;
-        xRiMove = false;
-        yDoMove = false;
-
-        switch (randomDirection) {
-            case 0:
-                xLeMove = true;
-                break;
-            case 1:
-                yUpMove = true;
-                break;
-            case 2:
-                xRiMove = true;
-                break;
-            case 3:
-                yDoMove = true;
-                break;
-        }
-    }
-
-
-    
     
     /**
      * Dibuja la imagen que representa el LivingBeing.
      * @param g 
      */
-
-    public void attackArthur(ArrayList<LivingBeing> creatures){
-        int ataque = -1;
-        System.out.println("Espada1");
-        switch (getAtaqueDireccion()) {
-            case 0 -> {
-                sword = new Espada(x+(width/2),(y-17), 9, 17);
-                ataque = verificarAtaque(creatures, sword);
-                if (ataque != -1){
-                    dungeon.eliminarCreature(ataque);
-                }
-            }
-            case 1 -> {
-                sword = new Espada(x+(width/2), (y+height), 9, 17);
-                ataque = verificarAtaque(creatures, sword);
-                if (ataque != -1){
-                    dungeon.eliminarCreature(ataque);
-                }
-            }
-            case 2 -> {
-                sword = new Espada((x-9), y+(height/2), 17, 9);
-                ataque = verificarAtaque(creatures, sword);
-                if (ataque != -1){
-                    dungeon.eliminarCreature(ataque);
-                }
-            }
-            case 3 -> {
-                sword = new Espada((x+width), y+(height/2), 17, 9);
-                ataque = verificarAtaque(creatures, sword);
-                if (ataque != -1){
-                    dungeon.eliminarCreature(ataque);
-                }
-            }
-            default -> {
-            }
-        }
-    }
-    private int verificarAtaque(ArrayList<LivingBeing> creatures, Espada espada){
-        int i = 0;
-        for (LivingBeing creature : creatures) {
-            if (espada.checkCollision(creature) && !(creature instanceof Unicorn)) {
-                return i;
-            }
-            i++;
-        }
-        return -1;
-    }
-=======
-    
-    public void attack(){
-    
-    }
-    
->>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     
     @Override
     public void draw(Graphics g) {
         if (image != null) {
-        g.drawImage(image.getImage(), x, y,null);
+            g.drawImage(image.getImage(), x, y,null);
         } else {
             g.setColor(color);
             g.fillRect(x, y, width, height);
         }
     }
     
-<<<<<<< HEAD
     /**
      * Redibuja el LivingBeing
      */
-    @Override
-    public void redraw() {
-        getDrawable().redraw();
-    }
+    
     
     /**
      * Redibuja de acuerdo a los parametros básicos del objeto.
@@ -444,8 +119,6 @@ public abstract class LivingBeing extends Sprite{
      * @param width
      * @param height
      */
-=======
->>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     public void redraw(int x, int y, int width, int height) {
         getDrawable().redraw();
     }
@@ -513,20 +186,12 @@ public abstract class LivingBeing extends Sprite{
         return drawable;
     }
 
-<<<<<<< HEAD
-    /**
-     * @return the boundable
-     */
-    public Boundable getBoundable() {
-        return boundable;
-    }
+   
 
     /**
      *
      * @return
      */
-=======
->>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     @Override
     public int getX() {
         return super.getX(); 

@@ -36,7 +36,7 @@ public class Knight extends LivingBeing{
     private Espada sword;
     
     public Knight(int x, int y, int width, int height, int health, int damage, int range, int speed ,ImageIcon image, Dungeon dungeon) {
-        super(x, y, width, height, health, damage, range, speed, null, dungeon);
+        super(x, y, width, height, health, damage, range, speed, image, dungeon);
         this.health = health;
         this.damage = damage;
         this.range = range;
@@ -112,11 +112,11 @@ public class Knight extends LivingBeing{
                     u.setVisible(true);
                     switch (randomupgrade) {
                         case 0:
-                            health= health+20;
+                            health=this.getHealth()+10;
                             JOptionPane.showMessageDialog(null, "Health Upgrade");
                             break;
                         case 1:
-                            damage = damage+20;
+                            damage = this.getDamage()+10;
                             JOptionPane.showMessageDialog(null, "Damage Upgrade");
                             break;   
                         case 2:
@@ -132,7 +132,7 @@ public class Knight extends LivingBeing{
                     d.setVisible(true);
                         switch (randomupgrade) {
                         case 0:
-                            this.setHealth(health-10);
+                            this.setHealth(this.getHealth()-10);
                             JOptionPane.showMessageDialog(null, "Health Downgrade");
                             break;
                         case 1:

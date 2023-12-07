@@ -57,7 +57,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         creatures = new ArrayList<>(); 
         score = 1200;
         mapearDungeon();
-        //createWeaponThreads();
+        
     }
 
     /**
@@ -73,7 +73,6 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         this.creatures = lector.leerMonstruos(this);
     }
     
-<<<<<<< HEAD
     /**
      * Crea un caballero dependiendo del tipo de knight del mapa.
      * @param x posicion en  x de la creacion del caballero.
@@ -81,12 +80,10 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
      * @param type tipo de caballero a crear.
      * @return caballero creado.
      */
-    public LivingBeing createKnight (int x, int y, String type){
-        LivingBeing knight = null;
-=======
+    
+
     public Knight createKnight (int x, int y, String type, Dungeon dungeon){
         Knight knight = null;
->>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
         if (type.equals("Assasin")){
             knight = new Assasin(x, y, dungeon);
         }
@@ -203,16 +200,13 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     public void setScore(){
         score = score - 1;
     }
-<<<<<<< HEAD
 
     /**
      * Verifica si es valido el movimiento de un sprite.
      * @param sprite
      * @return
      */
-=======
     
->>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     @Override
     public boolean isValid(Sprite sprite) {
         if(sprite.getX() < this.getX() |

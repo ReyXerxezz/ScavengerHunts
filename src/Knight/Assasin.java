@@ -15,14 +15,13 @@ import javax.swing.ImageIcon;
  */
 public class Assasin extends Knight{
     
-<<<<<<< HEAD
     /**
      *
      * @param x
      * @param y
      */
-    public Assasin(int x, int y) {
-        super(x, y,20,28, 15, 175, 10, 10 , new ImageIcon("AssasinCharacter.png"));
+     public Assasin(int x, int y, Dungeon dungeon) {
+        super(x, y,20,28, 100, 175, 10, 10 , new ImageIcon("AssasinCharacter.png"), dungeon);
     }
 
     /**
@@ -33,19 +32,6 @@ public class Assasin extends Knight{
         super.attack(); 
     }
     
-    /**
-     *
-     * @param sprite
-     * @return
-     */
-    @Override
-    public boolean isValid(Sprite sprite) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-=======
-    public Assasin(int x, int y, Dungeon dungeon) {
-        super(x, y,20,28, 15, 175, 10, 10 , new ImageIcon("AssasinCharacter.png"), dungeon);
-    }
->>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
+
+   
 }

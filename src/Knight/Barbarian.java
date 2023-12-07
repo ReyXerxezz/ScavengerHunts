@@ -15,28 +15,13 @@ import javax.swing.ImageIcon;
  */
 public class Barbarian extends Knight{
     
-<<<<<<< HEAD
     /**
      *
      * @param x
      * @param y
      */
-    public Barbarian(int x, int y) {
-        super(x, y, 20, 30, 75, 100, 20, 5, new ImageIcon("BarbarianCharacter.png"));
+    public Barbarian(int x, int y, Dungeon dungeon) {
+        super(x, y, 20, 30, 120, 100, 20, 5, new ImageIcon("BarbarianCharacter.png"), dungeon);
     }
 
-    /**
-     *
-     * @param sprite
-     * @return
-     */
-    @Override
-    public boolean isValid(Sprite sprite) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-=======
-    public Barbarian(int x, int y, Dungeon dungeon) {
-        super(x, y, 20, 30, 75, 100, 20, 5, new ImageIcon("BarbarianCharacter.png"), dungeon);
->>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
-    }
-    
 }

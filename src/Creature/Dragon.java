@@ -26,19 +26,16 @@ public class Dragon extends Monster{
      *
      */
     public static final int HEIGHT = 229;
-<<<<<<< HEAD
+
 
     /**
      *
      * @param x
      * @param y
      */
-    public Dragon(int x, int y) {
-        super(x, y, WIDTH, HEIGHT, 3000, 100, 30, 1, new ImageIcon("Dragon.png"));
-=======
+    
     public Dragon(int x, int y, Dungeon dungeon) {
         super(x, y, WIDTH, HEIGHT, 3000, 30, 30, 1, new ImageIcon("Dragon.png"), dungeon);
->>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
         fireballs = new ArrayList<>();
     }
 
@@ -79,19 +76,6 @@ public class Dragon extends Monster{
         return WIDTH;
     }
 
-<<<<<<< HEAD
-    /**
-     *
-     * @param sprite
-     * @return
-     */
-    @Override
-    public boolean isValid(Sprite sprite) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-=======
->>>>>>> ce2e3393c3e96cb2dff5219b7fcc1801ccaf1e50
     /**
      * @return the fireballs
      */
