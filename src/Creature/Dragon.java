@@ -5,7 +5,7 @@
 package Creature;
 
 import Class.Dungeon;
-import Class.Fireball;
+import Armas.Fireball;
 import java.awt.Graphics;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
@@ -43,7 +43,7 @@ public class Dragon extends Monster{
      *
      */
     public void attack() {
-        Fireball fireball = new Fireball(x, y);
+        Fireball fireball = new Fireball(x, y, dungeon, "Fireball.png");
         getFireballs().add(fireball);
     }
     

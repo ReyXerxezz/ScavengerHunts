@@ -6,7 +6,8 @@ package Knight;
 
 import Class.Boundable;
 import Class.Dungeon;
-import Class.Espada;
+import Armas.Espada;
+import Armas.Weapon;
 import Class.LivingBeing;
 import Class.Wall;
 import Creature.Monster;
@@ -33,7 +34,7 @@ public class Knight extends LivingBeing{
     private ImageIcon image;
     private Dungeon dungeon;
     private int ataqueDireccion;
-    private Espada sword;
+    Weapon sword;
     
     public Knight(int x, int y, int width, int height, int health, int damage, int range, int speed ,ImageIcon image, Dungeon dungeon) {
         super(x, y, width, height, health, damage, range, speed, image, dungeon);
@@ -104,7 +105,7 @@ public class Knight extends LivingBeing{
                 return false;
             }
             else if (this.checkCollision(monster) && monster instanceof Unicorn){
-                dungeon.eliminarCreature(i);
+                getDungeon().eliminarCreature(i);
                 int random = (int) (Math.random() * 2);
                 int randomupgrade = (int) (Math.random() * 3);
                 if(random == 0){
@@ -157,51 +158,11 @@ public class Knight extends LivingBeing{
     }
     
     public void attackArthur(ArrayList<Monster> creatures){
-        int ataque = -1;
-        System.out.println("Espada1");
-        switch (getAtaqueDireccion()) {
-            case 0 -> {
-                sword = new Espada(x+(width/2),(y-17), 9, 17);
-                ataque = verificarAtaque(creatures, getSword());
-                if (ataque != -1){
-                    dungeon.eliminarCreature(ataque);
-                }
-            }
-            case 1 -> {
-                sword = new Espada(x+(width/2), (y+height), 9, 17);
-                ataque = verificarAtaque(creatures, getSword());
-                if (ataque != -1){
-                    dungeon.eliminarCreature(ataque);
-                }
-            }
-            case 2 -> {
-                sword = new Espada((x-9), y+(height/2), 17, 9);
-                ataque = verificarAtaque(creatures, getSword());
-                if (ataque != -1){
-                    dungeon.eliminarCreature(ataque);
-                }
-            }
-            case 3 -> {
-                sword = new Espada((x+width), y+(height/2), 17, 9);
-                ataque = verificarAtaque(creatures, getSword());
-                if (ataque != -1){
-                    dungeon.eliminarCreature(ataque);
-                }
-            }
-            default -> {
-            }
-        }
+        
     }
     
-    private int verificarAtaque(ArrayList<Monster> creatures, Espada espada){
-        int i = 0;
-        for (LivingBeing creature : creatures) {
-            if (espada.checkCollision(creature) && !(creature instanceof Unicorn)) {
-                return i;
-            }
-            i++;
-        }
-        return -1;
+    public int verificarAtaque(ArrayList<Monster> creatures, Espada espada){
+        return 0;
     }
 
     /**
@@ -214,8 +175,15 @@ public class Knight extends LivingBeing{
     /**
      * @return the sword
      */
-    public Espada getSword() {
+    public Weapon getSword() {
         return sword;
+    }
+
+    /**
+     * @return the dungeon
+     */
+    public Dungeon getDungeon() {
+        return dungeon;
     }
     
 }

@@ -5,6 +5,7 @@
 package Class;
 
 
+import Armas.Weapon;
 import Creature.Dragon;
 import Creature.Monster;
 import Creature.MonsterThread;
@@ -134,7 +135,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
             }
             
         }
-        for (LivingBeing creature : creatures) {
+        for (Monster creature : creatures) {
             if (creature instanceof Dragon) {
                 for (Weapon weapon : ((Dragon) creature).getFireballs()) {
                     weapon.draw(g);
@@ -232,10 +233,21 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
      * Elimina una creatura que ha sido vencida.
      * @param index
      */
+    public void quitarVidaCreature(int index, int daño){
+        int posicion = 0; 
+        for (Monster monstruo : getCreatures()) {
+            if (posicion == index){
+                monstruo.quitarVida(daño);
+                if (monstruo.getHealth() <= 0){
+                    eliminarCreature(index);
+                }
+            }
+        }
+    }
+
     public void eliminarCreature(int index){
         this.getCreatures().remove(index);
     }
-
     /**
      * @return the arthur
      */

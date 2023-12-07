@@ -5,7 +5,7 @@
 package Knight;
 
 import Class.Dungeon;
-import Class.Fireball;
+import Armas.Fireball;
 import Class.LivingBeing;
 import Class.Sprite;
 import java.util.ArrayList;
@@ -36,7 +36,7 @@ public class Magician extends Knight{
      * @param sprite
      */
     public void attack(Sprite sprite) {
-        Fireball fireball = new Fireball(x, y);
+        Fireball fireball = new Fireball(x, y, getDungeon(), "Fireball.png");
         fireballs.add(fireball);
     }
 

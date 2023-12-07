@@ -4,7 +4,7 @@
  */
 package Knight;
 
-import Class.Arrow;
+import Armas.Arrow;
 import Class.Dungeon;
 import Class.LivingBeing;
 import Class.Sprite;
