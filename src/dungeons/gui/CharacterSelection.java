@@ -295,7 +295,9 @@ public class CharacterSelection extends javax.swing.JFrame {
         Game gameMap = new Game(map);
         map.setDrawable(gameMap);
         gameMap.setSize(700, 800);
-        gameMap.setVisible(true);
+        while (map.isActive()) {            
+           gameMap.setVisible(true); 
+        }
         try {
             PlayerSoundPrincipal player = new PlayerSoundPrincipal("Medievalmusic.wav");
             new Thread(player).start();

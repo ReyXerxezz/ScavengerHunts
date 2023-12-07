@@ -16,6 +16,7 @@ import Knight.Tank;
 import Knight.SwordMan;
 import Knight.Archer;
 import Knight.Knight;
+import dungeons.gui.GameOver;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -39,6 +40,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     private String nivel;
     private ImageIcon fondo = new ImageIcon("Background.png");
     private int score;
+    private boolean active = true;
 
     /**
      *
@@ -184,14 +186,22 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
             getDrawable().redraw(); // TODO
         }
     }
-
+    
+    public void verificarPerder(){
+        if (this.arthur.getHealth() <= 0) {
+            GameOver go = new GameOver(null, true);
+            go.setVisible(true);
+            this.active = false;
+            
+        }
+    }
+    
     /**
      * Redibuja el mapa
      */
     @Override
     public void redraw() {
-      
-    
+     
     }
     
     /**
@@ -269,6 +279,13 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         }
 
         return false;
+    }
+
+    /**
+     * @return the active
+     */
+    public boolean isActive() {
+        return active;
     }
    
 }
