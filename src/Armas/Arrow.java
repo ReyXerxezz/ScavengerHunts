@@ -45,17 +45,19 @@ public class Arrow extends Weapon {
      * @param targets
      */
     public void move(ArrayList<LivingBeing> targets) {
-        // Mueve la flecha
-        
-
-        // Verifica colisiones con los objetivos
-        for (LivingBeing target : targets) {
+        while (true) {            
+            for (LivingBeing target : targets) {
             if (checkCollision(target)) {
                 // Realiza acciones en caso de colisión, como reducir la salud del objetivo, etc.
-                target.setHealth(target.getHealth() - arrowDamage);
+                dungeon.quitarVidaCreature(targets.indexOf(target), arrowDamage);
                 setExpired(true);  // Marca la flecha como expirada después de colisionar
             }
         }
+        }
+        
+
+        // Verifica colisiones con los objetivos
+        
     }
 
     @Override

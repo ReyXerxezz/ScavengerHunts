@@ -4,6 +4,8 @@
  */
 package dungeons.gui;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author santi
@@ -16,6 +18,7 @@ public class GameOver extends javax.swing.JDialog {
     public GameOver(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        jLabel2.setIcon(new ImageIcon("/Img/Gameover.png"));
     }
 
     /**

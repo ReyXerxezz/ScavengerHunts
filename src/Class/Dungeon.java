@@ -18,6 +18,7 @@ import Knight.SwordMan;
 import Knight.Archer;
 import Knight.Knight;
 import dungeons.gui.GameOver;
+import dungeons.gui.LevelCompleted;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
@@ -41,7 +42,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     private String nivel;
     private ImageIcon fondo = new ImageIcon("Background.png");
     private int score;
-    private boolean active = true;
+    private boolean active;
 
     /**
      *
@@ -60,7 +61,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         creatures = new ArrayList<>(); 
         score = 1200;
         mapearDungeon();
-        
+        active = true;
     }
 
     /**
@@ -184,6 +185,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
            key == KeyEvent.VK_SPACE)       
         {
             getArthur().actionHandle(key, getMuros(), getCreatures());
+            verificarPerder();
             getDrawable().redraw(); // TODO
         }
     }
@@ -192,8 +194,17 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         if (this.arthur.getHealth() <= 0) {
             GameOver go = new GameOver(null, true);
             go.setVisible(true);
+            this.score = 0;
             this.active = false;
             
+        }
+    }
+    
+    public void verificarVictoria(){
+        if(this.creatures.size() == 0){
+            LevelCompleted lc = new LevelCompleted(null, true);
+            lc.setVisible(true);
+            this.active = false;
         }
     }
     
@@ -240,6 +251,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
                 monstruo.quitarVida(daño);
                 if (monstruo.getHealth() <= 0){
                     eliminarCreature(index);
+                    verificarVictoria();
                 }
             }
         }

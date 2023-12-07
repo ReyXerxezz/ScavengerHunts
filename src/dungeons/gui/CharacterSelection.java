@@ -295,7 +295,7 @@ public class CharacterSelection extends javax.swing.JFrame {
         Game gameMap = new Game(map);
         map.setDrawable(gameMap);
         gameMap.setSize(700, 800);
-        while (map.isActive()) {            
+         if(map.isActive()) {            
            gameMap.setVisible(true); 
         }
         try {

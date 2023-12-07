@@ -36,13 +36,17 @@ public class Archer extends Knight {
      *
      */
     
-
+    
 
     
     
-    public void attack(ArrayList<Monster> targets) {
-        
+    @Override
+    public void attackArthur(ArrayList<Monster> creatures) {
+        super.attackArthur(creatures); 
      }
+
+    public void attack(ArrayList<Monster> targets) {
+    }
     @Override
     public void draw(Graphics g) {
         super.draw(g);
