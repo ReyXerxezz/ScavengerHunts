@@ -298,6 +298,9 @@ public class CharacterSelection extends javax.swing.JFrame {
          if(map.isActive()) {            
            gameMap.setVisible(true); 
         }
+         else{
+             gameMap.setVisible(false);
+         }
         try {
             PlayerSoundPrincipal player = new PlayerSoundPrincipal("Medievalmusic.wav");
             new Thread(player).start();
