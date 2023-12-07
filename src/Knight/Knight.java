@@ -112,15 +112,15 @@ public class Knight extends LivingBeing{
                     u.setVisible(true);
                     switch (randomupgrade) {
                         case 0:
-                            health=this.getHealth()+10;
+                            setHealth(getHealth()+10);
                             JOptionPane.showMessageDialog(null, "Health Upgrade");
                             break;
                         case 1:
-                            damage = this.getDamage()+10;
+                            setDamage(getDamage()+10);
                             JOptionPane.showMessageDialog(null, "Damage Upgrade");
                             break;   
                         case 2:
-                            speed=speed+1;
+                            setSpeed(getSpeed()+1);
                             JOptionPane.showMessageDialog(null, "Speed Upgrade");
                             break;
                         default:
@@ -132,15 +132,15 @@ public class Knight extends LivingBeing{
                     d.setVisible(true);
                         switch (randomupgrade) {
                         case 0:
-                            this.setHealth(this.getHealth()-10);
+                            setHealth(getHealth()-10);
                             JOptionPane.showMessageDialog(null, "Health Downgrade");
                             break;
                         case 1:
-                            this.setDamage(damage-10);
+                            setDamage(getDamage()-10);
                             JOptionPane.showMessageDialog(null, "Damage Downgrade");
                             break;   
                         case 2:
-                            this.setSpeed(speed-1);
+                            setSpeed(getSpeed()-1);
                             JOptionPane.showMessageDialog(null, "Speed Downgrade");
                             break;
                         default:
