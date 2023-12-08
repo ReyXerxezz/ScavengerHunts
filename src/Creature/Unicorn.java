@@ -9,40 +9,38 @@ import Class.Sprite;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author User
+ * Esta es una clase Unicorn que hereda de la clase Monster.
+ * Representa una creatura específica (Unicorn) en el juego.
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
+ * @version 1.0.2
  */
-
-
-
-    /**
-     *
-     */
-
 public class Unicorn extends Monster{
 
+    /**
+     * Ancho del objeto Unicorn.
+     */
     public static final int WIDTH = 25;
 
     /**
-     *
+     * Alto del objeto Unicorn.
      */
     public static final int HEIGHT = 25;
 
-
     /**
-     *
-     * @param x
-     * @param y
+     * Constructor de la clase Unicorn.
+     * Inicializa las propiedades de la clase con los valores proporcionados.
+     * @param x  La coordenada x del Unicorn.
+     * @param y  La coordenada y del Unicorn.
+     * @param dungeon  El calabozo en el que se encuentra el Unicorn.
      */
-    
     public Unicorn(int x, int y, Dungeon dungeon) {
         super(x, y, WIDTH, HEIGHT, 500, 80, 12, 0, new ImageIcon("Unicorn.png"), dungeon);
-
     }
 
     /**
-     *
-     * @return
+     * Obtiene la altura del Unicorn.
+     * @return La altura del Unicorn.
      */
     @Override
     public int getHeight() {
@@ -50,22 +48,15 @@ public class Unicorn extends Monster{
     }
 
     /**
-     *
-     * @return
+     * Obtiene el ancho del Unicorn.
+     * @return El ancho del Unicorn.
      */
     @Override
     public int getWidth() {
         return WIDTH;
     }
 
-
-    /**
-     *
-     * @param sprite
-     * @return
-     */
-    public boolean isValid(Sprite sprite) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
 }
+
+
+

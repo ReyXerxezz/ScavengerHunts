@@ -8,7 +8,9 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author User
+ * @author Santiago Jiménez
+ * @author Daniel Felipe López
+ * @version 1.0.2
  */
 public class MenuPrincipal extends javax.swing.JFrame {
     private String type = null;

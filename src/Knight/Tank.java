@@ -14,20 +14,31 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author User
+ * Esta es una clase Tank que hereda de la clase Knight.
+ * Representa un personaje específico (Tank) en un juego.
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
+ * @version 1.0.2
  */
 public class Tank extends Knight{
     
     /**
-     *
-     * @param x
-     * @param y
+     * Constructor de la clase Tank.
+     * Inicializa las propiedades de la clase con los valores proporcionados.
+     * @param x  La coordenada x del Tank.
+     * @param y  La coordenada y del Tank.
+     * @param dungeon  El calabozo en el que se encuentra el Tank.
      */
     public Tank(int x, int y, Dungeon dungeon) {
         super(x, y, 20, 30, 150, 32, 15, 3,new ImageIcon("TankCharacter1.png"), dungeon);
     }
 
+    /**
+     * Método para que el Tank ataque.
+     * Dependiendo de la dirección de ataque, crea un nuevo escudo y verifica si ataca a alguna criatura.
+     * Si ataca a alguna criatura, quita vida a la criatura atacada.
+     * @param creatures Las criaturas en el calabozo.
+     */
     @Override
     public void attackArthur(ArrayList<Monster> creatures) {
         int ataque = -1;
@@ -66,10 +77,17 @@ public class Tank extends Knight{
         }
     }
     
-    public int verificarAtaque(ArrayList<Monster> creatures, Weapon espada){
+    /**
+     * Verifica si el escudo ataca a alguna criatura.
+     * @param creatures Las criaturas en el calabozo.
+     * @param escudo El escudo con la que se está atacando.
+     * @return El índice de la criatura atacada, o -1 si no ataca a ninguna criatura.
+     */
+    @Override
+    public int verificarAtaque(ArrayList<Monster> creatures, Weapon escudo){
         int i = 0;
         for (Monster creature : creatures) {
-            if (espada.checkCollision(creature) && !(creature instanceof Unicorn)) {
+            if (escudo.checkCollision(creature) && !(creature instanceof Unicorn)) {
                 return i;
             }
             i++;

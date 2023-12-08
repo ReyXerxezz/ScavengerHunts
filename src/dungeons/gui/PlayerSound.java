@@ -12,16 +12,14 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.sound.sampled.AudioInputStream;
-/**
- *
- * @author santi
- */
+
 
 /**
  * Maneja la reproducción de sonidos.
  *
- * @author juancamposbetancourth
- * @version 27112023
+ * @author Santiago Jiménez
+ * @author Daniel Felipe López
+ * @version 1.0.2
  */
 public abstract class PlayerSound{
     /**

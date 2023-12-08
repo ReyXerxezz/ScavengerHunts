@@ -139,15 +139,19 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
                 arthur.getSword().draw(g);
             }
         }
+        if(getCreatures() != null){
         for (Monster monstruo : getCreatures()) {
             monstruo.draw(g);
-           
+          
             if (!monsterThreadIsRunning(monstruo)) {
                 monstruo.setDungeon(this);
                 MonsterThread thread = new MonsterThread(this, monstruo);
                 thread.start();
             }
             
+        }
+        }else{
+            this.active = false;
         }
         for (Monster creature : creatures) {
             if (creature instanceof Dragon) {
@@ -227,7 +231,6 @@ public void actKnight(int key){
             LevelCompleted lc = new LevelCompleted(null, true);
             lc.setScore(String.valueOf(this.score));
             lc.setVisible(true);
-            lc.setJtextfield();
             this.active = false;
         }
     }

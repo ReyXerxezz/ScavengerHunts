@@ -6,7 +6,9 @@ package dungeons.gui;
 
 /**
  *
- * @author santi
+ * @author Santiago Jiménez
+ * @author Daniel Felipe López
+ * @version 1.0.2
  */
 public class Upgrade extends javax.swing.JDialog {
 

@@ -8,21 +8,37 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
+ * La clase Game representa el estado del juego y se encarga de la lógica principal del juego.
+ * Implementa la interfaz Drawable, lo que significa que puede ser dibujada en una interfaz gráfica.
  *
  * @author Santiago Jiménez
  * @author Daniel Felipe Lopez
- * @version 1.0.1
+ * @version 1.0.2
  */
 public class Game 
         extends javax.swing.JFrame 
         implements Drawable {
-
-    private final Dungeon map;
-    private Image offScreenImage;
-    private Graphics offScreenGraphics;
     /**
-     * Creates new form VentanaPrincipal
-     * @param map
+     * El mapa del juego
+     */
+    private final Dungeon map;
+
+    /**
+     *  La imagen fuera de pantalla utilizada para el doble buffering
+     */
+    private Image offScreenImage;
+
+    /**
+     * Los gráficos fuera de pantalla utilizados para el doble buffering
+     */
+    private Graphics offScreenGraphics;
+
+    /**
+     * Constructor de la clase Game.
+     * Inicializa los componentes de la interfaz de usuario y establece el mapa del juego.
+     * También inicia un temporizador que actualiza la puntuación y redibuja el mapa cada segundo.
+     *
+     * @param map El mapa del juego.
      */
     public Game(Dungeon map) {
         initComponents();
@@ -35,7 +51,8 @@ public class Game
                 map.setScore();
                 map.redraw();// Llama al método setScore cada segundo
                 if(!map.isActive()) {  
-                    setVisible(false);
+                    dispose();
+                    
                  }
                  
             }
@@ -43,16 +60,18 @@ public class Game
     }
 
     /**
-     *
-     * @param g
+     * Este método se utiliza para actualizar la pantalla del juego.
+     * Llama al método paint para redibujar la pantalla.
+     * @param g Los gráficos en los que se dibuja.
      */
     public void update(Graphics g) {
         paint(g);
     }
     
     /**
-     *
-     * @param g
+     * Este método se utiliza para dibujar la pantalla del juego.
+     * Utiliza un enfoque de doble buffering para evitar el parpadeo.
+     * @param g Los gráficos en los que se dibuja.
      */
     @Override
     public void paint(Graphics g) {

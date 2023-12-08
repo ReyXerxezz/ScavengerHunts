@@ -17,17 +17,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
+ * Esta es una clase LectorArchivo que se utiliza para leer un archivo de texto y crear objetos del juego a partir de él.
+ * El archivo de texto representa un mapa del calabozo y contiene información sobre la ubicación de los muros y los monstruos.
  *
- *@author Santiago Jiménez
+ * @author Santiago Jiménez
  * @author Daniel Felipe Lopez
- * @version 1.0.1
+ * @version 1.0.2
  */
 public class LectorArchivo {
+
+    /**
+     * La ruta del archivo a leer.
+     */
     private final String output;
 
     /**
-     * Ruta del archivo a leer.
-     * @param output
+     * Constructor de la clase LectorArchivo.
+     * Inicializa las propiedades de la clase con los valores proporcionados.
+     * @param output La ruta del archivo a leer.
      */
     public LectorArchivo(String output) {
         this.output = output;
@@ -66,6 +73,7 @@ public class LectorArchivo {
     
     /**
      * Lee el archivo del mapa y genera un arreglo de monstruos leídos en el archivo.
+     * @param dungeon El calabozo en el que se encuentran los monstruos.
      * @return Arreglo de monstruos que están en el mapa.
      */
     

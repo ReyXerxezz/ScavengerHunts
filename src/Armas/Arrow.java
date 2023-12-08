@@ -15,20 +15,33 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author santi
+ * La clase Arrow representa una flecha en el juego. 
+ * Esta clase extiende de la clase Weapon, lo que significa que hereda todas las propiedades y métodos de la clase Weapon.
+ * Implementa el método redraw() de la interfaz Drawable.
+ * @author Santiago Jiménez
+ * @author Daniel Felipe López
+ * @version 1.0.2
  */
 public class Arrow extends Weapon {
     
+    /**
+     * Este atributo indica si la flecha está dentro del rango.
+     */
     private boolean inRange;
+
+    /**
+     * Este atributo representa el rango de la flecha en pixeles.
+     */
     private int range;
     
+    
     /**
-     *
-     * @param x
-     * @param y
-     * @param arrowSpeed
-     * @param arrowDamage
+     * Constructor de la clase Arrow.
+     * Inicializa los atributos de la clase y establece el rango de la flecha.
+     * @param x La coordenada x inicial de la flecha.
+     * @param y La coordenada y inicial de la flecha.
+     * @param dungeon El calabozo en el que se encuentra la flecha.
+     * @param path La ruta al archivo de imagen que representa la flecha.
      */
     public Arrow(int x, int y, Dungeon dungeon, String path) {
         super(x, y, 22, 12, Color.BLACK, dungeon, path);
@@ -36,8 +49,10 @@ public class Arrow extends Weapon {
     }
     
     /**
-     *
-     * @param targets
+     * Este método se utiliza para mover la flecha en una dirección específica.
+     * La flecha se mueve en la dirección especificada y verifica si todavía está dentro del rango.
+     * Si la flecha sale del rango, se marca como fuera de rango.
+     * @param direction La dirección en la que se debe mover la flecha.
      */
     
     public void move(int direction) {
@@ -80,22 +95,26 @@ public class Arrow extends Weapon {
   }
         
 
-        // Verifica colisiones con los objetivos
-
+       
+     /**
+     * Este método se utiliza para redibujar la flecha.
+     */
     @Override
     public void redraw() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     /**
-     * @return the inRange
+     * Obtiene el valor del atributo 'inRange'.
+     * @return El valor actual del atributo 'inRange'.
      */
     public boolean isInRange() {
         return inRange;
     }
 
     /**
-     * @return the range
+     * Obtiene el valor del atributo 'range'.
+     * @return El valor actual del atributo 'range'.
      */
     public int getRange() {
         return range;

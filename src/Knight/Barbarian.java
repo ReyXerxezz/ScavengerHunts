@@ -14,22 +14,31 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
- *
+ * Esta es una clase Barbarian que hereda de la clase Knight.
+ * Representa un personaje específico (Barbarian) en un juego.
  * @author Santiago Jiménez
  * @author Daniel Felipe Lopez
- * @version 1.0.1
+ * @version 1.0.2
  */
 public class Barbarian extends Knight{
     
     /**
-     *
-     * @param x
-     * @param y
+     * Constructor de la clase Barbarian.
+     * Inicializa las propiedades de la clase con los valores proporcionados.
+     * @param x  La coordenada x del Barbarian.
+     * @param y  La coordenada y del Barbarian.
+     * @param dungeon  El calabozo en el que se encuentra el Barbarian.
      */
     public Barbarian(int x, int y, Dungeon dungeon) {
         super(x, y, 20, 30, 120, 100, 20, 5, new ImageIcon("BarbarianCharacter.png"), dungeon);
     }
     
+    /**
+     * Método para que el Barbarian ataque.
+     * Dependiendo de la dirección de ataque, crea una nueva acha y verifica si ataca a alguna criatura.
+     * Si ataca a alguna criatura, quita vida a la criatura atacada.
+     * @param creatures Las criaturas en el calabozo.
+     */
     @Override
     public void attackArthur(ArrayList<Monster> creatures) {
         int ataque = -1;
@@ -68,10 +77,17 @@ public class Barbarian extends Knight{
         }
     }
     
-    public int verificarAtaque(ArrayList<Monster> creatures, Weapon espada){
+    /**
+     * Verifica si el acha ataca a alguna criatura.
+     * @param creatures Las criaturas en el calabozo.
+     * @param acha El acha con la que se está atacando.
+     * @return El índice de la criatura atacada, o -1 si no ataca a ninguna criatura.
+     */
+    @Override
+    public int verificarAtaque(ArrayList<Monster> creatures, Weapon acha){
         int i = 0;
         for (Monster creature : creatures) {
-            if (espada.checkCollision(creature) && !(creature instanceof Unicorn)) {
+            if (acha.checkCollision(creature) && !(creature instanceof Unicorn)) {
                 return i;
             }
             i++;

@@ -9,33 +9,38 @@ import Class.Sprite;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author User
+ * Esta es una clase Basilisk que hereda de la clase Monster.
+ * Representa un monstruo específico (Basilisk) en el juego.
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
+ * @version 1.0.2
  */
-
-
 public class Basilisk extends Monster{
 
+    /**
+     * Ancho del objeto Basilisk.
+     */
     public static final int WIDTH = 30;
 
     /**
-     * Alto del objeto basilisk.
+     * Alto del objeto Basilisk.
      */
     public static final int HEIGHT = 27;
 
-
     /**
+     * Constructor de la clase Basilisk.
+     * Inicializa las propiedades de la clase con los valores proporcionados.
      *
-     * @param x
-     * @param y
+     * @param x  La coordenada x del Basilisk.
+     * @param y  La coordenada y del Basilisk.
+     * @param dungeon  El calabozo en el que se encuentra el Basilisk.
      */
-    
     public Basilisk(int x, int y, Dungeon dungeon) {
-        super(x, y, WIDTH, HEIGHT, 600, 5, 10, 2, new ImageIcon("Basilisk.png"), dungeon);
+        super(x, y, WIDTH, HEIGHT, 400, 5, 10, 2, new ImageIcon("Basilisk.png"), dungeon);
     }
 
     /**
-     *
+     * Método para que el Basilisk ataque.
      */
     @Override
     public void attack() {
@@ -43,8 +48,8 @@ public class Basilisk extends Monster{
     }
 
     /**
-     *
-     * @return
+     * Obtiene la altura del Basilisk.
+     * @return La altura del Basilisk.
      */
     @Override
     public int getHeight() {
@@ -52,8 +57,8 @@ public class Basilisk extends Monster{
     }
 
     /**
-     *
-     * @return
+     * Obtiene el ancho del Basilisk.
+     * @return El ancho del Basilisk.
      */
     @Override
     public int getWidth() {
@@ -61,3 +66,4 @@ public class Basilisk extends Monster{
     }
 
 }
+

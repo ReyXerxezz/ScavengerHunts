@@ -8,35 +8,37 @@ import Class.Dungeon;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author User
+ * Esta es una clase Giant que hereda de la clase Monster.
+ * Representa un monstruo específico (Giant) en el juego.
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
+ * @version 1.0.2
  */
-
-
-
-
 public class Giant extends Monster{
 
+    /**
+     * Ancho del objeto Giant.
+     */
     public static final int WIDTH = 25;
 
     /**
-     *
+     * Alto del objeto Giant.
      */
     public static final int HEIGHT = 31;
 
     /**
-     *
-     * @param x
-     * @param y
+     * Constructor de la clase Giant.
+     * Inicializa las propiedades de la clase con los valores proporcionados.
+     * @param x La coordenada x del Giant.
+     * @param y La coordenada y del Giant.
+     * @param dungeon El calabozo en el que se encuentra el Giant.
      */
-   
     public Giant(int x, int y, Dungeon dungeon) {
         super(x, y, WIDTH, HEIGHT, 1000, 20, 10, 1, new ImageIcon("Giant.png"), dungeon);
-
     }
 
     /**
-     *
+     * Método para que el Giant ataque.
      */
     @Override
     public void attack() {
@@ -44,8 +46,8 @@ public class Giant extends Monster{
     }
 
     /**
-     *
-     * @return
+     * Obtiene la altura del Giant.
+     * @return La altura del Giant.
      */
     @Override
     public int getHeight() {
@@ -53,8 +55,8 @@ public class Giant extends Monster{
     }
 
     /**
-     *
-     * @return
+     * Obtiene el ancho del Giant.
+     * @return El ancho del Giant.
      */
     @Override
     public int getWidth() {
@@ -62,3 +64,4 @@ public class Giant extends Monster{
     }
 
 }
+

@@ -14,20 +14,31 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author User
+ * Esta es una clase Swordman que hereda de la clase Knight.
+ * Representa un personaje específico (Swordman) en un juego.
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
+ * @version 1.0.2
  */
 public class SwordMan extends Knight{
     
     /**
-     *
-     * @param x
-     * @param y
+     * Constructor de la clase Swordman.
+     * Inicializa las propiedades de la clase con los valores proporcionados.
+     * @param x  La coordenada x del Swordman.
+     * @param y  La coordenada y del Swordman.
+     * @param dungeon  El calabozo en el que se encuentra el Swordman.
      */
     public SwordMan(int x, int y, Dungeon dungeon) {
         super(x, y, 22, 25, 100, 62, 60, 8,new ImageIcon("SwordmanCharacter.png"), dungeon);
     }
 
+    /**
+     * Método para que el Swordman ataque.
+     * Dependiendo de la dirección de ataque, crea una nueva espada y verifica si ataca a alguna criatura.
+     * Si ataca a alguna criatura, quita vida a la criatura atacada.
+     * @param creatures Las criaturas en el calabozo.
+     */
     @Override
     public void attackArthur(ArrayList<Monster> creatures) {
         int ataque = -1;
@@ -65,6 +76,13 @@ public class SwordMan extends Knight{
         }
     }
     
+    /**
+     * Verifica si la espada ataca a alguna criatura.
+     * @param creatures Las criaturas en el calabozo.
+     * @param espada La espada con la que se está atacando.
+     * @return El índice de la criatura atacada, o -1 si no ataca a ninguna criatura.
+     */
+    @Override
     public int verificarAtaque(ArrayList<Monster> creatures, Weapon espada){
         int i = 0;
         for (Monster creature : creatures) {

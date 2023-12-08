@@ -14,30 +14,39 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
- *
+ * Esta es una clase Assasin que hereda de la clase Knight.
+ * Representa un personaje específico (Assasin) en un juego.
  * @author Santiago Jiménez
  * @author Daniel Felipe Lopez
- * @version 1.0.1
+ * @version 1.0.2
  */
 public class Assasin extends Knight{
     
     /**
-     *
-     * @param x
-     * @param y
+     * Constructor de la clase Assasin.
+     * Inicializa las propiedades de la clase con los valores proporcionados.
+     * @param x  La coordenada x del Assasin.
+     * @param y  La coordenada y del Assasin.
+     * @param dungeon  El calabozo en el que se encuentra el Assasin.
      */
      public Assasin(int x, int y, Dungeon dungeon) {
         super(x, y,20,28, 100, 175, 10, 10 , new ImageIcon("AssasinCharacter.png"), dungeon);
     }
 
     /**
-     *
+     * Método para que el Assasin ataque.
      */
     @Override
     public void attack() {
-        super.attack(); 
+        super.attack();
     }
     
+    /**
+     * Método para que el Assasin ataque.
+     * Dependiendo de la dirección de ataque, crea una nueva Daga y verifica si ataca a alguna criatura.
+     * Si ataca a alguna criatura, quita vida a la criatura atacada.
+     * @param creatures Las criaturas en el calabozo.
+     */
     @Override
     public void attackArthur(ArrayList<Monster> creatures) {
         int ataque = -1;
@@ -76,10 +85,17 @@ public class Assasin extends Knight{
         }
     }
     
-    public int verificarAtaque(ArrayList<Monster> creatures, Weapon espada){
+    /**
+     * Verifica si la daga ataca a alguna criatura.
+     * @param creatures Las criaturas en el calabozo.
+     * @param daga La daga con la que se está atacando.
+     * @return El índice de la criatura atacada, o -1 si no ataca a ninguna criatura.
+     */
+     @Override
+    public int verificarAtaque(ArrayList<Monster> creatures, Weapon daga){
         int i = 0;
         for (Monster creature : creatures) {
-            if (espada.checkCollision(creature) && !(creature instanceof Unicorn)) {
+            if (daga.checkCollision(creature) && !(creature instanceof Unicorn)) {
                 return i;
             }
             i++;

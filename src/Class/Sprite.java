@@ -11,10 +11,9 @@ import java.awt.Graphics;
  * Esta es una clase Sprite que representa un objeto gráfico que puede ser dibujado en la pantalla.
  * Contiene propiedades como coordenadas (x, y), dimensiones (ancho, alto) y color.
  * También proporciona métodos para la detección de colisiones y el dibujo del sprite.
- *
  * @author Santiago Jiménez
  * @author Daniel Felipe Lopez
- * @version 1.0.1
+ * @version 1.0.2
  */
 public abstract class Sprite {
 

@@ -6,7 +6,9 @@ package dungeons.gui;
 
 /**
  *
- * @author santi
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
+ * @version 1.0.2
  */
 public class Downgrade extends javax.swing.JDialog {
 

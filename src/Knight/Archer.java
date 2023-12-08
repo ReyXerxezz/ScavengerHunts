@@ -14,32 +14,37 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
- *
+ * Esta es una clase Archer que hereda de la clase Knight.
+ * Representa un personaje específico (Archer) en el juego.
  * @author Santiago Jiménez
  * @author Daniel Felipe Lopez
- * @version 1.0.1
+ * @version 1.0.2
  */
 public class Archer extends Knight {
+    /**
+     * Una lista de flechas que el Archer puede lanzar.
+     */
     private ArrayList<Arrow> arrows = new ArrayList<>();
-    
 
     /**
-     *
-     * @param x
-     * @param y
+     * Constructor de la clase Archer.
+     * Inicializa las propiedades de la clase con los valores proporcionados.
+     * @param x  La coordenada x del Archer.
+     * @param y  La coordenada y del Archer.
+     * @param dungeon  El calabozo en el que se encuentra el Archer.
      */
-    
     public Archer(int x, int y, Dungeon dungeon) {
-        super(x, y, 23, 28, 100, 40, 125, 10, new ImageIcon("ArcherCharacter.png"), dungeon);
+        super(x, y, 23, 28, 100, 40, 350, 10, new ImageIcon("ArcherCharacter.png"), dungeon);
     }
-    /**
-     *
-     */
-    
-    
+
 
     
-    
+    /**
+     * Método para que el Archer ataque a una creature.
+     * Crea una nueva flecha y la mueve en la dirección especificada.
+     * Si la flecha colisiona con alguna criatura, le quita vida a la criatura.
+     * @param creatures Las criaturas en el calabozo.
+     */
     @Override
     public void attackArthur(ArrayList<Monster> creatures) {
     int ataque = -1;
@@ -51,8 +56,6 @@ public class Archer extends Knight {
         getArrows().add(arrow);
         while (arrow.isInRange()) {
           arrow.move(0);
-          
-          dungeon.redraw();
           ataque = verificarAtaque(creatures, arrow);
           if (ataque != -1){
             getDungeon().quitarVidaCreature(ataque, getDamage());
@@ -66,8 +69,6 @@ public class Archer extends Knight {
         getArrows().add(arrow);
         while (arrow.isInRange()) {
           arrow.move(1);
-          
-          dungeon.redraw();
           ataque = verificarAtaque(creatures, arrow);
           if (ataque != -1){
             getDungeon().quitarVidaCreature(ataque, getDamage());
@@ -81,8 +82,6 @@ public class Archer extends Knight {
         getArrows().add(arrow);
         while (arrow.isInRange()) {
           arrow.move(2);
-          
-          dungeon.redraw();
           ataque = verificarAtaque(creatures, arrow);
           if (ataque != -1){
             getDungeon().quitarVidaCreature(ataque, getDamage());
@@ -96,8 +95,6 @@ public class Archer extends Knight {
         getArrows().add(arrow);
         while (arrow.isInRange()) {
           arrow.move(3);
-            
-          dungeon.redraw();
           ataque = verificarAtaque(creatures, arrow);
           if (ataque != -1){
             getDungeon().quitarVidaCreature(ataque, getDamage());
@@ -111,25 +108,29 @@ public class Archer extends Knight {
     }
         
   }
+    /**
+     * Dibuja el Archer en el objeto Graphics proporcionado.
+     * @param g El objeto Graphics en el que se dibuja el Archer.
+     */
     @Override
     public void draw(Graphics g) {
         super.draw(g);
         
     }
 
-    public void attack(ArrayList<Monster> targets) {
-    }
     
 
     /**
-     * @return the arrows
+     * Obtiene las flechas del Archer.
+     * @return Las flechas del Archer.
      */
     public ArrayList<Arrow> getArrows() {
         return arrows;
     }
 
     /**
-     * @param arrows the arrows to set
+     * Establece las flechas del Archer.
+     * @param arrows Las flechas a establecer.
      */
     public void setArrows(ArrayList<Arrow> arrows) {
         this.arrows = arrows;

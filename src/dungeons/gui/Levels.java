@@ -6,7 +6,7 @@ import Class.Dungeon;
  *
  * @author Santiago Jiménez
  * @author Daniel Felipe Lopez
- * @version 1.0.1
+ * @version 1.0.2
  */
 public class Levels extends javax.swing.JPanel {
     private String knight = null;

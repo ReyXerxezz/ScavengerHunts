@@ -10,7 +10,9 @@ import javax.sound.sampled.LineUnavailableException;
 
 /**
  *
- * @author santi
+ * @author Santiago Jiménez
+ * @author Daniel Felipe López
+ * @version 1.0.2
  */
 public class PlayerSoundPrincipal extends PlayerSound implements Runnable{
     

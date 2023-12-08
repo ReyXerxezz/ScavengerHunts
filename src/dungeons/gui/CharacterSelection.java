@@ -7,21 +7,28 @@ import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 
 /**
- *
+ * Esta clase representa la selección de personajes en una interfaz de usuario de un juego.
  * @author Santiago Jiménez
  * @author Daniel Felipe Lopez
- * @version 1.0.1
+ * @version 1.0.2
  */
 public class CharacterSelection extends javax.swing.JFrame {
 
     /**
-     * Creates new form CustomizeCharacter
+     * El nombre del tipo de caballero seleccionado por el usuario.
+     * Este campo se inicializa a null y se espera que se le asigne un valor cuando el usuario seleccione un caballero.
      */
     private String knight = null;
+
+    /**
+     * El nivel anteriormente seleccionado por el usuario.
+     * Este campo se inicializa a null y se espera que se le asigne un valor cuando el usuario seleccione un nivel.
+     */
     private String level = null; 
     
     /**
-     *
+     * Constructor de la clase CharacterSelection.
+     * Inicializa los componentes de la interfaz de usuario.
      */
     public CharacterSelection() {
         initComponents();
@@ -322,30 +329,34 @@ public class CharacterSelection extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     /**
-     * @return the knight
-     */
-    public String getKnight() {
-        return knight;
-    }
+ * Obtiene el valor de 'knight'.
+ * @return El valor actual del atributo 'knight'.
+ */
+public String getKnight() {
+    return knight;
+}
 
-    /**
-     * @param knight the knight to set
-     */
-    public void setKnight(String knight) {
-        this.knight = knight;
-    }
+/**
+ * Asigna un valor para el atributo 'knight'.
+ * @param knight El nuevo valor para el atributo 'knight'.
+ */
+public void setKnight(String knight) {
+    this.knight = knight;
+}
 
-    /**
-     * @return the level
-     */
-    public String getLevel() {
-        return level;
-    }
+/**
+ * Obtiene el valor del atributo 'level'.
+ * @return El valor actual del atributo 'level'.
+ */
+public String getLevel() {
+    return level;
+}
 
-    /**
-     * @param level the level to set
-     */
-    public void setLevel(String level) {
-        this.level = level;
-    }
+/**
+ * Asigna un valor para el atributo 'level'.
+ * @param level El nuevo valor para el atributo 'level'.
+ */
+public void setLevel(String level) {
+    this.level = level;
+}
 }

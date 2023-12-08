@@ -22,20 +22,67 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author User
+ * Clase Knight que extiende de LivingBeing.
+ * Esta clase representa un caballero en el juego.
+ * @author Santiago Jiménez
+ * @author Daniel Felipe Lopez
+ * @version 1.0.2
  */
 public class Knight extends LivingBeing{
     
+    /**
+     * Salud del caballero.
+     */
     private int health;
+
+    /**
+     * Daño que puede infligir el caballero.
+     */
     private int damage;
+
+    /**
+     * Rango de ataque del caballero.
+     */
     private int range;
+
+    /**
+     * Velocidad de movimiento del caballero.
+     */
     private int speed;
+
+    /**
+     * Imagen que representa al caballero.
+     */
     private ImageIcon image;
+
+    /**
+     * Calabozo en el que se encuentra el caballero.
+     */
     Dungeon dungeon;
+
+    /**
+     * Dirección de ataque del caballero.
+     */
     private int ataqueDireccion;
+
+    /**
+     * Arma del caballero.
+     */
     Weapon sword;
     
+    /**
+     * Constructor de la clase Knight.
+     * @param x Coordenada x del caballero en el tablero.
+     * @param y Coordenada y del caballero en el tablero.
+     * @param width Ancho del caballero.
+     * @param height Alto del caballero.
+     * @param health Salud del caballero.
+     * @param damage Daño que puede infligir el caballero.
+     * @param range Rango de ataque del caballero.
+     * @param speed Velocidad de movimiento del caballero.
+     * @param image Imagen que representa al caballero.
+     * @param dungeon Calabozo en el que se encuentra el caballero.
+     */
     public Knight(int x, int y, int width, int height, int health, int damage, int range, int speed ,ImageIcon image, Dungeon dungeon) {
         super(x, y, width, height, health, damage, range, speed, image, dungeon);
         this.health = health;
@@ -48,6 +95,12 @@ public class Knight extends LivingBeing{
         this.sword = null;
     }
     
+    /**
+     * Método para manejar las acciones del caballero.
+     * @param key Tecla presionada.
+     * @param muros Lista de muros en el calabozo.
+     * @param creatures Lista de criaturas en el calabozo.
+     */
     public void actionHandle(int key, ArrayList<Wall> muros, ArrayList<Monster> creatures){
         if(key == KeyEvent.VK_W |
            key == KeyEvent.VK_S |
@@ -60,6 +113,13 @@ public class Knight extends LivingBeing{
         }
     }
     
+    /**
+    * Método para mover al caballero en el juego.
+    * @param key Tecla presionada.
+    * @param muros Lista de muros en el calabozo.
+    * @param creatures Lista de criaturas en el calabozo.
+    * @return Verdadero si el caballero puede moverse, falso en caso contrario.
+    */
     public boolean move(int key, ArrayList<Wall> muros, ArrayList<Monster> creatures)
     {
         int xOriginal = x;
@@ -156,31 +216,44 @@ public class Knight extends LivingBeing{
         return true;
     }
     
+    /**
+    * Método para que el caballero ataque a las criaturas.
+    * @param creatures Lista de criaturas a las que el caballero puede atacar.
+    */
     public void attackArthur(ArrayList<Monster> creatures){
         
     }
     
-    public int verificarAtaque(ArrayList<Monster> creatures, Weapon espada){
+    /**
+    * Método para verificar si el caballero ha atacado a alguna criatura con su arma.
+    * @param creatures Lista de criaturas a verificar.
+    * @param arma Espada del caballero.
+    * @return 0 (este método aún no está implementado).
+    */
+    public int verificarAtaque(ArrayList<Monster> creatures, Weapon arma){
         return 0;
     }
 
     /**
-     * @return the ataqueDireccion
-     */
-    public int getAtaqueDireccion() {
-        return ataqueDireccion;
-    }
+    * Obtiene la dirección de ataque del caballero.
+    * @return Dirección de ataque del caballero.
+    */
+   public int getAtaqueDireccion() {
+       return ataqueDireccion;
+   }
+
+   /**
+    * Obtiene la Arma del caballero.
+    * @return Arma del caballero.
+    */
+   public Weapon getSword() {
+       return sword;
+   }
 
     /**
-     * @return the sword
-     */
-    public Weapon getSword() {
-        return sword;
-    }
-
-    /**
-     * @return the dungeon
-     */
+    * Obtiene el calabozo en el que se encuentra el caballero.
+    * @return Calabozo en el que se encuentra el caballero.
+    */
     public Dungeon getDungeon() {
         return dungeon;
     }

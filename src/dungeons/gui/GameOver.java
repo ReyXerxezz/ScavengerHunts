@@ -8,7 +8,9 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author santi
+ * @author Santiago Jiménez
+ * @author Daniel Felipe López
+ * @version 1.0.2
  */
 public class GameOver extends javax.swing.JDialog {
 

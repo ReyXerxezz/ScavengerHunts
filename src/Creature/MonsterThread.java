@@ -8,20 +8,29 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 /**
- *
+ * Esta es una clase MonsterThread que hereda de la clase Thread.
+ * Se utiliza para manejar el movimiento y el ataque de un monstruo en un hilo separado.
  * @author Santiago Jiménez
  * @author Daniel Felipe Lopez
- * @version 1.0.1
+ * @version 1.0.2
  */
 public class MonsterThread extends Thread {
 
+    /**
+     * El calabozo en el que se encuentra el monstruo.
+     */
     private final Dungeon dungeon;
+
+    /**
+     * El monstruo que este hilo está manejando.
+     */
     private final Monster monster;
 
     /**
-     *
-     * @param dungeon
-     * @param monster
+     * Constructor de la clase MonsterThread.
+     * Inicializa las propiedades de la clase con los valores proporcionados.
+     * @param dungeon El calabozo en el que se encuentra el monstruo.
+     * @param monster El monstruo que este hilo está manejando.
      */
     
     public MonsterThread(Dungeon dungeon, Monster monster) {
@@ -30,7 +39,9 @@ public class MonsterThread extends Thread {
     }
 
     /**
-     *
+     * El método que se ejecuta cuando se inicia el hilo.
+     * Mueve al monstruo, verifica si el monstruo colisiona con el caballero y, en caso afirmativo, hace que el monstruo ataque.
+     * Luego, redibuja el calabozo.
      */
     @Override
     public void run() {
@@ -38,6 +49,9 @@ public class MonsterThread extends Thread {
 
         scheduler.scheduleAtFixedRate(() -> {
             getMonster().moveCreature(dungeon, dungeon.getMuros(), dungeon.getCreatures(), dungeon.getArthur());
+            if(getMonster() instanceof Dragon){
+                getMonster().attack();
+            }
 
             if (getMonster().checkCollision(dungeon.getArthur())) {
                 getMonster().attack();
@@ -48,6 +62,7 @@ public class MonsterThread extends Thread {
     }
 
     /**
+     * Obtiene el monstruo que este hilo está manejando.
      * @return the monster
      */
     public Monster getMonster() {
