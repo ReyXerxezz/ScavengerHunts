@@ -120,6 +120,16 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         fondo.paintIcon(null, g, x, y);
 
         arthur.draw(g);
+        if(arthur instanceof Magician){
+            for (Weapon weapon : ((Magician) arthur).getFireballs()) {
+                    weapon.draw(g);
+                }
+        }
+        if(arthur instanceof Archer){
+            for (Weapon weapon : ((Archer) arthur).getArrows()) {
+                    weapon.draw(g);
+                }
+        }
         
         for (Wall muro : getMuros()){
             g.setColor(muro.getColor());
@@ -207,6 +217,7 @@ public void actKnight(int key){
             GameOver go = new GameOver(null, true);
             go.setVisible(true);
             this.score = 0;
+            
             this.active = false;
         }
     }
@@ -214,7 +225,9 @@ public void actKnight(int key){
     public void verificarVictoria(int llamado){
         if(this.creatures.isEmpty() && llamado == 1){
             LevelCompleted lc = new LevelCompleted(null, true);
+            lc.setScore(String.valueOf(this.score));
             lc.setVisible(true);
+            lc.setJtextfield();
             this.active = false;
         }
     }
@@ -257,10 +270,10 @@ public void actKnight(int key){
      */
     public void quitarVidaCreature(int index, int daño){
         int posicion = 0; 
-        for (Monster monstruo : getCreatures()) {
+        for (int i =0; i<creatures.size();i++) {
             if (posicion == index){
-                monstruo.quitarVida(daño);
-                if (monstruo.getHealth() <= 0){
+                creatures.get(i).quitarVida(daño);
+                if (creatures.get(i).getHealth() <= 0){
                     eliminarCreature(index);
                 }
             }

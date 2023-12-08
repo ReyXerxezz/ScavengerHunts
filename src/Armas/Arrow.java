@@ -20,10 +20,8 @@ import javax.swing.ImageIcon;
  */
 public class Arrow extends Weapon {
     
-    private int arrowSpeed;
-    private int arrowDamage;
-    private Dungeon dungeon;
-    private ImageIcon image;
+    private boolean inRange;
+    private int range;
     
     /**
      *
@@ -32,39 +30,82 @@ public class Arrow extends Weapon {
      * @param arrowSpeed
      * @param arrowDamage
      */
-    public Arrow(int x, int y, Dungeon dungeon) {
-        super(x, y, 22, 12, Color.BLACK, dungeon, "Arrow.png");
-        this.arrowSpeed = arrowSpeed;
-        this.arrowDamage = arrowDamage;
-        this.setDirection(0);
-        this.image = new ImageIcon(getPath());
+    public Arrow(int x, int y, Dungeon dungeon, String path) {
+        super(x, y, 22, 12, Color.BLACK, dungeon, path);
+        inRange = true;
     }
     
     /**
      *
      * @param targets
      */
-    public void move(ArrayList<LivingBeing> targets) {
-        while (true) {            
-            for (LivingBeing target : targets) {
-            if (checkCollision(target)) {
-                // Realiza acciones en caso de colisión, como reducir la salud del objetivo, etc.
-                dungeon.quitarVidaCreature(targets.indexOf(target), arrowDamage);
-                setExpired(true);  // Marca la flecha como expirada después de colisionar
-            }
+    
+    public void move(int direction) {
+    switch (direction) {
+      case 0 -> {
+        // Mover hacia arriba
+        y -= 10;
+        if (y < 0 || y > getRange()) {
+          inRange = false;
         }
+        
+      }
+      case 1 -> {
+        // Mover hacia abajo
+        y += 10;
+        if (y < 0 || y > getRange()) {
+          inRange = false;
         }
+        
+      }
+      case 2 -> {
+        // Mover hacia la izquierda
+        x -= 10;
+        if (x < 0 || x > getRange()) {
+          inRange = false;
+        }
+        
+      }
+      case 3 -> {
+        // Mover hacia la derecha
+        x += 10;
+        if (x < 0 || x > getRange()) {
+          inRange = false;
+        }
+        
+      }
+      default -> {
+      }
+    }
+  }
         
 
         // Verifica colisiones con los objetivos
-        
-    }
 
     @Override
     public void redraw() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-}
+
+    /**
+     * @return the inRange
+     */
+    public boolean isInRange() {
+        return inRange;
+    }
+
+    /**
+     * @return the range
+     */
+    public int getRange() {
+        return range;
+    }
+    
+        
+    }
+
+    
+
 
 
 

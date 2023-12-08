@@ -42,17 +42,97 @@ public class Archer extends Knight {
     
     @Override
     public void attackArthur(ArrayList<Monster> creatures) {
-        super.attackArthur(creatures); 
-     }
-
-    public void attack(ArrayList<Monster> targets) {
+    int ataque = -1;
+    
+    Arrow arrow = null;
+    switch (getAtaqueDireccion()) {
+      case 0 -> {
+        arrow = new Arrow(x+(width/2),(y-17),getDungeon(), "Arrow1.png");
+        getArrows().add(arrow);
+        while (arrow.isInRange()) {
+          arrow.move(0);
+          
+          dungeon.redraw();
+          ataque = verificarAtaque(creatures, arrow);
+          if (ataque != -1){
+            getDungeon().quitarVidaCreature(ataque, getDamage());
+            break;
+          }
+        }
+        getArrows().remove(arrow);
+      }
+      case 1 -> {
+        arrow = new Arrow(x+(width/2), (y+height),getDungeon(), "Arrow3.png");
+        getArrows().add(arrow);
+        while (arrow.isInRange()) {
+          arrow.move(1);
+          
+          dungeon.redraw();
+          ataque = verificarAtaque(creatures, arrow);
+          if (ataque != -1){
+            getDungeon().quitarVidaCreature(ataque, getDamage());
+            break;
+          }
+        }
+        getArrows().remove(arrow);
+      }
+      case 2 -> {
+        arrow = new Arrow((x-9), y+(height/2), getDungeon(), "Arrow4.png");
+        getArrows().add(arrow);
+        while (arrow.isInRange()) {
+          arrow.move(2);
+          
+          dungeon.redraw();
+          ataque = verificarAtaque(creatures, arrow);
+          if (ataque != -1){
+            getDungeon().quitarVidaCreature(ataque, getDamage());
+            break;
+          }
+        }
+        getArrows().remove(arrow);
+      }
+      case 3 -> {
+        arrow = new Arrow((x+width), y+(height/2), getDungeon(), "Arrow2.png");
+        getArrows().add(arrow);
+        while (arrow.isInRange()) {
+          arrow.move(3);
+            
+          dungeon.redraw();
+          ataque = verificarAtaque(creatures, arrow);
+          if (ataque != -1){
+            getDungeon().quitarVidaCreature(ataque, getDamage());
+            break;
+          }
+        }
+        getArrows().remove(arrow);
+      }
+      default -> {
+      }
     }
+        
+  }
     @Override
     public void draw(Graphics g) {
         super.draw(g);
-
-        // Dibuja las flechas
         
+    }
+
+    public void attack(ArrayList<Monster> targets) {
+    }
+    
+
+    /**
+     * @return the arrows
+     */
+    public ArrayList<Arrow> getArrows() {
+        return arrows;
+    }
+
+    /**
+     * @param arrows the arrows to set
+     */
+    public void setArrows(ArrayList<Arrow> arrows) {
+        this.arrows = arrows;
     }
 
 }
