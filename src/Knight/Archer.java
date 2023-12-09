@@ -49,57 +49,89 @@ public class Archer extends Knight {
     public void attackArthur(ArrayList<Monster> creatures) {
     int ataque = -1;
     
-    Arrow arrow = null;
     switch (getAtaqueDireccion()) {
       case 0 -> {
-        arrow = new Arrow(x+(width/2),(y-17),getDungeon(), "Arrow1.png");
+        Arrow arrow = new Arrow(x+(width/2),(y-17),getDungeon(), "Arrow1.png");
         getArrows().add(arrow);
+        
         while (arrow.isInRange()) {
           arrow.move(0);
+          getDungeon().redraw();
           ataque = verificarAtaque(creatures, arrow);
           if (ataque != -1){
             getDungeon().quitarVidaCreature(ataque, getDamage());
+            
             break;
           }
+          try {
+                    // Agregar un retraso de 100 milisegundos (ajusta según sea necesario)
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
         }
         getArrows().remove(arrow);
       }
       case 1 -> {
-        arrow = new Arrow(x+(width/2), (y+height),getDungeon(), "Arrow3.png");
+        Arrow arrow = new Arrow(x+(width/2), (y+height),getDungeon(), "Arrow3.png");
         getArrows().add(arrow);
         while (arrow.isInRange()) {
           arrow.move(1);
+          getDungeon().redraw();
           ataque = verificarAtaque(creatures, arrow);
           if (ataque != -1){
             getDungeon().quitarVidaCreature(ataque, getDamage());
             break;
           }
+          
+            try {
+                    // Agregar un retraso de 100 milisegundos (ajusta según sea necesario)
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
         }
         getArrows().remove(arrow);
       }
       case 2 -> {
-        arrow = new Arrow((x-9), y+(height/2), getDungeon(), "Arrow4.png");
+        Arrow arrow = new Arrow((x-9), y+(height/2), getDungeon(), "Arrow4.png");
         getArrows().add(arrow);
         while (arrow.isInRange()) {
           arrow.move(2);
+          getDungeon().redraw();
           ataque = verificarAtaque(creatures, arrow);
           if (ataque != -1){
             getDungeon().quitarVidaCreature(ataque, getDamage());
+            
             break;
           }
+          try {
+                    // Agregar un retraso de 100 milisegundos (ajusta según sea necesario)
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
         }
         getArrows().remove(arrow);
       }
       case 3 -> {
-        arrow = new Arrow((x+width), y+(height/2), getDungeon(), "Arrow2.png");
+        Arrow arrow = new Arrow((x+width), y+(height/2), getDungeon(), "Arrow2.png");
         getArrows().add(arrow);
         while (arrow.isInRange()) {
           arrow.move(3);
+          getDungeon().redraw();
           ataque = verificarAtaque(creatures, arrow);
           if (ataque != -1){
             getDungeon().quitarVidaCreature(ataque, getDamage());
+            
             break;
           }
+          try {
+                    // Agregar un retraso de 100 milisegundos (ajusta según sea necesario)
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
         }
         getArrows().remove(arrow);
       }
@@ -115,6 +147,9 @@ public class Archer extends Knight {
     @Override
     public void draw(Graphics g) {
         super.draw(g);
+        for (Arrow arrow : arrows) {
+            arrow.draw(g);
+        }
         
     }
 

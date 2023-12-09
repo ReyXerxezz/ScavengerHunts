@@ -31,6 +31,13 @@ public class Fireball extends Weapon implements Drawable{
      * El rango de la bola de fuego.
      */
     private int range;
+    
+    private Drawable drawable;
+    
+    /**
+     * La distancia en pixeles que se ha movido la bola de fuego.
+     */
+    private int distanceTraveled = 0;
 
     /**
      * Constructor de la clase Fireball.
@@ -53,43 +60,35 @@ public class Fireball extends Weapon implements Drawable{
      * @param direction La dirección en la que se moverá la bola de fuego.
      */
     public void move(int direction) {
-    switch (direction) {
-      case 0 -> {
-        // Mover hacia arriba
-        y -= 10;
-        if (y < 0 || y > getRange()) {
-          inRange = false;
+        switch (direction) {
+          case 0 -> {
+            // Mover hacia arriba
+            y -= 1;
+            distanceTraveled += 1; // Actualizar la distancia recorrida
+          }
+          case 1 -> {
+            // Mover hacia abajo
+            y += 1;
+            distanceTraveled += 1; // Actualizar la distancia recorrida
+          }
+          case 2 -> {
+            // Mover hacia la izquierda
+            x -= 1;
+            distanceTraveled += 1; // Actualizar la distancia recorrida
+          }
+          case 3 -> {
+            // Mover hacia la derecha
+            x += 1;
+            distanceTraveled += 1; // Actualizar la distancia recorrida
+          }
+          default -> {
+          }
         }
-        
-      }
-      case 1 -> {
-        // Mover hacia abajo
-        y += 10;
-        if (y < 0 || y > getRange()) {
-          inRange = false;
+        // Comprobar si la bola de fuego ha recorrido su rango
+        if (distanceTraveled >= range) {
+            inRange = false;
         }
-        
-      }
-      case 2 -> {
-        // Mover hacia la izquierda
-        x -= 10;
-        if (x < 0 || x > getRange()) {
-          inRange = false;
-        }
-        
-      }
-      case 3 -> {
-        // Mover hacia la derecha
-        x += 10;
-        if (x < 0 || x > getRange()) {
-          inRange = false;
-        }
-        
-      }
-      default -> {
-      }
     }
-  }
 
     /**
      * Dibuja la bola de fuego en el objeto Graphics proporcionado.
@@ -113,7 +112,7 @@ public class Fireball extends Weapon implements Drawable{
      */
     @Override
     public void redraw() {
-        throw new UnsupportedOperationException("Not supported yet."); 
+        drawable.redraw(); 
     }
 
     /**
@@ -130,6 +129,32 @@ public class Fireball extends Weapon implements Drawable{
      */
     public void setRange(int range) {
         this.range = range;
+    }
+
+    /**
+     * @return the drawable
+     */
+    public Drawable getDrawable() {
+        return drawable;
+    }
+
+    /**
+     * @param drawable the drawable to set
+     */
+    public void setDrawable(Drawable drawable) {
+        this.drawable = drawable;
+    }
+    
+    public void run() {
+        while (true) {
+            move(this.getDirection());
+            redraw();
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     

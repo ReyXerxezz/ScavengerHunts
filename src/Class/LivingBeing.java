@@ -97,8 +97,7 @@ public abstract class LivingBeing extends Sprite{
     */
    public void setDrawable(Drawable drawable) {
        this.drawable = drawable;
-       this.image = image;
-       this.dungeon = dungeon;
+       
    }
     
     /**
@@ -140,14 +139,9 @@ public abstract class LivingBeing extends Sprite{
     }
     
     
-    /**
- * Redibuja el ser vivo de acuerdo a los parámetros básicos del objeto.
- * @param x  La coordenada x del ser vivo.
- * @param y  La coordenada y del ser vivo.
- * @param width  El ancho del ser vivo.
- * @param height La altura del ser vivo.
- */
-    public void redraw(int x, int y, int width, int height) {
+    
+ 
+    public void redraw() {
         getDrawable().redraw();
     }
 

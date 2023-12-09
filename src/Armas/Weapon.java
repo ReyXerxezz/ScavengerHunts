@@ -190,6 +190,13 @@ public abstract class Weapon extends Sprite implements dungeons.gui.Drawable{
     public void move(int i) {
         
     }
+
+    /**
+     * @return the direction
+     */
+    public int getDirection() {
+        return direction;
+    }
     
 }
 

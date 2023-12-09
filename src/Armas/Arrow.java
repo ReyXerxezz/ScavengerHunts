@@ -34,6 +34,10 @@ public class Arrow extends Weapon {
      */
     private int range;
     
+    /**
+     * La distancia en pixeles que se ha movido la bola de fuego.
+     */
+    private int distanceTraveled = 0;
     
     /**
      * Constructor de la clase Arrow.
@@ -56,43 +60,35 @@ public class Arrow extends Weapon {
      */
     
     public void move(int direction) {
-    switch (direction) {
-      case 0 -> {
-        // Mover hacia arriba
-        y -= 10;
-        if (y < 0 || y > getRange()) {
-          inRange = false;
+        switch (direction) {
+          case 0 -> {
+            // Mover hacia arriba
+            y -= 1;
+            distanceTraveled += 1; // Actualizar la distancia recorrida
+          }
+          case 1 -> {
+            // Mover hacia abajo
+            y += 1;
+            distanceTraveled += 1; // Actualizar la distancia recorrida
+          }
+          case 2 -> {
+            // Mover hacia la izquierda
+            x -= 1;
+            distanceTraveled += 1; // Actualizar la distancia recorrida
+          }
+          case 3 -> {
+            // Mover hacia la derecha
+            x += 1;
+            distanceTraveled += 1; // Actualizar la distancia recorrida
+          }
+          default -> {
+          }
         }
-        
-      }
-      case 1 -> {
-        // Mover hacia abajo
-        y += 10;
-        if (y < 0 || y > getRange()) {
-          inRange = false;
+        // Comprobar si la bola de fuego ha recorrido su rango
+        if (distanceTraveled >= range) {
+            inRange = false;
         }
-        
-      }
-      case 2 -> {
-        // Mover hacia la izquierda
-        x -= 10;
-        if (x < 0 || x > getRange()) {
-          inRange = false;
-        }
-        
-      }
-      case 3 -> {
-        // Mover hacia la derecha
-        x += 10;
-        if (x < 0 || x > getRange()) {
-          inRange = false;
-        }
-        
-      }
-      default -> {
-      }
     }
-  }
         
 
        

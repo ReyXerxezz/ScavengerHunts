@@ -49,8 +49,15 @@ public class MonsterThread extends Thread {
 
         scheduler.scheduleAtFixedRate(() -> {
             getMonster().moveCreature(dungeon, dungeon.getMuros(), dungeon.getCreatures(), dungeon.getArthur());
+            
             if(getMonster() instanceof Dragon){
                 getMonster().attack();
+                try {
+                    // Agregar un retraso de 100 milisegundos (ajusta según sea necesario)
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
 
             if (getMonster().checkCollision(dungeon.getArthur())) {
@@ -58,7 +65,7 @@ public class MonsterThread extends Thread {
             }
 
             dungeon.getDrawable().redraw();
-        }, 0, 20, TimeUnit.SECONDS); // Ajustado el intervalo a 5 segundos
+        }, 0, 1, TimeUnit.SECONDS); // Ajustado el intervalo a 5 segundos
     }
 
     /**

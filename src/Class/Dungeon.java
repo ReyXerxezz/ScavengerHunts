@@ -44,6 +44,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     private int score;
     private boolean active;
     private int llamado;
+    
 
     /**
      *
@@ -64,6 +65,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         mapearDungeon();
         active = true;
         llamado = 0;
+        arthur.setDrawable(this);
     }
 
     /**
@@ -77,6 +79,9 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
     private void mapearDungeon() {
         this.muros = lector.leerMapa();
         this.creatures = lector.leerMonstruos(this);
+        for (Monster monstruo : creatures) {
+            monstruo.setDrawable(this);
+        }
     }
     
     /**
@@ -108,6 +113,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
         else if (type.equals("Tank")){
             knight = new Tank(x, y, dungeon);
         }
+        
         return knight;
     }
 
@@ -130,6 +136,7 @@ public class Dungeon extends Sprite implements Drawable, Boundable{
                     weapon.draw(g);
                 }
         }
+         
         
         for (Wall muro : getMuros()){
             g.setColor(muro.getColor());
@@ -217,12 +224,13 @@ public void actKnight(int key){
     }
     
     public void verificarPerder(int llamado){
-        if (arthur.getHealth() <= 0 || score <= 0 && llamado == 1) {
+        if (arthur.getHealth() <= 0  && llamado == 1) {
             GameOver go = new GameOver(null, true);
             go.setVisible(true);
+            this.active = false;
             this.score = 0;
             
-            this.active = false;
+            
         }
     }
     
@@ -240,7 +248,7 @@ public void actKnight(int key){
      */
     @Override
     public void redraw() {
-     
+        drawable.redraw();
     }
     
     /**

@@ -57,7 +57,7 @@ public class Dragon extends Monster{
     
     @Override
     public void attack() {
-    Fireball fireball = new Fireball(x, y, getDungeon(), "Fireball1.png");
+    Fireball fireball = new Fireball(x, y+35, getDungeon(), "Fireball1.png");
     getFireballs().add(fireball);
     int ataque = -1;
     while (fireball.isInRange()) {
@@ -65,9 +65,17 @@ public class Dragon extends Monster{
         getDungeon().redraw();
         ataque = verificarAtaque(getDungeon().getArthur(), fireball);
         if (ataque != -1){
-            getDungeon().getArthur().setHealth(getHealth()- this.getDamage());
+            
+            
             break;
+            
         }
+        try {
+                    // Agregar un retraso de 100 milisegundos (ajusta según sea necesario)
+                    Thread.sleep(3);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
     }
     getFireballs().remove(fireball);
     }
@@ -82,6 +90,7 @@ public class Dragon extends Monster{
         
         
             if (fireball.checkCollision(arthur)) {
+                getDungeon().getArthur().quitarVida(getDamage());
                 return 1;
             }
             

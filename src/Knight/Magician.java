@@ -47,26 +47,37 @@ public class Magician extends Knight{
      */
     public void attackArthur(ArrayList<Monster> creatures) {
     int ataque = -1;
+        System.out.println("atacando");
     
-    Fireball fireball = null;
     switch (getAtaqueDireccion()) {
       case 0 -> {
-        fireball = new Fireball(x+(width/2),(y-17),getDungeon(), "Fireball.png");
+        Fireball fireball = new Fireball(x+(width/2),(y-17),getDungeon(), "Fireball.png");
+        fireball.setDrawable(this.getDrawable());
         getFireballs().add(fireball);
         while (fireball.isInRange()) {
           fireball.move(0);
-          
+            System.out.println("se mueve:");
           dungeon.redraw();
           ataque = verificarAtaque(creatures, fireball);
           if (ataque != -1){
             getDungeon().quitarVidaCreature(ataque, getDamage());
+            
+              System.out.println("le di");
             break;
+            
           }
+          try {
+                    // Agregar un retraso de 100 milisegundos (ajusta según sea necesario)
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
         }
         getFireballs().remove(fireball);
       }
       case 1 -> {
-        fireball = new Fireball(x+(width/2), (y+height),getDungeon(), "Fireball.png");
+        Fireball fireball = new Fireball(x+(width/2), (y+height),getDungeon(), "Fireball.png");
+        fireball.setDrawable(this.getDrawable());
         getFireballs().add(fireball);
         while (fireball.isInRange()) {
           fireball.move(1);
@@ -75,13 +86,21 @@ public class Magician extends Knight{
           ataque = verificarAtaque(creatures, fireball);
           if (ataque != -1){
             getDungeon().quitarVidaCreature(ataque, getDamage());
+            
             break;
           }
+          try {
+                    // Agregar un retraso de 100 milisegundos (ajusta según sea necesario)
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
         }
         getFireballs().remove(fireball);
       }
       case 2 -> {
-        fireball = new Fireball((x-9), y+(height/2), getDungeon(), "Fireball.png");
+        Fireball fireball = new Fireball((x-9), y+(height/2), getDungeon(), "Fireball.png");
+        fireball.setDrawable(this.getDrawable());
         getFireballs().add(fireball);
         while (fireball.isInRange()) {
           fireball.move(2);
@@ -90,13 +109,21 @@ public class Magician extends Knight{
           ataque = verificarAtaque(creatures, fireball);
           if (ataque != -1){
             getDungeon().quitarVidaCreature(ataque, getDamage());
+            
             break;
           }
+          try {
+                    // Agregar un retraso de 100 milisegundos (ajusta según sea necesario)
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
         }
         getFireballs().remove(fireball);
       }
       case 3 -> {
-        fireball = new Fireball((x+width), y+(height/2), getDungeon(), "Fireball.png");
+        Fireball fireball = new Fireball((x+width), y+(height/2), getDungeon(), "Fireball.png");
+        fireball.setDrawable(this.getDrawable());
         getFireballs().add(fireball);
         while (fireball.isInRange()) {
           fireball.move(3);
@@ -105,8 +132,15 @@ public class Magician extends Knight{
           ataque = verificarAtaque(creatures, fireball);
           if (ataque != -1){
             getDungeon().quitarVidaCreature(ataque, getDamage());
+            
             break;
           }
+          try {
+                    // Agregar un retraso de 100 milisegundos (ajusta según sea necesario)
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
         }
         getFireballs().remove(fireball);
       }
@@ -123,6 +157,9 @@ public class Magician extends Knight{
     @Override
     public void draw(Graphics g) {
         super.draw(g);
+        for (Fireball fireball : fireballs) {
+            fireball.draw(g);
+        }
         
     }
 
